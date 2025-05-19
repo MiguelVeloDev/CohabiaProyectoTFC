@@ -26,7 +26,6 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoView
 import com.example.cohabiaproject.presentation.ui.screens.NuevoElectrodomestico
 import com.example.cohabiaproject.presentation.ui.screens.NuevoGastoScreen
 import com.example.cohabiaproject.presentation.ui.screens.NuevoPrograma
-import com.example.cohabiaproject.presentation.ui.screens.Prueba
 import com.example.cohabiaproject.presentation.ui.screens.Registro
 import com.example.cohabiaproject.presentation.ui.screens.SeleccionUsuarioGasto
 import com.example.cohabiaproject.presentation.ui.screens.UnirmeCasa
@@ -115,8 +114,6 @@ fun NavGraph(startDestination: String = Screen.Login.route) {
             SeleccionUsuarioGasto(modifier = Modifier, navController)
         }
 
-        composable(Screen.Prueba.route) {
-            Prueba(modifier = Modifier, navController)
-        }
+
     }
 }
