@@ -29,6 +29,7 @@ import com.example.cohabiaproject.R
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
+import com.example.cohabiaproject.ui.theme.AzulGastos
 import org.koin.androidx.compose.koinViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -56,7 +57,7 @@ fun TodosGastos(
                 text = "Este mes",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF0061D9),
+                color = AzulGastos,
                 modifier = Modifier.padding(top = 20.dp, bottom = 10.dp)
             )
             Row(
@@ -123,7 +124,7 @@ fun TodosGastos(
                 Text(
                     text = "Ver todo",
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF0061D9),
+                    color = AzulGastos,
                     fontSize = 15.sp,
                     modifier = Modifier.clickable { navController.navigate("listaFinanzas") }
                 )

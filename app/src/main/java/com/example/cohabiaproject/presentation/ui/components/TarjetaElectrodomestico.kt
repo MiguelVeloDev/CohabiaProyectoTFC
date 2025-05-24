@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cohabiaproject.R
 import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.domain.model.UsoPrograma
@@ -35,7 +36,7 @@ import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import org.koin.androidx.compose.koinViewModel
 @Composable
 fun TarjetaElectrodomestico(
-    electrodomestico: Electrodomestico
+    electrodomestico: Electrodomestico,navController : NavController
 ) {
     val electrodomesticoViewModel: ElectrodomesticoViewModel = koinViewModel()
     val tiempoRestante =
@@ -81,12 +82,12 @@ fun TarjetaElectrodomestico(
 
     Card(
         modifier = Modifier
-            .padding(horizontal = 10.dp, vertical = 8.dp)
+            .padding(vertical = 2.dp)
             .fillMaxWidth()
             .clickable { expanded = !expanded },
         colors = CardDefaults.cardColors(Color.White),
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column{
         Row(
@@ -187,7 +188,7 @@ fun TarjetaElectrodomestico(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         IconButton(
-                            onClick = { expanded = false },
+                            onClick = { expanded = false; navController.navigate("anadirPrograma/${electrodomestico.id}") },
                             modifier = Modifier.size(36.dp)
                         ) {
                             Icon(

@@ -32,6 +32,7 @@ fun SeleccionUsuarioGasto(
 
 
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             NuevoElementoTopAppBar(
                 titulo = "Seleccionar usuario",
@@ -62,10 +63,12 @@ fun SeleccionUsuarioGasto(
                 items(listaUsuarios){usuario ->
                     Card(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(2.dp),
                         colors = CardDefaults.cardColors(
                             containerColor = Color.White),
-                        shape = androidx.compose.foundation.shape.RoundedCornerShape(0.dp)
+                        shape = androidx.compose.foundation.shape.RoundedCornerShape(0.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                     ){
                         Row(
                             modifier = Modifier

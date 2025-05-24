@@ -28,7 +28,7 @@ import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.viewmodel.LoginViewModel
-import com.google.firebase.auth.FirebaseAuth
+import com.example.cohabiaproject.ui.theme.FondoTextField
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -53,12 +53,12 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
     var esError by remember { mutableStateOf(false) }
 
 
-    if(Sesion.userId.isNotEmpty()){
+   /* if(Sesion.userId.isNotEmpty()){
         navController.navigate(Screen.Main.route)
-    }
+    }*/
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = Color.White
     ) {
         Column(
             modifier = Modifier
@@ -81,7 +81,7 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
                     .padding(vertical = 8.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White,
+                    unfocusedContainerColor = FondoTextField,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                     )
@@ -97,7 +97,7 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
                     .padding(vertical = 8.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White,
+                    unfocusedContainerColor = FondoTextField,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 )
@@ -120,39 +120,62 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
                             password.length >= 6
                 }
             }
-            Button(
-                onClick = {
-                    esError = false
-                    loginViewModel.login(correo, password) { success, error ->
-                    if (success) {
-                        navController.navigate(Screen.Main.route)
-                    } else {
-                        Log.e("Login", "Error al iniciar sesión: $error")
-                        esError = true
-                    }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(horizontal = 100.dp)
+            ) {
+                Button(
+                    onClick = {
+                        esError = false
+                        loginViewModel.login(correo, password) { success, error ->
+                            if (success) {
+                                navController.navigate(Screen.Main.route)
+                            } else {
+                                Log.e("Login", "Error al iniciar sesión: $error")
+                                esError = true
+                            }
 
+                        }
+                    },
+                    colors = ButtonColors(
+                        containerColor = Color.White,
+                        disabledContainerColor = Color.White,
+                        contentColor = Color(0xFFEE7A16),
+                        disabledContentColor = Color(0xFFEE7A16)
+                    ),
+                    modifier = Modifier.border(
+                        1.dp,
+                        Color(0xFFC0C0C0),
+                        MaterialTheme.shapes.medium
+                    ).fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium,
+                    contentPadding = PaddingValues(vertical = 15.dp),
+                    enabled = enabled
+                ) {
+                    Text(text = "Iniciar sesión")
                 }
-                } ,
-                colors = ButtonColors(containerColor = Color.White, disabledContainerColor = Color.White, contentColor = Color(0xFFEE7A16), disabledContentColor = Color(0xFFEE7A16)),
-                modifier = Modifier.border(1.dp, Color(0xFFC0C0C0), MaterialTheme.shapes.medium),
-                shape = MaterialTheme.shapes.medium,
-                contentPadding = PaddingValues(horizontal = 50.dp, vertical = 15.dp),
-                enabled = enabled
-            ) {
-                Text(text = "Iniciar sesión")
-            }
 
-            Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
 
-            Button(
-                onClick = {navController.navigate(Screen.Registro.route)},
-                colors = ButtonColors(containerColor = Color(0xFFEE7A16), disabledContainerColor = Color.White, contentColor = Color.White, disabledContentColor = Color.White),
-                modifier = Modifier.border(1.dp, Color(0xFFC0C0C0), MaterialTheme.shapes.medium),
-                shape = MaterialTheme.shapes.medium,
-                contentPadding = PaddingValues(horizontal = 50.dp, vertical = 15.dp)
-            ) {
-                Text(text = "Registrarse")
+                Button(
+                    onClick = { navController.navigate(Screen.Registro.route) },
+                    colors = ButtonColors(
+                        containerColor = Color(0xFFEE7A16),
+                        disabledContainerColor = Color.White,
+                        contentColor = Color.White,
+                        disabledContentColor = Color.White
+                    ),
+                    modifier = Modifier.border(
+                        1.dp,
+                        Color(0xFFC0C0C0),
+                        MaterialTheme.shapes.medium
+                    ).fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium,
+                    contentPadding = PaddingValues(vertical = 15.dp)
+                ) {
+                    Text(text = "Registrarse")
+                }
             }
             Spacer(modifier = Modifier.height(86.dp))
             Text(
@@ -160,7 +183,7 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
                 style = TextStyle(fontSize = 14.sp, textDecoration = TextDecoration.Underline)
                 ,
                 modifier = Modifier.clickable(
-                    onClick = {suspend {  Sesion.cargarSesion()} ;Log.d("Registro", Sesion.userId) }
+                    onClick = {Log.d("Registro", Sesion.userId) }
                 )
 
             )

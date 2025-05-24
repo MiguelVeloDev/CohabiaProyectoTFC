@@ -13,11 +13,16 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.cohabiaproject.domain.model.Evento
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
+import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
+import com.example.cohabiaproject.ui.theme.AzulGastos
+import com.example.cohabiaproject.ui.theme.FondoTextField
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -25,7 +30,7 @@ import org.koin.androidx.compose.koinViewModel
 fun NuevoGastoScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
-    usuarioPaga: String
+    usuarioPrimerPago: String
 ) {
 
     val finanzasViewmodel: FinanzasViewModel =
@@ -37,21 +42,24 @@ fun NuevoGastoScreen(
     var cantidad by rememberSaveable { mutableStateOf("") }
     val botonActivo = concepto.isNotBlank() && cantidad.isNotBlank()
     val usuarioViewModel: UsuarioViewModel = koinViewModel()
+    val eventoViewModel : EventoViewModel = koinViewModel()
     var listaUsuarios = usuarioViewModel.usuarios.collectAsState(emptyList())
     var listaNombresUsuarios = listaUsuarios.value.map { it.nombre }
-    val usuariosParticipan = remember { mutableStateListOf<String>() }
+    val usuariosParticipan = remember { mutableStateListOf<String>((usuarioPrimerPago)) }
     var usuariosDeuda = remember { mutableStateListOf<String>() }
     var deuda by remember { mutableStateOf(false) }
+    val usuarioPaga = usuariosParticipan.filter { it !in usuariosDeuda }
 
 
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             NuevoElementoTopAppBar(
                 titulo = "Nuevo gasto",
                 textoBoton = "Guardar",
                 navController = navController,
-                accion = {finanzasViewmodel.save (finanzasViewmodel.crearFinanza(concepto = concepto, cantidad = cantidad.toDouble(), usuarioPaga = finanzasViewmodel.convertirNombreAId(listOf(usuarioPaga),listaUsuarios.value), usuariosParticipan = finanzasViewmodel.convertirNombreAId(usuariosParticipan, listaUsuarios.value),usuariosDeuda = finanzasViewmodel.convertirNombreAId(usuariosDeuda, listaUsuarios.value))); navController.navigate(
-                    Screen.FinanzasScreen.route)},
+                accion = {finanzasViewmodel.save (finanzasViewmodel.crearFinanza(concepto = concepto, cantidad = cantidad.toDouble(), usuarioPaga = finanzasViewmodel.convertirNombreAId((usuarioPaga),listaUsuarios.value), usuariosParticipan = finanzasViewmodel.convertirNombreAId(usuariosParticipan, listaUsuarios.value),usuariosDeuda = finanzasViewmodel.convertirNombreAId(usuariosDeuda, listaUsuarios.value))); navController.navigate(
+                    Screen.FinanzasScreen.route);eventoViewModel.save(Evento(tipo = "GASTO", contenido = eventoViewModel.generarMensaje("GASTO", cantidad))) },
                 enabled = botonActivo
             )
         },
@@ -71,10 +79,17 @@ fun NuevoGastoScreen(
                 singleLine = true,
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White,
+                    unfocusedContainerColor = FondoTextField,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 )
+            )
+
+            //Texto para corregir errores
+            Text(
+                text = "Usuario paga: $usuarioPaga",
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(vertical = 8.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -86,14 +101,20 @@ fun NuevoGastoScreen(
                 singleLine = true,
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White,
+                    unfocusedContainerColor = FondoTextField,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 )
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
 
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Usuarios que participan:",
+                fontSize = 15.sp,
+                modifier = Modifier.padding(vertical = 8.dp),
+                color = AzulGastos
+            )
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -103,10 +124,11 @@ fun NuevoGastoScreen(
                 items(listaNombresUsuarios){usuario ->
                     Card(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth().padding(2.dp),
                         colors = CardDefaults.cardColors(
                             containerColor = Color.White),
-                        shape = androidx.compose.foundation.shape.RoundedCornerShape(0.dp)
+                        shape = androidx.compose.foundation.shape.RoundedCornerShape(0.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                     ){
                         Row(
                             modifier = Modifier
@@ -117,6 +139,7 @@ fun NuevoGastoScreen(
 
                         ) {
                             var marcado by remember { mutableStateOf(false) }
+                            if (usuarioPaga.contains(usuario)) {marcado = true}
                             Text(usuario)
                             IconButton(
                                 onClick = { marcado = !marcado; if (marcado) {
@@ -167,11 +190,13 @@ fun NuevoGastoScreen(
                         .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(listaNombresUsuarios) { usuario ->
+                    items(listaNombresUsuarios.filter { it != usuarioPrimerPago }) { usuario ->
                         Card(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().padding(2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
-                            shape = androidx.compose.foundation.shape.RoundedCornerShape(0.dp)
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(0.dp),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+
                         ) {
                             Row(
                                 modifier = Modifier

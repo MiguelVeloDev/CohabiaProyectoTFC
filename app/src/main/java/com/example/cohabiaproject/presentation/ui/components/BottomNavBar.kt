@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.ui.theme.AnimacionBotonCentral
+import com.example.cohabiaproject.ui.theme.AzulGastos
 import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import com.example.cohabiaproject.ui.theme.VerdeNotas
@@ -25,7 +26,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
         "main" -> color = NaranjaPrincipal
         "listaElectrodomesticos" -> color = MoradoElectrodomesticos
         "notas" -> color = Color.Green
-        "finanzas" -> color = Color(0xFF0061D9)
+        "finanzas" -> color = AzulGastos
     }
     Box(
         modifier = Modifier.fillMaxWidth()
@@ -76,7 +77,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 var reproduciendose by remember { mutableStateOf(false) }
                 if (!reproduciendose) {
                     FloatingActionButton(
-                        onClick = { reproduciendose = true },
+                        onClick = { navController.navigate("compras") },
                         containerColor = if (selectedRoute == "main") color else Color.Black,
                         shape = MaterialTheme.shapes.large,
                         modifier = Modifier.size(56.dp)

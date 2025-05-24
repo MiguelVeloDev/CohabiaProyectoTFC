@@ -8,6 +8,7 @@ import kotlinx.coroutines.tasks.await
 object Sesion {
     var userId: String = FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
     var casaId: String = ""
+    var nombreUsuario: String = ""
     suspend fun cargarSesion() {
         val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -17,22 +18,32 @@ object Sesion {
         if (user != null) {
             val db = FirebaseFirestore.getInstance()
             try {
+                // Obtener casaId
                 val casa = db.collection("casas")
                     .whereArrayContains("miembros", userId)
                     .get()
                     .await()
 
-                if (!casa.isEmpty) {
-                    casaId = casa.documents.first().id
-                } else {
-                    casaId = ""
-                }
+                casaId = if (!casa.isEmpty) casa.documents.first().id else ""
+
+                // Obtener nombre de usuario
+                val userDoc = db.collection("usuarios")
+                    .document(userId)
+                    .get()
+                    .await()
+
+                nombreUsuario = userDoc.getString("nombre") ?: ""
+
             } catch (e: Exception) {
                 casaId = ""
+                nombreUsuario = ""
+                Log.e("Sesion", "Error al cargar la sesión: ${e.message}")
             }
         }
-        Log.d("CasaSesion", "$userId $casaId")
+
+        Log.d("CasaSesion", "$userId $casaId $nombreUsuario")
     }
+
 
     suspend fun cerrarSesion() {
         val auth = FirebaseAuth.getInstance().signOut()

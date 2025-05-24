@@ -21,8 +21,10 @@ import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.MoreHoriz
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.PushPin
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.*
+import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -43,9 +45,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cohabiaproject.domain.model.Nota
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
+import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
+import com.example.cohabiaproject.ui.theme.VerdeNotas
+import kotlinx.coroutines.flow.map
 import org.koin.androidx.compose.koinViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -70,10 +75,11 @@ fun NotasScreen(
 
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val notaViewModel: NotaViewModel = koinViewModel()
-    val listaNotas by notaViewModel.notas.collectAsState(emptyList())
+    val listaNotas by notaViewModel.notas.map { it.sortedByDescending { nota -> nota.fijada } }.collectAsState(emptyList())
 
     Scaffold(
-        topBar = { MyTopAppBar(navController) },
+        containerColor = Color.White,
+        topBar = { MyTopAppBar(navController, "Notas") },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
         Column(
@@ -82,14 +88,15 @@ fun NotasScreen(
                 .fillMaxSize()
                 .padding(horizontal = 16.dp)
         ) {
-            Text(text = "Mis notas", modifier = Modifier.padding(bottom = 8.dp).padding(top = 16.dp), fontWeight = FontWeight.Bold, fontSize = 24.sp)
             Card(
                 modifier = Modifier
-                    .fillMaxWidth() ,
+                    .fillMaxWidth().padding(top = 10.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White
                 ),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(8.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+
             ) {
                 Column(
                     modifier = Modifier
@@ -113,12 +120,13 @@ fun NotasScreen(
                             .clickable(onClick = { navController.navigate("mostrarNota/nuevaNota") })
                     )
                 }
-                HorizontalDivider(thickness = 2.dp, color = Color.Gray)
 
             }
+            Text(text = "Mis notas", modifier = Modifier.padding(bottom = 8.dp).padding(top = 16.dp), fontWeight = FontWeight.Bold, fontSize = 24.sp)
+
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(2.dp)
+                verticalArrangement = Arrangement.spacedBy(2.dp),
             ) {
                 items(listaNotas) { nota ->
                     NotaItem(nota = nota, navController = navController, notaViewModel = notaViewModel)
@@ -145,7 +153,7 @@ fun NotaItem(
             containerColor = Color.White
         ),
         shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
 
     ) {
         Column(
@@ -203,6 +211,20 @@ fun NotaItem(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    IconButton(
+                        onClick = {
+                            val notaActualizada = nota.copy(fijada = !nota.fijada)
+                            notaViewModel.update(notaActualizada)
+                            expanded = false
+                        },
+                        modifier = Modifier.size(36.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.PushPin,
+                            contentDescription = "Compartir nota",
+                            tint = if (nota.fijada) VerdeNotas else Color.Gray
+                        )
+                    }
                     IconButton(
                         onClick = { notaViewModel.compartir(nota); expanded = false },
                         modifier = Modifier.size(36.dp)

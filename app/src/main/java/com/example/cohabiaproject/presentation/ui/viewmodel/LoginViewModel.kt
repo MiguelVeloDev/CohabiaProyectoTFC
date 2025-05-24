@@ -35,12 +35,21 @@ class LoginViewModel(
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    onResult(true, null)
+                    // Enviar correo de verificación
+                    auth.currentUser?.sendEmailVerification()
+                        ?.addOnCompleteListener { verifyTask ->
+                            if (verifyTask.isSuccessful) {
+                                onResult(true, "Correo de verificación enviado. Revisa tu bandeja de entrada.")
+                            } else {
+                                onResult(false, "Usuario creado, pero no se pudo enviar el correo de verificación.")
+                            }
+                        }
                 } else {
                     onResult(false, task.exception?.message)
                 }
             }
     }
+
 
     fun login(email: String, password: String, onResult: (Boolean, String?) -> Unit) {
         auth.signInWithEmailAndPassword(email, password)

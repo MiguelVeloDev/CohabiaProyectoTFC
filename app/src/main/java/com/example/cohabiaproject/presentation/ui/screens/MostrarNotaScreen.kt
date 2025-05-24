@@ -32,12 +32,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.cohabiaproject.domain.model.Evento
 import com.example.cohabiaproject.domain.model.Nota
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
@@ -58,12 +60,12 @@ fun MostrarNotaScreen(
     val notaViewModel: NotaViewModel = koinViewModel()
     val listaNotas by notaViewModel.notas.collectAsState(emptyList())
     val nota = remember(listaNotas) { listaNotas.find { it.id == notaID } }
-    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val contenidoNota = remember(nota) {
         MutableStateFlow(TextFieldValue(nota?.contenido ?: ""))
     }
     val contenidoNotaState = contenidoNota.collectAsState()
-    val tituloNota = remember(nota) { mutableStateOf(nota?.titulo ?: "Titulo") }
+    val tituloNota = remember(nota) { mutableStateOf(nota?.titulo ?: "Titulo")}
+    val eventoViewModel: EventoViewModel = koinViewModel()
 
 
     LaunchedEffect(nota?.id) {
@@ -82,6 +84,7 @@ fun MostrarNotaScreen(
 
 
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             NuevoElementoTopAppBar(
                 titulo = if(notaID=="nuevaNota") "Nueva nota" else "Editar nota",
@@ -91,7 +94,8 @@ fun MostrarNotaScreen(
                     if(notaID=="nuevaNota"){
                         notaViewModel.save(Nota(titulo = tituloNota.value, contenido = contenidoNotaState.value.text))
                     }
-                    navController.navigate("notas")
+                    navController.navigate("notas");
+                    eventoViewModel.save(Evento(tipo = "NOTA", contenido = eventoViewModel.generarMensaje("NOTA", tituloNota.value)))
 
                 },
                 enabled = tituloNota.value!="Titulo" && contenidoNotaState.value.text!="",

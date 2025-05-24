@@ -45,7 +45,7 @@ fun MisDatos(
 
         Scaffold(
             containerColor = Color(0xFFF0F0F0),
-            topBar = { MyTopAppBar(navController) },
+            topBar = { MyTopAppBar(navController,"Mis datos") },
             bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
         ) { innerPadding ->
             Box(

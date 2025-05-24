@@ -12,4 +12,8 @@ val Pink40 = Color(0xFF7D5260)
 val NaranjaPrincipal = Color(0xFFEE7A16)
 val VerdeNotas = Color(0xFF017A00)
 val MoradoElectrodomesticos = Color(0xFF5E00FC)
+val AzulGastos =  Color(0xFF0061D9)
+val FondoTextField = Color(0xFFF8F8F8)
+val RojoCompras = Color(0xFF804646)
+
 

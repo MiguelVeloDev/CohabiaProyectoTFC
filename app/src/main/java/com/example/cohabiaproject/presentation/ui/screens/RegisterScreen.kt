@@ -28,6 +28,7 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.LoginViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.AnimacionLogin
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
+import com.example.cohabiaproject.ui.theme.FondoTextField
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.compose.koinViewModel
 
@@ -59,8 +60,9 @@ fun Registro(modifier: Modifier = Modifier, navController: NavController) {
 
 
     Surface(
+
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = Color.White
     ) {
         Column(
             modifier = Modifier
@@ -88,7 +90,9 @@ fun Registro(modifier: Modifier = Modifier, navController: NavController) {
                     .padding(vertical = 8.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White
+                    unfocusedContainerColor = FondoTextField,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 )
             )
 
@@ -102,7 +106,9 @@ fun Registro(modifier: Modifier = Modifier, navController: NavController) {
                     .padding(vertical = 8.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White
+                    unfocusedContainerColor = FondoTextField,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 )
             )
 
@@ -116,7 +122,9 @@ fun Registro(modifier: Modifier = Modifier, navController: NavController) {
                     .padding(vertical = 8.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White
+                    unfocusedContainerColor = FondoTextField,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 )
             )
 
@@ -132,7 +140,9 @@ fun Registro(modifier: Modifier = Modifier, navController: NavController) {
                     .padding(vertical = 8.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = Color.White
+                    unfocusedContainerColor = FondoTextField,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 )
             )
 
@@ -153,7 +163,7 @@ fun Registro(modifier: Modifier = Modifier, navController: NavController) {
                             )
                             usuarioViewModel.save(usuario)
                             Log.d("Registro", usuario.toString())
-                            navController.navigate(Screen.EleccionCasa.route)
+                            navController.navigate(Screen.VerificacionCorreo.route)
 
                         } else {
                             Log.e("Registro", "Error al registrar: $error")

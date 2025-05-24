@@ -27,6 +27,8 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoView
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.TimePickerGrid
+import com.example.cohabiaproject.ui.theme.FondoTextField
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,7 +47,7 @@ fun NuevoPrograma(
     Scaffold(
         topBar = {
             NuevoElementoTopAppBar(
-                titulo = "Nuevo gasto",
+                titulo = "Nuevo programa",
                 textoBoton = "Guardar",
                 navController = navController,
                 accion = {
@@ -138,74 +140,5 @@ fun NuevoPrograma(
             Spacer(modifier = Modifier.padding(40.dp))
 
            }
-    }
-}
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TimePickerGrid(
-    horas: Int,
-    minutos: Int,
-    onHorasChange: (Int) -> Unit,
-    onMinutosChange: (Int) -> Unit
-) {
-    var isFocused by remember { mutableStateOf(false) }
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            TextField(
-                value = horas.toString(),
-                onValueChange = { newText ->
-                    newText.toIntOrNull()?.let { onHorasChange(it) }
-                },
-                placeholder = { Text("0") },
-                label = { Text("Hora") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Number
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .onFocusChanged { focusState -> isFocused = focusState.isFocused },
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
-        }
-
-        Column(modifier = Modifier.weight(1f)) {
-            TextField(
-                value = minutos.toString(),
-                onValueChange = { newText ->
-                    newText.toIntOrNull()?.let { onMinutosChange(it) }
-                },
-                label = { Text("Minutos") },
-                placeholder = { Text("0") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Number
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
-        }
-    }
-
-    Spacer(modifier = Modifier.padding(20.dp))
-
-    if (!isFocused && (horas > 23 || minutos > 59)) {
-        Text(
-            text = "Máximo de horas: 23, máximo de minutos: 59",
-            fontSize = 15.sp,
-            color = Color.Red
-        )
     }
 }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,18 +19,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.R
 import com.example.cohabiaproject.domain.model.Sesion
+import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBar(navController: NavController) {
+fun MyTopAppBar(navController: NavController, titulo : String) {
     var expanded by remember { mutableStateOf(false) }
 
     CenterAlignedTopAppBar(
         modifier = Modifier.statusBarsPadding(),
-        title = { Text("") },
+        title = { Text(text = titulo) },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = Color.White,
             titleContentColor = Color.Black
@@ -40,8 +42,7 @@ fun MyTopAppBar(navController: NavController) {
                 modifier = Modifier.padding(end = 8.dp)
             ) {
                 IconButton(
-                    onClick = {
-                    }
+                    onClick = {navController.navigate("eventos")},
                 ) {
                     Icon(
                         imageVector = Icons.Default.Notifications,
@@ -56,36 +57,21 @@ fun MyTopAppBar(navController: NavController) {
                     .padding(end = 8.dp)
                     .clickable { expanded = true }
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.profile),
-                    contentDescription = "Perfil",
-                    modifier = Modifier
-                        .size(36.dp)
-                        .clip(CircleShape)
-                )
+              IconButton(
+                  onClick = {
+                      navController.navigate("miPerfil")},
+                  colors = IconButtonDefaults.iconButtonColors(
+                      containerColor = Color(0xFFF6DAD2)
+                  )
+              ) {
+                  Icon(
+                      imageVector = Icons.Default.Person,
+                      contentDescription = "Mi perfil",
+                      tint = NaranjaPrincipal
+                  )
+              }
 
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    DropdownMenuItem(
-                        text = { Text("Perfil") },
-                        onClick = {
-                            navController.navigate("miPerfil")
-                            expanded = false
-                        }
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Cerrar sesión") },
-                        onClick = {
-                            expanded = false
-                            navController.navigate("login")
-                            CoroutineScope(Dispatchers.IO).launch {
-                                Sesion.cerrarSesion()
-                            }
-                        }
-                    )
-                }
+
             }
         }
     )

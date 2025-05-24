@@ -17,6 +17,7 @@ import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
+import com.example.cohabiaproject.ui.theme.AzulGastos
 import org.koin.androidx.compose.koinViewModel
 import java.util.Date
 
@@ -39,6 +40,8 @@ fun FinanzasScreen(
 
 
     Scaffold(
+        containerColor = Color.White,
+
         topBar = {
             NuevoElementoTopAppBar(
 
@@ -67,7 +70,7 @@ fun FinanzasScreen(
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable(onClick = { textoSeleccionado = misGastos })
                             .padding(10.dp),
-                        color = if (textoSeleccionado == misGastos) Color.Blue else Color.Gray
+                        color = if (textoSeleccionado == misGastos) AzulGastos else Color.Gray
                     )
                     Text(
                         text = todosLosGastos,
@@ -75,14 +78,14 @@ fun FinanzasScreen(
                         modifier = Modifier.clickable(onClick = {
                             textoSeleccionado = todosLosGastos
                         }).padding(10.dp),
-                        color = if (textoSeleccionado == todosLosGastos) Color.Blue else Color.Gray
+                        color = if (textoSeleccionado == todosLosGastos)AzulGastos else Color.Gray
                     )
                     Text(
                         text = deuda,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable(onClick = { textoSeleccionado = deuda })
                             .padding(10.dp),
-                        color = if (textoSeleccionado == deuda) Color.Blue else Color.Gray
+                        color = if (textoSeleccionado == deuda) AzulGastos else Color.Gray
                     )
 
                 }
@@ -130,6 +133,7 @@ fun EditarGasto(
     var fecha by remember { mutableStateOf(gasto?.fecha ?: Date()) }
 
     Scaffold(
+
         topBar = {
             NuevoElementoTopAppBar(
 

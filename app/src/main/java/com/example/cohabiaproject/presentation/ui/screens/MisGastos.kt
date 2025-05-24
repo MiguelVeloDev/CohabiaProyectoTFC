@@ -27,7 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.R
+import com.example.cohabiaproject.presentation.ui.components.MiBarChart
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
+import com.example.cohabiaproject.ui.theme.AzulGastos
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -41,18 +43,17 @@ finanzasViewmodel: FinanzasViewModel,
 
 LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
     item{
-    Image(
-        painter = painterResource(id = R.drawable.grafico),
-        contentDescription = "Grafico",
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp)
-    )
+    MiBarChart(datos = mapOf(
+        "Enero" to 100f,
+        "Febrero" to 200f,
+        "Marzo" to 150f,
+        "Abril" to 300f,
+        "Mayo" to 250f,))
     Text(
         text = "Este mes",
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
-        color = Color(0xFF0061D9),
+        color =AzulGastos,
         modifier = Modifier.padding( top = 20.dp,bottom = 10.dp)
     )
     Row(modifier = Modifier
@@ -127,7 +128,7 @@ contentAlignment = Alignment.Center
     Text(
         text = "Ver todo",
         fontWeight = FontWeight.Bold,
-        color = Color(0xFF0061D9),
+        color = AzulGastos,
         modifier = Modifier.clickable { navController.navigate("listaFinanzas") },
         fontSize = 15.sp,
     )

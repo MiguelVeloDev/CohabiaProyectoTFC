@@ -10,13 +10,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Undo
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Undo
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
+import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 
 @Composable
 fun DialogPrograma(
@@ -27,6 +31,7 @@ fun DialogPrograma(
     var seleccionado by remember { mutableStateOf(programas.firstOrNull() ?: "") }
 
     AlertDialog(
+
         onDismissRequest = onDismiss,
         confirmButton = {
             Button(
@@ -35,14 +40,23 @@ fun DialogPrograma(
                     onDismiss()
                 },
                 enabled = seleccionado.isNotEmpty(),
-                shape = RoundedCornerShape(24.dp)
-            ) {
+                shape = RoundedCornerShape(24.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = NaranjaPrincipal
+            )) {
                 Text("Seleccionar")
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text("Atrás")
+            IconButton(
+                onClick = onDismiss,
+                modifier = Modifier.background(Color.Transparent)
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.Undo,
+                    contentDescription = "Cancelar",
+                    tint = Color.Gray
+                )
             }
         },
         title = {
@@ -59,13 +73,16 @@ fun DialogPrograma(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 8.dp)
-                            .clickable { seleccionado = programa }
-                            .background(if (seleccionado == programa) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) else Color.Transparent),
+                            .clickable { seleccionado = programa },
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         RadioButton(
                             selected = seleccionado == programa,
-                            onClick = { seleccionado = programa }
+                            onClick = { seleccionado = programa },
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = MoradoElectrodomesticos,
+                                unselectedColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                            )
                         )
                         Text(
                             text = programa,

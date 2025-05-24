@@ -3,6 +3,7 @@ package com.example.cohabiaproject.data.source.remote
 import android.content.ContentValues.TAG
 import android.util.Log
 import com.example.cohabiaproject.domain.model.Electrodomestico
+import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.domain.model.UsoPrograma
 import com.example.cohabiaproject.domain.repository.ElectrodomesticoRepository
 
@@ -16,12 +17,12 @@ import kotlinx.coroutines.tasks.await
 class ElectrodomesticoFirestoreRepository(val firestore: FirebaseFirestore):
     ElectrodomesticoRepository {
 
-    private val electrodomesticosCollection = firestore.collection("electrodomesticos")
-
+    private fun electrodomesticosCollection() =
+        firestore.collection("casas").document(Sesion.casaId).collection("electrodomesticos")
 
     override suspend fun getById(id: String): Electrodomestico? {
         return try {
-            val documentSnapshot = electrodomesticosCollection.document(id).get().await()
+            val documentSnapshot = electrodomesticosCollection().document(id).get().await()
             documentSnapshot.toObject(Electrodomestico::class.java)?.copy(id = documentSnapshot.id)
         } catch (e: Exception) {
             Log.e(TAG, "Error al obtener el Electrodoméstico", e)
@@ -31,7 +32,7 @@ class ElectrodomesticoFirestoreRepository(val firestore: FirebaseFirestore):
 
     override fun list(): Flow<List<Electrodomestico>> {
         return callbackFlow {
-            val listener = electrodomesticosCollection
+            val listener = electrodomesticosCollection()
                 .orderBy("nombre", Query.Direction.DESCENDING)
                 .addSnapshotListener { snapshots, error ->
                     if (error != null) {
@@ -54,7 +55,7 @@ class ElectrodomesticoFirestoreRepository(val firestore: FirebaseFirestore):
 
     override suspend fun save(electrodomestico: Electrodomestico): Boolean {
         return try {
-            electrodomesticosCollection.add(electrodomestico).await()
+            electrodomesticosCollection().add(electrodomestico).await()
             true
         } catch (e: Exception) {
             e.printStackTrace()
@@ -68,7 +69,7 @@ class ElectrodomesticoFirestoreRepository(val firestore: FirebaseFirestore):
 
     override suspend fun update(electrodomestico: Electrodomestico) {
         try {
-            electrodomesticosCollection
+            electrodomesticosCollection()
                 .document(electrodomestico.id)
                 .set(electrodomestico)
                 .await()

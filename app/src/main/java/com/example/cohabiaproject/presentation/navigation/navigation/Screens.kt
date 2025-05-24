@@ -31,7 +31,13 @@ sealed class Screen(val route: String) {
     data object EleccionCasa : Screen("eleccionCasa")
     data object MisDatos : Screen("misDatos")
     data object SeleccionUsuarioGasto : Screen("seleccionUsuarioGasto")
-
+    data object EventosScreen : Screen("eventos")
+    data object VerificacionCorreo : Screen("verificacionCorreo")
+    data object AnadirPrograma : Screen("anadirPrograma/{id}") {
+        fun createRoute(id: String): String = "anadirPrograma/$id"
+    }
+    data object Compras : Screen("compras")
+    data object AnadirProducto : Screen("anadirProducto")
 
 
     data object Prueba : Screen("prueba")

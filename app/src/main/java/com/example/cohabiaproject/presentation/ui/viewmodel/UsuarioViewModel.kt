@@ -10,13 +10,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.DeleteUsuarioUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.GetUsuarioByIdUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.SaveUsuarioUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.UpdateUsuarioUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,11 +33,16 @@ class UsuarioViewModel(
 
 ) : ViewModel() {
 
-    var usuarioRegistro by mutableStateOf(Usuario())
+    private val _usuarioRegistrado = MutableStateFlow<Usuario?>(null)
+    val usuarioRegistrado = _usuarioRegistrado.asStateFlow()
 
-    fun actualizarUsuarioRegistro(usuario: Usuario) {
-        usuarioRegistro = usuario
+    fun obtenerUsuarioRegistrado() {
+        viewModelScope.launch {
+            val usuario = getUsuarioByIdUseCase(Sesion.userId)
+            _usuarioRegistrado.value = usuario
+        }
     }
+
 
     private var _usuarios = getUsuarioUseCase()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())

@@ -59,24 +59,25 @@ fun ListaElectrodomesticosScreen(
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
 
     Scaffold(
-        topBar = { MyTopAppBar(navController) },
+        containerColor = Color.White,
+        topBar = { MyTopAppBar(navController,"Electrodomésticos") },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
-            Text(text = "Mis Electrodomésticos", modifier = Modifier.padding(bottom = 8.dp).padding(top = 16.dp), fontWeight = FontWeight.Bold, fontSize = 24.sp)
             Card(
             modifier = Modifier
                 .fillMaxWidth() ,
             colors = CardDefaults.cardColors(
                 containerColor = Color.White
             ),
-            shape = RoundedCornerShape(8.dp)
-        ) {
+            shape = RoundedCornerShape(8.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+            ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -100,13 +101,15 @@ fun ListaElectrodomesticosScreen(
                 )
             }
         }
-            HorizontalDivider(thickness = 2.dp, color = Color.Gray)
+            Text(text = "Mis Electrodomésticos", modifier = Modifier.padding(bottom = 8.dp).padding(top = 16.dp), fontWeight = FontWeight.Bold, fontSize = 24.sp)
 
 
             LazyColumn(
+                modifier = Modifier.fillMaxSize()
+                    .padding(vertical = 10.dp)
         ) {
             items(electrodomesticosLista) { electrodomestico ->
-                TarjetaElectrodomestico(electrodomestico)
+                TarjetaElectrodomestico(electrodomestico, navController)
             }
         }
     }

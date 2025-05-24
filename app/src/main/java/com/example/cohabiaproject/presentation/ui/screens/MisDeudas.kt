@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
+import com.example.cohabiaproject.ui.theme.AzulGastos
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
@@ -37,21 +38,21 @@ finanzasViewModel: FinanzasViewModel,
 usuarioViewModel: UsuarioViewModel
 ) {
 
-    val usuarios by usuarioViewModel.usuarios.collectAsState()
+    val usuarios by usuarioViewModel.usuarios.collectAsState(initial = emptyList())
+    val deudas by finanzasViewModel.deudas.collectAsState()
+
     val mapDeudas = finanzasViewModel.calcularDeudaTotal(usuarios)
 
 
 Column(modifier = Modifier.padding(horizontal = 16.dp)) {
 
-    Text("Usuarios cargados: ${usuarios.size}")
-    Text("Deudas cargadas: ${finanzasViewModel.deudas.collectAsState().value.size}")
 
 
     Text(
         text = "Lista",
         style = MaterialTheme.typography.headlineSmall,
         fontWeight = FontWeight.Bold,
-        color = Color(0xFF0061D9),
+        color =AzulGastos,
     )
     Row(modifier = Modifier
         .padding(vertical = 10.dp)
@@ -122,7 +123,7 @@ contentAlignment = Alignment.Center
     Text(
         text = "Ver todo",
         fontWeight = FontWeight.Bold,
-        color = Color(0xFF0061D9),
+        color = AzulGastos,
         modifier = Modifier.clickable { navController.navigate("listaFinanzas") },
         fontSize = 15.sp,
     )

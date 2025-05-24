@@ -6,6 +6,7 @@ import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.domain.model.UsoPrograma
 import com.example.cohabiaproject.domain.repository.UsoProgramaRepository
+import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoByIdUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.SaveElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.UpdateElectrodomesticoUseCase
@@ -23,7 +24,8 @@ class ElectrodomesticoViewModel(
     private val getElectrodomesticoUseCase: GetElectrodomesticoUseCase,
     private val saveElectrodomesticoUseCase: SaveElectrodomesticoUseCase,
     private val updateElectrodomesticoUseCase: UpdateElectrodomesticoUseCase,
-    private val usoProgramaRepository: UsoProgramaRepository
+    private val usoProgramaRepository: UsoProgramaRepository,
+    private val getElectrodomesticoByIdUseCase: GetElectrodomesticoByIdUseCase
 ) : ViewModel() {
 
     private var _electrodomesticos = getElectrodomesticoUseCase()
@@ -60,6 +62,11 @@ class ElectrodomesticoViewModel(
             usoProgramaRepository.save(usoPrograma)
         }
     }
+
+    fun getById(id: String): Electrodomestico? {
+        return electrodomesticos.value.find { it.id == id }
+    }
+
 
     fun iniciarContador(electrodomestico: Electrodomestico) {
         val electrodomesticoId = electrodomestico.id
