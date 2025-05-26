@@ -1,5 +1,6 @@
 package com.example.cohabiaproject.presentation.ui.viewmodel
 
+
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,6 +35,8 @@ class FinanzasViewModel(
     private var _finanzas = getFinanzaUseCase()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val finanzas: StateFlow<List<Finanza>> = _finanzas
+
+    val deudaTexto = "Pago de deuda"
 
 
     private var _todosGastosEsteMes = getTodasFinanzasEsteMesUseCase(
@@ -117,54 +120,52 @@ class FinanzasViewModel(
         return listaDeIds
     }
 
-    fun cargarDeudasConmigo(usuarios: List<Usuario>): Map<String, Double> {
-        var mapDeudas = mutableMapOf<String, Double>()
-        for (usuario in usuarios.filter { it.id != Sesion.userId }) {
-            var cantidadDeuda = 0.0
-            for (deuda in deudas.value) {
-                if (deuda.usuariosDeuda.contains(Sesion.userId) && deuda.usuarioPaga.contains(
-                        usuario.id
-                    )
-                ) {
-                    cantidadDeuda += deuda.cantidad/ deuda.usuariosParticipan.size
-                }
-                mapDeudas[usuario.id] = cantidadDeuda
-            }
-
-        }
-        return mapDeudas
-    }
-
-    fun cargarMisDeudas(usuarios: List<Usuario>): Map<String, Double> {
-        var mapDeudas = mutableMapOf<String, Double>()
-        for (usuario in usuarios.filter { it.id != Sesion.userId }) {
-            var cantidadDeuda = 0.0
-            for (deuda in deudas.value) {
-                if (deuda.usuariosDeuda.contains(usuario.id) && deuda.usuarioPaga.contains(Sesion.userId)) {
-                    cantidadDeuda += deuda.cantidad
-                }
-                mapDeudas[usuario.id] = cantidadDeuda/ deuda.usuariosParticipan.size
-            }
-
-        }
-        return mapDeudas
-    }
-
-
     fun calcularDeudaTotal(usuarios: List<Usuario>): Map<String, Double> {
-        var mapDeudasTotal = mutableMapOf<String, Double>()
-        var mapMisDeudas = cargarMisDeudas(usuarios)
-        var mapDeudasConmigo = cargarDeudasConmigo(usuarios)
+        val mapDeudasTotal = mutableMapOf<String, Double>()
 
-        mapMisDeudas.entries.zip(mapDeudasConmigo.values) { entrada, deudaConmigo ->
-            val idUsuario = entrada.key
-            val deudaQueYoTengo = entrada.value
+        for (usuario in usuarios.filter { it.id != Sesion.userId }) {
+            val listaDeudas = generarListaDeudasUsuario(usuario.id)
+            var saldo = 0.0
 
-            val saldo = deudaConmigo - deudaQueYoTengo
+            for ((esDeudaDelUsuario, deuda) in listaDeudas) {
+                saldo += if (esDeudaDelUsuario) -deuda.cantidad else deuda.cantidad
+            }
 
-            mapDeudasTotal[idUsuario] = saldo
-
+            mapDeudasTotal[usuario.id] = saldo
         }
+
         return mapDeudasTotal
     }
+
+
+    fun generarListaDeudasUsuario (usuarioId: String):List<Pair<Boolean, Finanza>> {
+        val listaDeudas = mutableListOf<Pair<Boolean, Finanza>>()
+        for (deuda in deudas.value){
+            if (deuda.usuarioPaga.contains(Sesion.userId) && deuda.usuariosDeuda.contains(usuarioId)){
+                listaDeudas.add(Pair(false, deuda.copy(cantidad = deuda.cantidad / deuda.usuariosParticipan.size)))
+            }else if (deuda.usuarioPaga.contains(usuarioId) && deuda.usuariosDeuda.contains(Sesion.userId)){
+                listaDeudas.add(Pair(true, deuda.copy(cantidad = deuda.cantidad / deuda.usuariosParticipan.size)))
+            }
+    }
+        return listaDeudas
+}
+    fun numeroAMes(numero: Int): String {
+        return when (numero) {
+            1 -> "ENE"
+            2 -> "FEB"
+            3 -> "MAR"
+            4 -> "ABR"
+            5 -> "MAY"
+            6 -> "JUN"
+            7 -> "JUL"
+            8 -> "AGO"
+            9 -> "SEP"
+            10 -> "OCT"
+            11 -> "NOV"
+            12 -> "DIC"
+            else -> ""
+        }
+    }
+
+
 }

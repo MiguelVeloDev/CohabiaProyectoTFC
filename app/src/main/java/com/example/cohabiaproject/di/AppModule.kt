@@ -20,6 +20,7 @@ import com.example.cohabiaproject.domain.repository.NotaRepository
 import com.example.cohabiaproject.domain.repository.ProductoRepository
 import com.example.cohabiaproject.domain.repository.UsoProgramaRepository
 import com.example.cohabiaproject.domain.repository.UsuarioRepository
+import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.DeleteElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoByIdUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.SaveElectrodomesticoUseCase
@@ -94,6 +95,7 @@ val appModule = module {
     factory { SaveElectrodomesticoUseCase(get()) }
     factory { UpdateElectrodomesticoUseCase(get()) }
     factory { GetElectrodomesticoByIdUseCase(get()) }
+    factory { DeleteElectrodomesticoUseCase(get()) }
 
     factory { GetNotaUseCase(get()) }
     factory { SaveNotaUseCase(get()) }
@@ -113,7 +115,7 @@ val appModule = module {
     factory { GetTodasFinanzasEsteMesUseCase(get()) }
     factory { GetTodasDeudasUseCase(get()) }
 
-    viewModel { ElectrodomesticoViewModel(get(), get(), get(), get(), get()) }
+    viewModel { ElectrodomesticoViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { NotaViewModel(get(), get(), get(), get()) }
     viewModel { FinanzasViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { LoginViewModel(get()) }

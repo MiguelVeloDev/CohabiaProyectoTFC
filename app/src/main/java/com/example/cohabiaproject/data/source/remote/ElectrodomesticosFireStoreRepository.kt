@@ -63,8 +63,14 @@ class ElectrodomesticoFirestoreRepository(val firestore: FirebaseFirestore):
         }
     }
 
-    override suspend fun delete(electrodomestico: Electrodomestico): Boolean {
-        TODO("Not yet implemented")
+    override suspend fun delete(id: String): Boolean {
+        return try {
+            electrodomesticosCollection().document(id).delete().await()
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
     }
 
     override suspend fun update(electrodomestico: Electrodomestico) {

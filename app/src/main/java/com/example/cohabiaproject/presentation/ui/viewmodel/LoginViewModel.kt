@@ -17,18 +17,6 @@ class LoginViewModel(
     var errorMessage by mutableStateOf<String?>(null)
 
 
-    fun onLoginClick() {
-        isLoading = true
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                isLoading = false
-                if (task.isSuccessful) {
-                    loginSuccess = true
-                } else {
-                    errorMessage = task.exception?.message
-                }
-            }
-    }
 
 
     fun registrar(email: String, password: String, onResult: (Boolean, String?) -> Unit) {

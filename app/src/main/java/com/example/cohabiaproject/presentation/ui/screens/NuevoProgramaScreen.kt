@@ -1,7 +1,6 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -14,21 +13,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.R
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
-import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
-import com.example.cohabiaproject.presentation.ui.components.TimePickerGrid
-import com.example.cohabiaproject.ui.theme.FondoTextField
+import com.example.cohabiaproject.presentation.ui.components.SeleccionTiempo
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,6 +36,16 @@ fun NuevoPrograma(
     var seleccionMinutos by remember { mutableStateOf(0) }
     val electrodomesticosViewModel: ElectrodomesticoViewModel =
         koinViewModel()
+    val enlaceImagen =
+        when (tipo) {
+            "Lavadora" -> R.drawable.lavadora
+            "Secadora" -> R.drawable.secadora
+            "Lavavajillas" -> R.drawable.lavavajillas
+            "Horno" -> R.drawable.horno
+            "Aspirador" -> R.drawable.robot_aspirador
+            "Otros" -> R.drawable.electrodomestico_generico
+            else -> R.drawable.electrodomestico_generico
+        }
 
 
     Scaffold(
@@ -84,7 +88,7 @@ fun NuevoPrograma(
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.lavadora),
+                painter = painterResource(id = enlaceImagen),
                 contentDescription = "Electrodoméstico",
                 modifier = Modifier
                     .size(94.dp)
@@ -130,7 +134,7 @@ fun NuevoPrograma(
                 )
             )
 
-            TimePickerGrid(
+            SeleccionTiempo(
                 horas = seleccionHoras,
                 minutos = seleccionMinutos,
                 onHorasChange = { seleccionHoras = it },

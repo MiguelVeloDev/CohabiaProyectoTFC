@@ -53,7 +53,7 @@ class EventoViewModel(
         return when (tipo) {
             "NOTA" -> "${Sesion.nombreUsuario} añadió la nota \"${dato}\""
             "GASTO" -> "${Sesion.nombreUsuario} añadio un gasto de ${dato} €"
-            "ELECTRODOMESTICO" -> "${Sesion.nombreUsuario} programó"
+            "ELECTRODOMESTICO" -> "${Sesion.nombreUsuario} ha iniciado: ${dato}"
             else -> "Evento desconocido"
         }
     }

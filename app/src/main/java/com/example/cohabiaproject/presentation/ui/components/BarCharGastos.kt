@@ -2,6 +2,7 @@ package com.example.cohabiaproject.presentation.ui.components
 
 import android.text.TextPaint
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.cohabiaproject.ui.theme.AzulGastos
 
 @Composable
 fun MiBarChart(
@@ -23,11 +25,11 @@ fun MiBarChart(
     Canvas(
         modifier = modifier
             .fillMaxWidth()
-            .height(300.dp) // aumentamos altura para dejar espacio a los textos
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .height(150.dp)
+            .padding(horizontal = 16.dp).padding(top = 35.dp).padding(bottom = 10.dp)
     ) {
-        val barWidth = size.width / (datos.size * 2)
-        val spaceBetween = barWidth
+        val barWidth = size.width / (datos.size * 3)
+        val spaceBetween = barWidth*2
 
         val textPaint = TextPaint().apply {
             color = android.graphics.Color.BLACK
@@ -42,12 +44,11 @@ fun MiBarChart(
 
             // Barra
             drawRect(
-                color = Color(0xFF3F51B5),
+                color = Color(0xFF4C6EFC),
                 topLeft = Offset(x, top),
                 size = Size(barWidth, barHeight)
             )
 
-            // Valor encima de la barra
             drawIntoCanvas {
                 it.nativeCanvas.drawText(
                     "${entry.value.toInt()}€",
@@ -57,7 +58,6 @@ fun MiBarChart(
                 )
             }
 
-            // Nombre del mes debajo
             drawIntoCanvas {
                 it.nativeCanvas.drawText(
                     entry.key,

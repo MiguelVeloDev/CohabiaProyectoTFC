@@ -36,23 +36,11 @@ class CasaViewModel(
     }
 
 
-    fun actualizarCasa(casa: Casa) {
-        viewModelScope.launch {
-            repository.updateCasa(casa)
-            _casa.value = casa
-        }
-    }
+
 
     fun getById(){
         viewModelScope.launch {
             _casa.value = repository.getById(Sesion.casaId)
-        }
-    }
-
-    fun eliminarCasa(casaId: String) {
-        viewModelScope.launch {
-            repository.deleteCasa(casaId)
-            _casa.value = null
         }
     }
 

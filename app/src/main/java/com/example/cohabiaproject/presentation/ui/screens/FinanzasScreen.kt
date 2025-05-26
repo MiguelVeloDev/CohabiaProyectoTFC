@@ -97,7 +97,7 @@ fun FinanzasScreen(
                     MisGastos(navController = navController, finanzasViewmodel = finanzasViewModel)
                 }
                 todosLosGastos -> {
-                    TodosGastos(navController = navController, finanzasViewmodel = finanzasViewModel)
+                    TodosGastos(navController = navController, finanzasViewModel = finanzasViewModel)
                 }
                 deuda -> {
                     MisDeudas(navController = navController, finanzasViewModel = finanzasViewModel, usuarioViewModel = usuarioViewModel)

@@ -51,9 +51,9 @@ fun MainScreen(
         }
     } else {
         val electrodomesticoViewModel: ElectrodomesticoViewModel = koinViewModel()
-        val electrodomesticosEnEjecucion by electrodomesticoViewModel.electrodomesticosEnEjecucion.collectAsState(
-            emptyList()
-        )
+
+        val electrodomesticosEnEjecucion by electrodomesticoViewModel.electrodomesticosEnEjecucion.collectAsState()
+
 
 
         // 👇 Pantalla principal con datos

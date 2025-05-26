@@ -7,6 +7,6 @@ interface ElectrodomesticoRepository {
     suspend fun getById(id: String): Electrodomestico?
     fun list(): Flow<List<Electrodomestico>>
     suspend fun save(electrodomestico: Electrodomestico) : Boolean
-    suspend fun delete(electrodomestico: Electrodomestico) : Boolean
+    suspend fun delete(eelectrodomesticoId: String) : Boolean
     suspend fun update(electrodomestico: Electrodomestico)
 }

@@ -1,6 +1,7 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,12 +44,24 @@ finanzasViewmodel: FinanzasViewModel,
 
 LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
     item{
-    MiBarChart(datos = mapOf(
-        "Enero" to 100f,
-        "Febrero" to 200f,
-        "Marzo" to 150f,
-        "Abril" to 300f,
-        "Mayo" to 250f,))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp)
+                .background(Color(0xFFEFF0F5)),
+            contentAlignment = Alignment.Center,
+
+        ) {
+            MiBarChart(
+                datos = mapOf(
+                    "Enero" to 100f,
+                    "Febrero" to 200f,
+                    "Marzo" to 150f,
+                    "Abril" to 300f,
+                    "Mayo" to 250f,
+                )
+            )
+        }
     Text(
         text = "Este mes",
         fontSize = 20.sp,
@@ -56,23 +69,27 @@ LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
         color =AzulGastos,
         modifier = Modifier.padding( top = 20.dp,bottom = 10.dp)
     )
-    Row(modifier = Modifier
+    Column(modifier = Modifier
         .padding(vertical = 10.dp)
         .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween) {
+        horizontalAlignment = Alignment.CenterHorizontally)
+        {
 
-        Text(
-            text = "Total",
-            fontSize = 20.sp,
-            color = Color.Gray,
-            modifier = Modifier.padding()
-        )
+
         Text(
             text = "${gastosEsteMes.sumOf { it.cantidad }}€",
             fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
             color = Color.Black,
             modifier = Modifier.padding(vertical = 5.dp)
         )
+            Text(
+                text = "Total",
+                fontSize = 20.sp,
+                color = Color.Gray,
+                modifier = Modifier.padding()
+            )
     }
 
     HorizontalDivider(thickness = 2.dp, color = Color.Gray)
@@ -89,6 +106,7 @@ LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
                 text = "${gasto.cantidad/gasto.usuarioPaga.size}€",
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold,
+                color = Color(0xFF000000)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

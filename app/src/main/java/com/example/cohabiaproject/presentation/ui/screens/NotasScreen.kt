@@ -43,8 +43,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.cohabiaproject.domain.model.Nota
+import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
@@ -79,8 +82,12 @@ fun NotasScreen(
 
     Scaffold(
         containerColor = Color.White,
-        topBar = { MyTopAppBar(navController, "Notas") },
-        bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
+        topBar = {
+            TopAppBarConFlecha(
+                titulo = "Notas",
+                navController = navController
+            )
+        },        bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
         Column(
             modifier = Modifier

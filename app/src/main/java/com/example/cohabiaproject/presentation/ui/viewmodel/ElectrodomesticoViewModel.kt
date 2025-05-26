@@ -6,6 +6,7 @@ import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.domain.model.UsoPrograma
 import com.example.cohabiaproject.domain.repository.UsoProgramaRepository
+import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.DeleteElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoByIdUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.SaveElectrodomesticoUseCase
@@ -24,6 +25,7 @@ class ElectrodomesticoViewModel(
     private val getElectrodomesticoUseCase: GetElectrodomesticoUseCase,
     private val saveElectrodomesticoUseCase: SaveElectrodomesticoUseCase,
     private val updateElectrodomesticoUseCase: UpdateElectrodomesticoUseCase,
+    private val deleteElectrodomesticoUseCase: DeleteElectrodomesticoUseCase,
     private val usoProgramaRepository: UsoProgramaRepository,
     private val getElectrodomesticoByIdUseCase: GetElectrodomesticoByIdUseCase
 ) : ViewModel() {
@@ -55,6 +57,11 @@ class ElectrodomesticoViewModel(
         viewModelScope.launch {
             updateElectrodomesticoUseCase(electrodomestico)
         }
+    }
+    fun delete(electrodomesticoId: String) {
+        viewModelScope.launch {
+            deleteElectrodomesticoUseCase(electrodomesticoId)}
+
     }
 
     fun saveUsoPrograma(usoPrograma: UsoPrograma) {

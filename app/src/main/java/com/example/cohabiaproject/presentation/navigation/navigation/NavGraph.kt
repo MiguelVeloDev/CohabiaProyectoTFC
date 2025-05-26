@@ -6,13 +6,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cohabiaproject.presentation.navigation.navigation.Screen.CrearCasa
-import com.example.cohabiaproject.presentation.navigation.navigation.Screen.Prueba
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
-import com.example.cohabiaproject.presentation.ui.screens.AnadirProducto
+import com.example.cohabiaproject.presentation.ui.screens.Compras.AnadirProducto
 import com.example.cohabiaproject.presentation.ui.screens.AnadirPrograma
 import com.example.cohabiaproject.presentation.ui.screens.CodigoCasa
-import com.example.cohabiaproject.presentation.ui.screens.Compras
+import com.example.cohabiaproject.presentation.ui.screens.Compras.Compras
 import com.example.cohabiaproject.presentation.ui.screens.CrearCasa
 import com.example.cohabiaproject.presentation.ui.screens.DetallesGasto
 import com.example.cohabiaproject.presentation.ui.screens.EditarGasto
@@ -26,7 +24,6 @@ import com.example.cohabiaproject.presentation.ui.screens.MiPerfil
 import com.example.cohabiaproject.presentation.ui.screens.MisDatos
 import com.example.cohabiaproject.presentation.ui.screens.MostrarNotaScreen
 import com.example.cohabiaproject.presentation.ui.screens.NotasScreen
-import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.presentation.ui.screens.NuevoElectrodomestico
 import com.example.cohabiaproject.presentation.ui.screens.NuevoGastoScreen
 import com.example.cohabiaproject.presentation.ui.screens.NuevoPrograma
@@ -34,7 +31,6 @@ import com.example.cohabiaproject.presentation.ui.screens.Registro
 import com.example.cohabiaproject.presentation.ui.screens.SeleccionUsuarioGasto
 import com.example.cohabiaproject.presentation.ui.screens.UnirmeCasa
 import com.example.cohabiaproject.presentation.ui.screens.VerificacionCorreo
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun NavGraph(startDestination: String = Screen.Login.route) {

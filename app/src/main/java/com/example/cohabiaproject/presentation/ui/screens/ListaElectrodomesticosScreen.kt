@@ -32,6 +32,7 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoView
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.TarjetaElectrodomestico
+import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
 import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 
@@ -60,7 +61,12 @@ fun ListaElectrodomesticosScreen(
 
     Scaffold(
         containerColor = Color.White,
-        topBar = { MyTopAppBar(navController,"Electrodomésticos") },
+        topBar = {
+            TopAppBarConFlecha(
+                titulo = "Electrodomésticos",
+                navController = navController
+            )
+        },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
         Column(

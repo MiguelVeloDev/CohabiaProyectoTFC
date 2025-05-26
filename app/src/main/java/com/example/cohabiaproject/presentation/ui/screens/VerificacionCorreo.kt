@@ -24,7 +24,6 @@ fun VerificacionCorreo(navController: NavController) {
     val scope = rememberCoroutineScope()
     var mensaje by remember { mutableStateOf("") }
 
-    // 👇 Comprobación periódica
     LaunchedEffect(Unit) {
         while (true) {
             delay(3000)
@@ -59,7 +58,6 @@ fun VerificacionCorreo(navController: NavController) {
 
             Text(
                 text = "📧 Verifica tu correo electrónico",
-                style = MaterialTheme.typography.headlineSmall,
                 color = NaranjaPrincipal
             )
 
@@ -79,7 +77,7 @@ fun VerificacionCorreo(navController: NavController) {
                     scope.launch {
                         try {
                             user?.sendEmailVerification()
-                            mensaje = "Correo de verificación enviado ✉️"
+                            mensaje = "Correo de verificación enviado"
                         } catch (e: Exception) {
                             mensaje = "Error al enviar el correo: ${e.message}"
                         }

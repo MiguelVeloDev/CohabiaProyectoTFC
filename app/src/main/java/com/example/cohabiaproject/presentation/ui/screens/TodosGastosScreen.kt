@@ -3,6 +3,7 @@ package com.example.cohabiaproject.presentation.ui.screens
 
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,6 +31,7 @@ import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
+import com.example.cohabiaproject.ui.theme.LoadingAnimation
 import org.koin.androidx.compose.koinViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -39,20 +41,19 @@ import java.util.Locale
 @Composable
 fun TodosGastos(
     navController: NavController,
-    finanzasViewmodel: FinanzasViewModel
+    finanzasViewModel: FinanzasViewModel
 ) {
-    val gastosEsteMes by finanzasViewmodel.todosGastosEsteMes.collectAsState(emptyList())
+    val gastosEsteMesSinFiltrar by finanzasViewModel.todosGastosEsteMes.collectAsState(emptyList())
+    val gastosEsteMes by remember(gastosEsteMesSinFiltrar, finanzasViewModel.deudaTexto) {
+        mutableStateOf(
+            gastosEsteMesSinFiltrar.filter { it.concepto != finanzasViewModel.deudaTexto }
+        )
+    }
 
     LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
 
         item {
-            Image(
-                painter = painterResource(id = R.drawable.grafico),
-                contentDescription = "Grafico",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp)
-            )
+
             Text(
                 text = "Este mes",
                 fontSize = 20.sp,
@@ -66,13 +67,30 @@ fun TodosGastos(
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Total", fontSize = 20.sp, color = Color.Gray)
-                Text(
-                    text = "${gastosEsteMes.sumOf { it.cantidad }}€",
-                    fontStyle = FontStyle.Italic,
-                    color = Color.Black,
-                    modifier = Modifier.padding(vertical = 5.dp)
+                Column(
+                    modifier = Modifier
+                        .padding(vertical = 10.dp)
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 )
+                {
+
+
+                    Text(
+                        text = "${gastosEsteMes.sumOf { it.cantidad }}€",
+                        fontStyle = FontStyle.Italic,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 30.sp,
+                        color = Color.Black,
+                        modifier = Modifier.padding(vertical = 5.dp)
+                    )
+                    Text(
+                        text = "Total",
+                        fontSize = 20.sp,
+                        color = Color.Gray,
+                        modifier = Modifier.padding()
+                    )
+                }
             }
             HorizontalDivider(thickness = 2.dp, color = Color.Gray)
         }

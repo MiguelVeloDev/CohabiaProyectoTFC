@@ -1,9 +1,7 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
-import com.example.cohabiaproject.presentation.ui.components.TimePickerGrid
+import com.example.cohabiaproject.presentation.ui.components.SeleccionTiempo
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.ui.theme.FondoTextField
 import org.koin.androidx.compose.koinViewModel
@@ -126,7 +124,7 @@ fun AnadirPrograma(
                 )
             )
 
-            TimePickerGrid(
+            SeleccionTiempo(
                 horas = seleccionHoras,
                 minutos = seleccionMinutos,
                 onHorasChange = { seleccionHoras = it },

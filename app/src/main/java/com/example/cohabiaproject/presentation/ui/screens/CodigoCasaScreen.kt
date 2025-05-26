@@ -22,6 +22,7 @@ import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
 import com.example.cohabiaproject.ui.theme.AzulGastos
 import com.example.cohabiaproject.ui.theme.FondoTextField
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
@@ -34,6 +35,13 @@ fun CodigoCasa(
 
     Scaffold(
         containerColor = Color.White,
+        topBar = {
+            TopAppBarConFlecha(
+                titulo = "Código de Casa",
+                navController = navController
+            )
+        },
+
     ) { innerPadding ->
         Box(
             modifier = modifier
@@ -55,12 +63,6 @@ fun CodigoCasa(
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                Text(
-                    text = "Código de Casa",
-                    style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = NaranjaPrincipal
-                )
 
                 Spacer(modifier = Modifier.height(12.dp))
 

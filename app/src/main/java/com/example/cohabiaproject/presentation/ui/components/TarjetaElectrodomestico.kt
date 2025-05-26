@@ -29,8 +29,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.R
 import com.example.cohabiaproject.domain.model.Electrodomestico
+import com.example.cohabiaproject.domain.model.Evento
 import com.example.cohabiaproject.domain.model.UsoPrograma
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import org.koin.androidx.compose.koinViewModel
@@ -39,6 +41,7 @@ fun TarjetaElectrodomestico(
     electrodomestico: Electrodomestico,navController : NavController
 ) {
     val electrodomesticoViewModel: ElectrodomesticoViewModel = koinViewModel()
+    val eventoViewModel : EventoViewModel = koinViewModel()
     val tiempoRestante =
         electrodomesticoViewModel.tiempoRestante(electrodomestico.id).collectAsState(initial = 0L).value
     val (h, m, s) = convertirMilisAHorasMinSeg(tiempoRestante)
@@ -56,6 +59,7 @@ fun TarjetaElectrodomestico(
             else           -> R.drawable.electrodomestico_generico
         }
     }
+
 
     if (showDialog) {
         DialogPrograma(
@@ -75,6 +79,7 @@ fun TarjetaElectrodomestico(
                 electrodomesticoViewModel.saveUsoPrograma(electrodomestico.usoProgramaActual!!)
                 electrodomesticoViewModel.iniciarContador(electrodomestico)
                 showDialog = false
+                eventoViewModel.save(Evento(tipo = "ELECTRODOMESTICO", contenido = eventoViewModel.generarMensaje("ELECTRODOMESTICO", electrodomestico.nombre)))
             }
         )
     }
@@ -138,6 +143,11 @@ fun TarjetaElectrodomestico(
                         modifier = Modifier
                             .size(28.dp)
                             .clickable {
+                                /*if (electrodomestico.tipo=="Horno"){
+                                    val usoPrograma(
+
+                                    )
+                                }*/
                                 if (electrodomestico.usoProgramaActual == null) {
                                     showDialog = true
                                     return@clickable
@@ -198,7 +208,7 @@ fun TarjetaElectrodomestico(
                             )
                         }
                         IconButton(
-                            onClick = { expanded = false },
+                            onClick = { electrodomesticoViewModel.delete(electrodomestico.id); expanded = false },
                             modifier = Modifier.size(36.dp)
                         ) {
                             Icon(

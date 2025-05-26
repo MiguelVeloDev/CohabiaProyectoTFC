@@ -3,6 +3,7 @@ package com.example.cohabiaproject.presentation.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -19,7 +20,7 @@ fun NuevoElementoTopAppBar(titulo : String , textoBoton : String , navController
         navigationIcon = {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(
-                    imageVector = Icons.Default.Close,
+                    imageVector = Icons.Default.ArrowBackIosNew,
                     contentDescription = "Menu"
                 )
             }},
