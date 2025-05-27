@@ -21,6 +21,7 @@ import com.example.cohabiaproject.ui.theme.VerdeNotas
 @Composable
 fun BottomNavBar(navController: NavController, selectedRoute: String) {
     var color by remember { mutableStateOf(NaranjaPrincipal) }
+    val mostrarHoja = remember { mutableStateOf(false) }
 
     when (selectedRoute) {
         "main" -> color = NaranjaPrincipal
@@ -58,7 +59,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 onClick = { navController.navigate("listaElectrodomesticos") },
                 icon = {
                     Icon(
-                        imageVector = Icons.Filled.Kitchen,
+                        imageVector = Icons.Filled.LocalLaundryService,
                         contentDescription = "Electrodomésticos"
                     )
                 },
@@ -74,24 +75,13 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 modifier = Modifier.weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                var reproduciendose by remember { mutableStateOf(false) }
-                if (!reproduciendose) {
-                    FloatingActionButton(
-                        onClick = { navController.navigate("compras") },
-                        containerColor = if (selectedRoute == "main") color else Color.Black,
-                        shape = MaterialTheme.shapes.large,
-                        modifier = Modifier.size(56.dp)
-                    ) {
-                        Icon(Icons.Filled.Add, "Abrir menú", tint = Color.White)
-                    }
-                } else {
-                    AnimacionBotonCentral(
-                        isPlaying = reproduciendose,
-                        onAnimationFinished = {
-                            reproduciendose = false
-                        },
-                        modifier = Modifier.size(70.dp)
-                    )
+                FloatingActionButton(
+                    onClick = { mostrarHoja.value = true },
+                    containerColor = if (selectedRoute == "main") color else Color.Black,
+                    shape = MaterialTheme.shapes.large,
+                    modifier = Modifier.size(56.dp)
+                ) {
+                    Icon(Icons.Filled.Add, "Abrir menú", tint = Color.White)
                 }
             }
 
@@ -128,6 +118,9 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                     indicatorColor = Color.Transparent
                 )
             )
+        }
+        if (mostrarHoja.value) {
+            MenuRapido(mostrarHoja = mostrarHoja, navController)
         }
     }
 }

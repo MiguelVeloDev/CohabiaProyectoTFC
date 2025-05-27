@@ -1,7 +1,9 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.ui.res.painterResource
 import com.example.cohabiaproject.R
 import androidx.compose.foundation.layout.*
@@ -14,6 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -95,7 +98,6 @@ fun CodigoCasa(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Botones en fila con separación
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(24.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -103,7 +105,6 @@ fun CodigoCasa(
                 ) {
                     IconButton(
                         onClick = {
-                            // Copiar al portapapeles (si quieres, puedo ayudarte con esto)
                         },
                         modifier = Modifier.weight(1f)
                     ) {
@@ -117,16 +118,29 @@ fun CodigoCasa(
 
                     IconButton(
                         onClick = {
-                            // Compartir código (si quieres, te puedo mostrar cómo hacerlo)
                         },
                         modifier = Modifier.weight(1f)
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Share,
-                            contentDescription = "Compartir código",
-                            tint = AzulGastos,
-                            modifier = Modifier.size(32.dp)
-                        )
+                        val contexto = LocalContext.current
+
+                        IconButton(
+                            onClick = {
+                                val intent = Intent(Intent.ACTION_SEND).apply {
+                                    type = "text/plain"
+                                    putExtra(Intent.EXTRA_TEXT, "Únete a mi casa en Cohabia con este código: ${Sesion.casaId}")
+                                }
+                                contexto.startActivity(Intent.createChooser(intent, "Compartir con..."))
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Share,
+                                contentDescription = "Compartir código",
+                                tint = AzulGastos,
+                                modifier = Modifier.size(32.dp)
+                            )
+                        }
+
                     }
                 }
             }

@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoneyOff
+import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -31,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.presentation.ui.components.DialogoGuardarFinanza
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
@@ -72,9 +76,7 @@ if(showDialog){
     Column(modifier = Modifier.padding(horizontal = 16.dp)) {
 
 
-if(mapDeudas.isEmpty()){
-    LoadingAnimation()
-}else{
+
     Text(
         text = "Deudas",
         style = MaterialTheme.typography.headlineSmall,
@@ -94,7 +96,7 @@ if(mapDeudas.isEmpty()){
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
-            color = if (mapDeudas.values.sum() >=0) Color(0xFF3F9B42) else Color(0xFF9F0B00),
+            color = if (mapDeudas.values.sum() >0) Color(0xFF3F9B42) else if(mapDeudas.values.sum() < 0) Color(0xFF9F0B00) else(Color.Black),
             modifier = Modifier.padding(vertical = 5.dp)
         )
         Text(
@@ -106,6 +108,13 @@ if(mapDeudas.isEmpty()){
     }
     HorizontalDivider(thickness = 2.dp, color = Color.Gray)
 }
+    if(deudas.isEmpty()){
+        ListaVaciaPlaceholder(
+            icono = Icons.Default.MoneyOff,
+            texto = "deudas"
+        )
+        return
+    }
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -246,5 +255,4 @@ contentAlignment = Alignment.Center
 }
 
 
-}
 }

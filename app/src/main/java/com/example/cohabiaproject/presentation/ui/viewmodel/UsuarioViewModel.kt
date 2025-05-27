@@ -77,6 +77,9 @@ class UsuarioViewModel(
         }
     }
 
+
+
+
     fun compartir(usuario: Usuario){
         Log.d("UsuarioViewModel", "Esto hará algo")
     }

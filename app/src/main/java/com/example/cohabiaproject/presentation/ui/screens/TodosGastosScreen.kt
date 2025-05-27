@@ -13,6 +13,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoneyOff
 import androidx.compose.material3.*
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.*
@@ -28,6 +30,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.cohabiaproject.R
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
@@ -93,6 +96,15 @@ fun TodosGastos(
                 }
             }
             HorizontalDivider(thickness = 2.dp, color = Color.Gray)
+        }
+        item {
+            if (gastosEsteMes.isEmpty()) {
+                ListaVaciaPlaceholder(
+                    icono = Icons.Default.MoneyOff,
+                    texto = "gastos este mes"
+                )
+                return@item
+            }
         }
 
         items(gastosEsteMes) { gasto ->

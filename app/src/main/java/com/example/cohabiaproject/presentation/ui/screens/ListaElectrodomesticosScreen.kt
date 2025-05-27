@@ -24,10 +24,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.LocalLaundryService
+import androidx.compose.material.icons.filled.MoneyOff
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
@@ -69,6 +72,7 @@ fun ListaElectrodomesticosScreen(
         },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
+
         Column(
             modifier = Modifier
                 .padding(innerPadding)
@@ -109,7 +113,13 @@ fun ListaElectrodomesticosScreen(
         }
             Text(text = "Mis Electrodomésticos", modifier = Modifier.padding(bottom = 8.dp).padding(top = 16.dp), fontWeight = FontWeight.Bold, fontSize = 24.sp)
 
-
+            if(electrodomesticosLista.isEmpty()){
+                ListaVaciaPlaceholder(
+                    icono = Icons.Default.LocalLaundryService,
+                    texto = "electrodomésticos"
+                )
+                return@Scaffold
+            }
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
                     .padding(vertical = 10.dp)

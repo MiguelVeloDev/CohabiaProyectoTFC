@@ -6,7 +6,8 @@ data class Producto(
     val id: String = "",
     val nombre: String,
     val categoria: String,
-    val recurrente: Boolean = false
+    val recurrente: Boolean = false,
+    var comprado : Boolean = false,
 ){
 constructor() : this("", "","")
 }

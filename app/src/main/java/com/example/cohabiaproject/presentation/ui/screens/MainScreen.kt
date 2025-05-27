@@ -89,6 +89,12 @@ fun MainScreen(
                             )
                         }
                     }
+                    Button(
+                        onClick = { navController.navigate("compras") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) { }
                 }
             }
         }

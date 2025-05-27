@@ -1,6 +1,7 @@
 package com.example.cohabiaproject.di
 
 import com.example.cohabiaproject.data.source.remote.CasaFirestoreRepository
+import com.example.cohabiaproject.data.source.remote.CategoriaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.ElectrodomesticoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.EventoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.FinanzaFireStoreRepository
@@ -8,7 +9,9 @@ import com.example.cohabiaproject.data.source.remote.NotaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.ProductoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.UsoProgramaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.UsuarioFirestoreRepository
+import com.example.cohabiaproject.domain.model.Categoria
 import com.example.cohabiaproject.domain.repository.CasaRepository
+import com.example.cohabiaproject.domain.repository.CategoriaRepository
 import com.example.cohabiaproject.domain.repository.ElectrodomesticoRepository
 import com.example.cohabiaproject.domain.repository.EventoRepository
 import com.example.cohabiaproject.domain.repository.EventoUseCases.DeleteEventoUseCase
@@ -20,6 +23,9 @@ import com.example.cohabiaproject.domain.repository.NotaRepository
 import com.example.cohabiaproject.domain.repository.ProductoRepository
 import com.example.cohabiaproject.domain.repository.UsoProgramaRepository
 import com.example.cohabiaproject.domain.repository.UsuarioRepository
+import com.example.cohabiaproject.domain.repository.usecases.CategoriaUseCases.DeleteCategoriaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.CategoriaUseCases.GetCategoriaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.CategoriaUseCases.SaveCategoriaUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.DeleteElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoByIdUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoUseCase
@@ -48,6 +54,7 @@ import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.Get
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.SaveUsuarioUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.UpdateUsuarioUseCase
 import com.example.cohabiaproject.presentation.ui.viewmodel.CasaViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.CategoriaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
@@ -75,6 +82,7 @@ val appModule = module {
     single<UsuarioRepository> { UsuarioFirestoreRepository(get()) }
     single<EventoRepository> { EventoFirestoreRepository(get()) }
     single<ProductoRepository> { ProductoFirestoreRepository(get()) }
+    single< CategoriaRepository> { CategoriaFirestoreRepository(get()) }
 
     factory { GetUsuarioUseCase(get()) }
     factory { SaveUsuarioUseCase(get()) }
@@ -115,6 +123,10 @@ val appModule = module {
     factory { GetTodasFinanzasEsteMesUseCase(get()) }
     factory { GetTodasDeudasUseCase(get()) }
 
+    factory { GetCategoriaUseCase(get()) }
+    factory { SaveCategoriaUseCase(get()) }
+    factory { DeleteCategoriaUseCase(get()) }
+
     viewModel { ElectrodomesticoViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { NotaViewModel(get(), get(), get(), get()) }
     viewModel { FinanzasViewModel(get(), get(), get(), get(), get(), get(), get()) }
@@ -122,6 +134,7 @@ val appModule = module {
     viewModel {UsuarioViewModel(get(), get(), get(), get(), get())}
     viewModel {EventoViewModel(get(), get(), get(), get())}
     viewModel {ProductoViewModel(get(), get(), get(), get())}
+    viewModel { CategoriaViewModel(get(), get(), get()) }
 
 
 }

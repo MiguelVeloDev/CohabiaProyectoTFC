@@ -56,7 +56,7 @@ fun NuevoElectrodomestico(
 
     Scaffold(
         topBar = {  NuevoElementoTopAppBar(
-            titulo = "Añadir electrodoméstico",
+            titulo = "Nuevo elec.",
             textoBoton = "Siguiente",
             navController = navController,
             accion = { navController.navigate("nuevoPrograma/$nombreElectrodomestico/$seleccionado")},

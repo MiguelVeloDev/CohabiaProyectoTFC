@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.screens.Compras.AnadirProducto
 import com.example.cohabiaproject.presentation.ui.screens.AnadirPrograma
+import com.example.cohabiaproject.presentation.ui.screens.CategoriasScreen
 import com.example.cohabiaproject.presentation.ui.screens.CodigoCasa
 import com.example.cohabiaproject.presentation.ui.screens.Compras.Compras
 import com.example.cohabiaproject.presentation.ui.screens.CrearCasa
@@ -27,13 +28,14 @@ import com.example.cohabiaproject.presentation.ui.screens.NotasScreen
 import com.example.cohabiaproject.presentation.ui.screens.NuevoElectrodomestico
 import com.example.cohabiaproject.presentation.ui.screens.NuevoGastoScreen
 import com.example.cohabiaproject.presentation.ui.screens.NuevoPrograma
+import com.example.cohabiaproject.presentation.ui.screens.PantallaInicial
 import com.example.cohabiaproject.presentation.ui.screens.Registro
 import com.example.cohabiaproject.presentation.ui.screens.SeleccionUsuarioGasto
 import com.example.cohabiaproject.presentation.ui.screens.UnirmeCasa
 import com.example.cohabiaproject.presentation.ui.screens.VerificacionCorreo
 
 @Composable
-fun NavGraph(startDestination: String = Screen.Login.route) {
+fun NavGraph(startDestination: String = Screen.PantallaInicial.route) {
 
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
@@ -130,7 +132,12 @@ fun NavGraph(startDestination: String = Screen.Login.route) {
         composable(Screen.AnadirProducto.route) {
             AnadirProducto(modifier = Modifier, navController)
         }
-
+        composable(Screen.PantallaInicial.route) {
+            PantallaInicial(navController)
+        }
+        composable(Screen.CategoriaScreen.route) {
+            CategoriasScreen( navController)
+        }
 
     }
 }

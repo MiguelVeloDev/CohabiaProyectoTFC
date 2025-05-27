@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.domain.model.Producto
 import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
+import com.example.cohabiaproject.presentation.ui.viewmodel.CategoriaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.ProductoViewModel
 import com.example.cohabiaproject.ui.theme.FondoTextField
 import com.example.cohabiaproject.ui.theme.RojoCompras
@@ -30,7 +31,9 @@ fun AnadirProducto(
     var nombre by remember { mutableStateOf("") }
     var categoria by remember { mutableStateOf("") }
     var recurrente by remember { mutableStateOf(false) }
-    val opciones = listOf("Lacteos", "Frutas", "Verduras")
+    val categoriaViewModel : CategoriaViewModel = koinViewModel()
+    val categorias by categoriaViewModel.nombresCategorias.collectAsState(
+        initial = emptyList())
     var expandido by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -93,7 +96,7 @@ fun AnadirProducto(
                         expanded = expandido,
                         onDismissRequest = { expandido = false }
                     ) {
-                        opciones.forEach { opcion ->
+                        categorias.forEach { opcion ->
                             DropdownMenuItem(
                                 text = { Text(opcion) },
                                 onClick = {
@@ -106,7 +109,7 @@ fun AnadirProducto(
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate("categorias") },
                     modifier = Modifier.size(36.dp)
                 ) {
                     Icon(

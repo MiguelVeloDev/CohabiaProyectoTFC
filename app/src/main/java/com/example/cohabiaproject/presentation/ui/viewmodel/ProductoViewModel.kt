@@ -57,6 +57,15 @@ class ProductoViewModel(
         }
     }
 
+
+    fun borrarComprados(productos: List<Producto>) {
+        viewModelScope.launch {
+            productos.forEach { producto ->
+                deleteProductoUseCase(producto.id)
+            }
+        }
+    }
+
     fun compartir(producto: Producto){
         Log.d("ProductoViewModel", "Esto hará algo")
     }

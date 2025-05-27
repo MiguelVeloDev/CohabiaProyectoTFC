@@ -11,6 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckBox
 import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.MoneyOff
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 
 import androidx.compose.runtime.*
@@ -38,6 +40,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import com.example.cohabiaproject.domain.model.Producto
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.ProductoViewModel
 import com.example.cohabiaproject.ui.theme.RojoCompras
@@ -52,7 +55,6 @@ fun Compras(
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val listaProductos by productoViewModel.productos.collectAsState(initial = emptyList())
 
-    // Agrupar productos por categoría
     val productosPorCategoria = listaProductos.groupBy { it.categoria }
 
     Scaffold(
@@ -60,7 +62,7 @@ fun Compras(
         topBar = {
             NuevoElementoTopAppBar(
                 titulo = "Compras",
-                textoBoton = "Guardar",
+                textoBoton = "Añadir",
                 navController = navController,
                 accion = { navController.navigate(Screen.AnadirProducto.route) },
                 enabled = true
@@ -68,35 +70,59 @@ fun Compras(
         },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
-        LazyColumn(
+        if(listaProductos.isEmpty()){
+            ListaVaciaPlaceholder(
+                icono = Icons.Default.ShoppingCart,
+                texto = "productos"
+            )
+            return@Scaffold
+        }
+
+        Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            contentPadding = PaddingValues(vertical = 16.dp)
+                .fillMaxSize()
         ) {
-            productosPorCategoria.forEach { (categoria, productos) ->
-                item {
-                    Text(
-                        text = categoria,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(vertical = 4.dp),
-                        color = RojoCompras
-                    )
+
+
+            Button(
+                modifier = Modifier
+                    .padding(16.dp),
+                onClick = { productoViewModel.borrarComprados(listaProductos.filter { it.comprado }) },
+                colors = ButtonDefaults.buttonColors(containerColor = RojoCompras)
+            ) {
+                Text(text = "Borrar productos comprados")
+            }
+            LazyColumn(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp).fillMaxSize(),
+
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                contentPadding = PaddingValues(vertical = 16.dp)
+            ) {
+                productosPorCategoria.forEach { (categoria, productos) ->
+                    item {
+                        Text(
+                            text = categoria,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(vertical = 4.dp),
+                            color = RojoCompras
+                        )
+                    }
+                    items(productos) { producto ->
+                        ProductoItem(producto = producto, productoViewModel = productoViewModel)
+                    }
                 }
-                items(productos) { producto ->
-                    ProductoItem(producto = producto, productoViewModel = productoViewModel)
-                }
+
             }
         }
     }
 }
-
 @Composable
 fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
-    var marcado = remember { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -114,16 +140,27 @@ fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column {
-                Text(text = producto.nombre, fontSize = 16.sp, fontWeight = FontWeight.Medium,style = if(marcado.value){TextStyle(textDecoration = TextDecoration.LineThrough)}else{TextStyle()})
-
+                Text(
+                    text = producto.nombre,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    style = if (producto.comprado) {
+                        TextStyle(textDecoration = TextDecoration.LineThrough)
+                    } else {
+                        TextStyle()
+                    }
+                )
             }
+
             Row(
                 verticalAlignment = Alignment.CenterVertically
-            ){
-                IconButton(onClick = { marcado.value = !marcado.value }) {
+            ) {
+                IconButton(onClick = {
+                    productoViewModel.update(producto.copy(comprado = !producto.comprado))
+                }) {
                     Icon(
-                        imageVector = if (marcado.value) Icons.Default.CheckBox else Icons.Default.CheckBoxOutlineBlank,
-                        contentDescription = "Borrar producto",
+                        imageVector = if (producto.comprado) Icons.Default.CheckBox else Icons.Default.CheckBoxOutlineBlank,
+                        contentDescription = "Marcar producto",
                         tint = RojoCompras
                     )
                 }
@@ -141,7 +178,6 @@ fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
                             horizontalArrangement = Arrangement.End,
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-
                             IconButton(onClick = { productoViewModel.borrar(producto.id) }) {
                                 Icon(
                                     imageVector = Icons.Default.Delete,
@@ -152,8 +188,6 @@ fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
                         }
                     }
                 }
-
-
             }
         }
     }

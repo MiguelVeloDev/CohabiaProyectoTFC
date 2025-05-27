@@ -53,9 +53,7 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
     var esError by remember { mutableStateOf(false) }
 
 
-    if(Sesion.userId.isNotEmpty()){
-        navController.navigate(Screen.Main.route)
-    }
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White

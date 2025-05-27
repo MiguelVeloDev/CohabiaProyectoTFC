@@ -19,8 +19,10 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.MoneyOff
 import androidx.compose.material.icons.filled.MoreHoriz
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.NoteAlt
 import androidx.compose.material.icons.filled.PushPin
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.*
@@ -45,6 +47,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cohabiaproject.domain.model.Nota
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
@@ -89,6 +92,7 @@ fun NotasScreen(
             )
         },        bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
+
         Column(
             modifier = Modifier
                 .padding(innerPadding)
@@ -130,6 +134,14 @@ fun NotasScreen(
 
             }
             Text(text = "Mis notas", modifier = Modifier.padding(bottom = 8.dp).padding(top = 16.dp), fontWeight = FontWeight.Bold, fontSize = 24.sp)
+
+            if(listaNotas.isEmpty()){
+                ListaVaciaPlaceholder(
+                    icono = Icons.Default.NoteAlt,
+                    texto = "notas"
+                )
+                return@Scaffold
+            }
 
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),

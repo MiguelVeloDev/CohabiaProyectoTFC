@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoneyOff
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.R
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.MiBarChart
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
@@ -95,8 +98,15 @@ LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
     HorizontalDivider(thickness = 2.dp, color = Color.Gray)
 
 }
-
-
+item {
+    if (gastosEsteMes.isEmpty()) {
+        ListaVaciaPlaceholder(
+            icono = Icons.Default.MoneyOff,
+            texto = "gastos este mes"
+        )
+        return@item
+    }
+}
     items(gastosEsteMes) { gasto ->
         Column {
         Column(modifier = Modifier
