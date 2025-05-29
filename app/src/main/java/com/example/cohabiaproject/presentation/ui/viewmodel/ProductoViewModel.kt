@@ -18,6 +18,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.concurrent.ConcurrentHashMap
@@ -33,6 +34,10 @@ class ProductoViewModel(
     private var _productos = getProductoUseCase()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val productos: StateFlow<List<Producto>> = _productos
+
+    val productosRecurrentes: StateFlow<List<Producto>> =
+        productos.map { lista -> lista.filter { it.recurrente } }
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
 
     fun save(producto: Producto) {
@@ -61,7 +66,13 @@ class ProductoViewModel(
     fun borrarComprados(productos: List<Producto>) {
         viewModelScope.launch {
             productos.forEach { producto ->
-                deleteProductoUseCase(producto.id)
+                if (!producto.recurrente) {
+                    deleteProductoUseCase(producto.id)
+                }
+                else{
+                    updateProductoUseCase(producto.copy(enLista = false, comprado = false))
+
+                }
             }
         }
     }

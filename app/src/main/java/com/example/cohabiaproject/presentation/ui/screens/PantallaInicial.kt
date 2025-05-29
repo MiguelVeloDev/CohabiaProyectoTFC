@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.cohabiaproject.domain.model.Sesion
+import com.example.cohabiaproject.ui.theme.AnimacionCasa
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 
@@ -31,7 +32,7 @@ fun PantallaInicial(navController: NavController) {
         // Puedes mostrar un indicador de carga si quieres
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
-        }
+            }
     } else {
         val user = Sesion.userId
         val casaId = Sesion.casaId

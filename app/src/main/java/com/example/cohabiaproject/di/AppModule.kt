@@ -7,6 +7,7 @@ import com.example.cohabiaproject.data.source.remote.EventoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.FinanzaFireStoreRepository
 import com.example.cohabiaproject.data.source.remote.NotaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.ProductoFirestoreRepository
+import com.example.cohabiaproject.data.source.remote.TareaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.UsoProgramaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.UsuarioFirestoreRepository
 import com.example.cohabiaproject.domain.model.Categoria
@@ -21,6 +22,7 @@ import com.example.cohabiaproject.domain.repository.EventoUseCases.UpdateEventoU
 import com.example.cohabiaproject.domain.repository.FinanzaRepository
 import com.example.cohabiaproject.domain.repository.NotaRepository
 import com.example.cohabiaproject.domain.repository.ProductoRepository
+import com.example.cohabiaproject.domain.repository.TareaRepository
 import com.example.cohabiaproject.domain.repository.UsoProgramaRepository
 import com.example.cohabiaproject.domain.repository.UsuarioRepository
 import com.example.cohabiaproject.domain.repository.usecases.CategoriaUseCases.DeleteCategoriaUseCase
@@ -48,6 +50,11 @@ import com.example.cohabiaproject.domain.repository.usecases.ProductoUseCases.Ge
 import com.example.cohabiaproject.domain.repository.usecases.ProductoUseCases.SaveProductoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ProductoUseCases.UpdateProductoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.SaveCasaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.TareaUseCases.DeleteTareaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.TareaUseCases.GetTareaEsteMesUseCase
+import com.example.cohabiaproject.domain.repository.usecases.TareaUseCases.GetTareaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.TareaUseCases.SaveTareaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.TareaUseCases.UpdateTareaUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.DeleteUsuarioUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.GetUsuarioByIdUseCase
 import com.example.cohabiaproject.domain.repository.usecases.UsuarioUseCases.GetUsuarioUseCase
@@ -61,6 +68,7 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.LoginViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.ProductoViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.TareaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -83,6 +91,7 @@ val appModule = module {
     single<EventoRepository> { EventoFirestoreRepository(get()) }
     single<ProductoRepository> { ProductoFirestoreRepository(get()) }
     single< CategoriaRepository> { CategoriaFirestoreRepository(get()) }
+    single <TareaRepository>{TareaFirestoreRepository(get())}
 
     factory { GetUsuarioUseCase(get()) }
     factory { SaveUsuarioUseCase(get()) }
@@ -97,7 +106,6 @@ val appModule = module {
     factory { GetProductoByIdUseCase(get())}
 
     factory { SaveCasaUseCase(get()) }
-    viewModel { CasaViewModel(get(), get()) }
 
     factory { GetElectrodomesticoUseCase(get()) }
     factory { SaveElectrodomesticoUseCase(get()) }
@@ -127,6 +135,14 @@ val appModule = module {
     factory { SaveCategoriaUseCase(get()) }
     factory { DeleteCategoriaUseCase(get()) }
 
+    factory { SaveTareaUseCase(get()) }
+    factory { GetTareaUseCase(get()) }
+    factory { DeleteTareaUseCase(get()) }
+    factory { UpdateTareaUseCase(get()) }
+    factory { GetTareaEsteMesUseCase(get()) }
+
+
+    viewModel { CasaViewModel(get(), get()) }
     viewModel { ElectrodomesticoViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { NotaViewModel(get(), get(), get(), get()) }
     viewModel { FinanzasViewModel(get(), get(), get(), get(), get(), get(), get()) }
@@ -135,6 +151,7 @@ val appModule = module {
     viewModel {EventoViewModel(get(), get(), get(), get())}
     viewModel {ProductoViewModel(get(), get(), get(), get())}
     viewModel { CategoriaViewModel(get(), get(), get()) }
+    viewModel {TareaViewModel(get(), get(), get(), get(), get()) }
 
 
 }

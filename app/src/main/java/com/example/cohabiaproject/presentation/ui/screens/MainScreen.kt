@@ -2,6 +2,8 @@ package com.example.cohabiaproject.presentation.ui.screens
 
 
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,9 +25,11 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoView
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.TarjetaElectrodomestico
 import com.example.cohabiaproject.presentation.ui.viewmodel.CasaViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.TareaViewModel
 import com.example.cohabiaproject.ui.theme.LoadingAnimation
 import org.koin.androidx.compose.koinViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
@@ -33,6 +37,10 @@ fun MainScreen(
 ) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val casaViewModel: CasaViewModel = koinViewModel()
+    val tareasViewModel: TareaViewModel = koinViewModel()
+    val tareasHoy by tareasViewModel.tareasHoy.collectAsState()
+    val hayTareasHoy = tareasHoy.isNotEmpty()
+
 
     val casa by casaViewModel.casa.collectAsState(null)
     val nombreCasa = casa?.nombre ?: ""
@@ -89,6 +97,13 @@ fun MainScreen(
                             )
                         }
                     }
+                    Button(
+                        onClick = { navController.navigate("tareas") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = if (hayTareasHoy) Color.Black else Color.White)
+                    ) { }
                     Button(
                         onClick = { navController.navigate("compras") },
                         modifier = Modifier

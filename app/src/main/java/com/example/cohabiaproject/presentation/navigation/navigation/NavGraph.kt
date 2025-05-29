@@ -1,5 +1,8 @@
 package com.example.cohabiaproject.presentation.navigation.navigation
 
+import AnadirTarea
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -31,9 +34,11 @@ import com.example.cohabiaproject.presentation.ui.screens.NuevoPrograma
 import com.example.cohabiaproject.presentation.ui.screens.PantallaInicial
 import com.example.cohabiaproject.presentation.ui.screens.Registro
 import com.example.cohabiaproject.presentation.ui.screens.SeleccionUsuarioGasto
+import com.example.cohabiaproject.presentation.ui.screens.TareasScreen
 import com.example.cohabiaproject.presentation.ui.screens.UnirmeCasa
 import com.example.cohabiaproject.presentation.ui.screens.VerificacionCorreo
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavGraph(startDestination: String = Screen.PantallaInicial.route) {
 
@@ -136,8 +141,14 @@ fun NavGraph(startDestination: String = Screen.PantallaInicial.route) {
             PantallaInicial(navController)
         }
         composable(Screen.CategoriaScreen.route) {
-            CategoriasScreen( navController)
+            CategoriasScreen(navController)
         }
+        composable(Screen.AnadirTarea.route) {
+            AnadirTarea(navController)
+        }
+        composable(Screen.TareasScreen.route) {
+            TareasScreen(navController)
 
+        }
     }
 }

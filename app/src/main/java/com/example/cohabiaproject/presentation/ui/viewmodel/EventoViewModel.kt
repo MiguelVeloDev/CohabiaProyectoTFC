@@ -54,6 +54,8 @@ class EventoViewModel(
             "NOTA" -> "${Sesion.nombreUsuario} añadió la nota \"${dato}\""
             "GASTO" -> "${Sesion.nombreUsuario} añadio un gasto de ${dato} €"
             "ELECTRODOMESTICO" -> "${Sesion.nombreUsuario} ha iniciado: ${dato}"
+            "COMPRA" -> "${Sesion.nombreUsuario} ha comprado ${dato} productos"
+            "TAREA" -> "${Sesion.nombreUsuario} ha completado: ${dato}"
             else -> "Evento desconocido"
         }
     }

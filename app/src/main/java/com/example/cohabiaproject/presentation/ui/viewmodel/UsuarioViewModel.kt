@@ -36,6 +36,9 @@ class UsuarioViewModel(
     private val _usuarioRegistrado = MutableStateFlow<Usuario?>(null)
     val usuarioRegistrado = _usuarioRegistrado.asStateFlow()
 
+    init{
+
+    }
     fun obtenerUsuarioRegistrado() {
         viewModelScope.launch {
             val usuario = getUsuarioByIdUseCase(Sesion.userId)

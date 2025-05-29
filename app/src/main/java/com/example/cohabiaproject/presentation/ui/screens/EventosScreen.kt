@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.FormatListNumbered
 import androidx.compose.material.icons.filled.Kitchen
 import androidx.compose.material.icons.filled.LibraryBooks
 import androidx.compose.material.icons.filled.MonetizationOn
@@ -28,6 +29,7 @@ import androidx.compose.material.icons.filled.NoteAlt
 import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material.icons.filled.PushPin
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -56,7 +58,10 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
+import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
+import com.example.cohabiaproject.ui.theme.RojoCompras
+import com.example.cohabiaproject.ui.theme.RojoTareas
 import com.example.cohabiaproject.ui.theme.VerdeNotas
 import kotlinx.coroutines.flow.map
 import org.koin.androidx.compose.koinViewModel
@@ -132,13 +137,17 @@ fun EventoItem(
                         "NOTA" -> Icons.Default.NoteAlt
                         "GASTO" -> Icons.Default.MonetizationOn
                         "ELECTRODOMESTICO" -> Icons.Default.Kitchen
+                        "COMPRA" -> Icons.Default.ShoppingCart
+                        "TAREA" -> Icons.Default.FormatListNumbered
                         else -> Icons.Default.MoreHoriz
                     },
                     contentDescription = "Icono",
                     tint = when (evento.tipo) {
                         "NOTA" -> VerdeNotas
                         "GASTO" -> AzulGastos
-                        "ELECTRODOMESTICO" -> NaranjaPrincipal
+                        "ELECTRODOMESTICO" -> MoradoElectrodomesticos
+                        "COMPRA" -> RojoCompras
+                        "TAREA" -> RojoTareas
                         else -> Color.Black
                     },
                     modifier = Modifier.size(24.dp)

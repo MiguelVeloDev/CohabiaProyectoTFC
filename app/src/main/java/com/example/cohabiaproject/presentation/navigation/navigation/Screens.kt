@@ -10,6 +10,7 @@ sealed class Screen(val route: String) {
     data object NuevoPrograma : Screen("nuevoPrograma/{nombre}/{tipoElectrodomestico}") {
         fun createRoute(nombre: String, tipo: String): String = "nuevoPrograma/$nombre/$tipo"
     }
+
     data object NotasScreen : Screen("notas")
 
     data object MostrarNotaScreen : Screen("mostrarNota/{id}") {
@@ -22,6 +23,7 @@ sealed class Screen(val route: String) {
     data object NuevoGastoScreen : Screen("nuevoGasto/{usuarioPaga}") {
         fun createRoute(usuarioPaga: String): String = "nuevoGasto/$usuarioPaga"
     }
+
     data object DetallesGasto : Screen("detalleGasto/{id}")
     data object EditarGasto : Screen("editarGasto/{id}")
     data object CrearCasa : Screen("crearCasa")
@@ -36,15 +38,19 @@ sealed class Screen(val route: String) {
     data object AnadirPrograma : Screen("anadirPrograma/{id}") {
         fun createRoute(id: String): String = "anadirPrograma/$id"
     }
+
     data object Compras : Screen("compras")
     data object AnadirProducto : Screen("anadirProducto")
     data object PantallaInicial : Screen("pantallaInicial")
     data object CategoriaScreen : Screen("categorias")
 
-    }
+
+    data object AnadirTarea : Screen("anadirTarea")
+    data object TareasScreen : Screen("tareas")
 
 
     data object Prueba : Screen("prueba")
+}
 
 
 

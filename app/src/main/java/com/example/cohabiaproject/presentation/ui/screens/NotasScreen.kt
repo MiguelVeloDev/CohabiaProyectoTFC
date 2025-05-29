@@ -241,7 +241,7 @@ fun NotaItem(
                         Icon(
                             imageVector = Icons.Default.PushPin,
                             contentDescription = "Compartir nota",
-                            tint = if (nota.fijada) VerdeNotas else Color.Gray
+                            tint = if (nota.fijada) NaranjaPrincipal else Color.Gray
                         )
                     }
                     IconButton(

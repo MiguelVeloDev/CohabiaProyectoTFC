@@ -37,12 +37,17 @@ import org.koin.androidx.compose.koinViewModel
 import androidx.compose.material3.CardDefaults // Si usas Material 3 para Card
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
+import com.example.cohabiaproject.domain.model.Evento
 import com.example.cohabiaproject.domain.model.Producto
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
+import com.example.cohabiaproject.presentation.ui.components.DialogConfirmacion
 import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
+import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.ProductoViewModel
+import com.example.cohabiaproject.ui.theme.FondoTextField
+import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import com.example.cohabiaproject.ui.theme.RojoCompras
 
 
@@ -55,7 +60,10 @@ fun Compras(
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val listaProductos by productoViewModel.productos.collectAsState(initial = emptyList())
 
+    val eventoViewModel : EventoViewModel = koinViewModel()
     val productosPorCategoria = listaProductos.groupBy { it.categoria }
+    var  showDialog by remember { mutableStateOf(false) }
+    var  showDialogGastos by remember { mutableStateOf(false) }
 
     Scaffold(
         containerColor = Color.White,
@@ -77,7 +85,26 @@ fun Compras(
             )
             return@Scaffold
         }
+        if (showDialog) {
+            DialogConfirmacion(
+                texto = "¿Terminar compra y borrar los productos comprados?",
+                onDismiss = { showDialog = false },
+                onConfirm = {
+                    productoViewModel.borrarComprados(listaProductos.filter { it.comprado })
+                    showDialog = false
+                    eventoViewModel.save(Evento(
+                        tipo = "COMPRA", contenido = eventoViewModel.generarMensaje("COMPRA", listaProductos.filter { it.comprado }.size.toString())))
+                    showDialogGastos = true
+                })}
 
+        if (showDialogGastos) {
+            DialogConfirmacion(
+                texto = "¿Registrar el gasto de esta compra?",
+                onDismiss = { showDialogGastos = false },
+                onConfirm = {
+                    showDialog = false
+                    navController.navigate(Screen.NuevoGastoScreen.route)
+                })}
         Column(
             modifier = Modifier
                 .padding(innerPadding)
@@ -88,8 +115,9 @@ fun Compras(
             Button(
                 modifier = Modifier
                     .padding(16.dp),
-                onClick = { productoViewModel.borrarComprados(listaProductos.filter { it.comprado }) },
-                colors = ButtonDefaults.buttonColors(containerColor = RojoCompras)
+                onClick = { showDialog = true },
+                colors = ButtonDefaults.buttonColors(containerColor = RojoCompras),
+                enabled = listaProductos.any { it.comprado }
             ) {
                 Text(text = "Borrar productos comprados")
             }
@@ -101,17 +129,21 @@ fun Compras(
                 contentPadding = PaddingValues(vertical = 16.dp)
             ) {
                 productosPorCategoria.forEach { (categoria, productos) ->
-                    item {
-                        Text(
-                            text = categoria,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(vertical = 4.dp),
-                            color = RojoCompras
-                        )
+                    if (productos.any { it.categoria == categoria && it.enLista }){
+                        item {
+                            Text(
+                                text = categoria,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(vertical = 4.dp),
+                                color = RojoCompras
+                            )
+                        }
                     }
                     items(productos) { producto ->
-                        ProductoItem(producto = producto, productoViewModel = productoViewModel)
+                        if (producto.enLista) {
+                            ProductoItem(producto = producto, productoViewModel = productoViewModel)
+                        }
                     }
                 }
 
@@ -150,6 +182,13 @@ fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
                         TextStyle()
                     }
                 )
+                if (producto.comentario.isNotBlank()) {
+                Text(
+                    text = producto.comentario,
+                    fontSize = 12.sp,
+                    color = Color.Gray,
+                )
+            }
             }
 
             Row(
@@ -161,31 +200,44 @@ fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
                     Icon(
                         imageVector = if (producto.comprado) Icons.Default.CheckBox else Icons.Default.CheckBoxOutlineBlank,
                         contentDescription = "Marcar producto",
-                        tint = RojoCompras
+                        tint = NaranjaPrincipal
                     )
                 }
 
-                AnimatedVisibility(visible = expanded) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color(0xFFF3F3F3))
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(8.dp),
-                            horizontalArrangement = Arrangement.End,
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            IconButton(onClick = { productoViewModel.borrar(producto.id) }) {
-                                Icon(
-                                    imageVector = Icons.Default.Delete,
-                                    contentDescription = "Borrar producto",
-                                    tint = Color.Red
-                                )
-                            }
-                        }
+
+            }
+
+        }
+        AnimatedVisibility(visible = expanded) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFF3F3F3))
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    TextField(
+                        value = producto.comentario,
+                        onValueChange = { productoViewModel.update(producto.copy(comentario = it)) },
+                        label = { Text("Comentario") },
+                        modifier = Modifier.weight(1f),
+                        colors = TextFieldDefaults.colors(
+                            unfocusedTextColor = Color.Black,
+                            unfocusedContainerColor = FondoTextField,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent)
+                    )
+                    IconButton(onClick = { productoViewModel.borrar(producto.id) }) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Borrar producto",
+                            tint = Color.Red
+                        )
                     }
                 }
             }
