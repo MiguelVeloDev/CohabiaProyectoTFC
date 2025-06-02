@@ -3,6 +3,7 @@ package com.example.cohabiaproject.presentation.ui.screens
 
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,10 +24,18 @@ import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.TarjetaCasa
+import com.example.cohabiaproject.presentation.ui.components.TarjetaCompras
 import com.example.cohabiaproject.presentation.ui.components.TarjetaElectrodomestico
+import com.example.cohabiaproject.presentation.ui.components.TarjetaFuncionando
+import com.example.cohabiaproject.presentation.ui.components.TarjetaTareas
+import com.example.cohabiaproject.presentation.ui.components.UltimosEventosComponente
 import com.example.cohabiaproject.presentation.ui.viewmodel.CasaViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.TareaViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.LoadingAnimation
+import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import org.koin.androidx.compose.koinViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -35,20 +44,17 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
 ) {
-    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
-    val casaViewModel: CasaViewModel = koinViewModel()
-    val tareasViewModel: TareaViewModel = koinViewModel()
-    val tareasHoy by tareasViewModel.tareasHoy.collectAsState()
-    val hayTareasHoy = tareasHoy.isNotEmpty()
 
-
-    val casa by casaViewModel.casa.collectAsState(null)
-    val nombreCasa = casa?.nombre ?: ""
+    val casaId = remember { mutableStateOf("") }
+    val userId = remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
         Sesion.cargarSesion()
+        casaId.value = Sesion.casaId
+        userId.value = Sesion.userId
+        Log.d("SesionMainScreen", "${userId.value} ${casaId.value}")
     }
-    if (Sesion.casaId == "") {
+    if (casaId.value.isEmpty()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -59,59 +65,106 @@ fun MainScreen(
         }
     } else {
         val electrodomesticoViewModel: ElectrodomesticoViewModel = koinViewModel()
+        val electrodomesticos by electrodomesticoViewModel.electrodomesticos.collectAsState()
 
-        val electrodomesticosEnEjecucion by electrodomesticoViewModel.electrodomesticosEnEjecucion.collectAsState()
+        val electrodomesticosEnEjecucion by remember {
+            derivedStateOf {
+                electrodomesticos.filter { it.isRunning }
+            }
+        }
+        val casaViewModel: CasaViewModel = koinViewModel()
+        val casa by casaViewModel.casa.collectAsState()
+        val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
+        val tareasViewModel: TareaViewModel = koinViewModel()
+        val tareasHoy by tareasViewModel.tareasHoy.collectAsState()
+        val hayTareasHoy = remember(tareasHoy) { tareasHoy.isNotEmpty() }
+        val eventosViewModel: EventoViewModel = koinViewModel()
+        val eventos by eventosViewModel.eventos.collectAsState()
+        val ultEventos = eventosViewModel.ultimosTresEventos
+        val usuarioViewModel: UsuarioViewModel = koinViewModel()
+        val numUsuarios by usuarioViewModel.numUsuarios.collectAsState()
 
 
 
-        // 👇 Pantalla principal con datos
+
+
         Scaffold(
             containerColor = Color.White,
-            topBar = { MyTopAppBar(navController,"") },
+            topBar = { MyTopAppBar(navController, "") },
             bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
         ) { innerPadding ->
             Box(
                 modifier = Modifier
-                    .padding(innerPadding)
-                    .padding(vertical = 16.dp)
-                    .padding(horizontal = 5.dp)
                     .fillMaxSize()
                     .background(Color.White)
+                    .padding(innerPadding)
             ) {
-                Column {
+                Column(modifier = Modifier.fillMaxSize()) {
                     Text(
-                        text = nombreCasa,
-                        fontSize = 15.sp,
-                        modifier = Modifier.padding(16.dp),
-                        color = Color.Black,
+                        text = casa?.nombre ?: "",
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(vertical = 16.dp, horizontal = 20.dp),
+                        color = NaranjaPrincipal,
                         fontWeight = FontWeight.Bold
                     )
+                    HorizontalDivider(color =NaranjaPrincipal, thickness = 1.dp)
 
                     LazyColumn(
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xFFF6F5F5)),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        items(electrodomesticosEnEjecucion) { electrodomestico ->
-                            TarjetaElectrodomestico(
-                                electrodomestico = electrodomestico,
-                                navController
+                        item {
+                            TarjetaCasa(numUsuarios = numUsuarios, navController = navController)
+                        }
+
+                        item {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 8.dp),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                TarjetaCompras(
+                                    hayTareasHoy = hayTareasHoy,
+                                    numeroTareas = tareasHoy.size,
+                                    navController = navController,
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .aspectRatio(1f)
+                                )
+                                TarjetaTareas(
+                                    hayTareasHoy = hayTareasHoy,
+                                    numeroTareas = tareasHoy.size,
+                                    navController = navController,
+                                    modifier = Modifier
+                                        .weight(2f)
+                                        .aspectRatio(2f)
+                                )
+
+                            }
+                        }
+
+                        item {
+                            TarjetaFuncionando(
+                                electrodomesticosEnFuncionamiento = electrodomesticosEnEjecucion, navController = navController
                             )
                         }
+
+                        item {
+                            UltimosEventosComponente(
+                                eventos = ultEventos,
+                                navController = navController
+                            )
+                        }
+
+
+
+
                     }
-                    Button(
-                        onClick = { navController.navigate("tareas") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = if (hayTareasHoy) Color.Black else Color.White)
-                    ) { }
-                    Button(
-                        onClick = { navController.navigate("compras") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    ) { }
                 }
             }
         }
     }
-}
+    }

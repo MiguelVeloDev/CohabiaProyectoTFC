@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -27,23 +28,18 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
+import com.example.cohabiaproject.R
+import com.example.cohabiaproject.domain.model.Electrodomestico
 
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
+import com.example.cohabiaproject.ui.theme.coloresTextField
 
 
-class NuevoElectrodomestico : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            CohabiaProjectTheme {
-
-                Login(modifier = Modifier, navController = rememberNavController())
-            }
-        }
-    }
-}
 
 @Composable
 fun NuevoElectrodomestico(
@@ -55,6 +51,7 @@ fun NuevoElectrodomestico(
 
 
     Scaffold(
+        containerColor = Color.White,
         topBar = {  NuevoElementoTopAppBar(
             titulo = "Nuevo elec.",
             textoBoton = "Siguiente",
@@ -68,16 +65,14 @@ fun NuevoElectrodomestico(
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-            val electrodomesticos = listOf(
-                "Lavadora" to Icons.Default.LocalLaundryService,
-                "Secadora" to Icons.Default.Dry,
-                "Lavavajillas" to Icons.Default.Kitchen,
-                "Horno" to Icons.Default.Microwave,
-                "Aspirador" to Icons.Default.CleaningServices,
-                "Otros" to Icons.Default.DevicesOther
+            val electrodomesticos: List<Pair<String, Int>> = listOf(
+                "Lavadora" to R.drawable.lavadora,
+                "Secadora" to R.drawable.secadora,
+                "Lavavajillas" to R.drawable.lavavajillas,
+                "Horno" to R.drawable.horno,
+                "Aspirador" to R.drawable.robot_aspirador,
+                "Otros" to R.drawable.electrodomestico_generico
             )
-
-
 
             Column(
                 modifier = Modifier
@@ -112,11 +107,12 @@ fun NuevoElectrodomestico(
                                     Column(
                                         horizontalAlignment = Alignment.CenterHorizontally
                                     ) {
-                                        Icon(
-                                            imageVector = icono,
+                                        Image(
+                                            painter = painterResource(id = Electrodomestico.obtenerImagen(nombre)),
                                             contentDescription = nombre,
-                                            tint = if (seleccionado == nombre) Color(0xFFFFA500) else Color.Gray,
-                                            modifier = Modifier.size(42.dp)
+                                            modifier = Modifier.size(48.dp).alpha(if (seleccionado == nombre) 1f else 0.4f).scale(if (seleccionado == nombre) 1.1f else 0.9f)
+                                            ,
+
                                         )
                                         Spacer(modifier = Modifier.size(8.dp))
                                         Text(text = nombre, color = Color.Black)
@@ -137,12 +133,7 @@ fun NuevoElectrodomestico(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 8.dp),
-                        colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White,
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent
-                            )
+                        colors = coloresTextField()
 
                     )
 

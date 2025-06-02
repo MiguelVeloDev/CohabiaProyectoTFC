@@ -5,6 +5,7 @@ import com.example.cohabiaproject.data.source.remote.CategoriaFirestoreRepositor
 import com.example.cohabiaproject.data.source.remote.ElectrodomesticoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.EventoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.FinanzaFireStoreRepository
+import com.example.cohabiaproject.data.source.remote.MensajeFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.NotaFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.ProductoFirestoreRepository
 import com.example.cohabiaproject.data.source.remote.TareaFirestoreRepository
@@ -20,6 +21,7 @@ import com.example.cohabiaproject.domain.repository.EventoUseCases.GetEventoUseC
 import com.example.cohabiaproject.domain.repository.EventoUseCases.SaveEventoUseCase
 import com.example.cohabiaproject.domain.repository.EventoUseCases.UpdateEventoUseCase
 import com.example.cohabiaproject.domain.repository.FinanzaRepository
+import com.example.cohabiaproject.domain.repository.MensajeRepository
 import com.example.cohabiaproject.domain.repository.NotaRepository
 import com.example.cohabiaproject.domain.repository.ProductoRepository
 import com.example.cohabiaproject.domain.repository.TareaRepository
@@ -40,6 +42,11 @@ import com.example.cohabiaproject.domain.repository.usecases.FinanzaUseCase.GetT
 import com.example.cohabiaproject.domain.repository.usecases.FinanzaUseCase.GetTodasFinanzasEsteMesUseCase
 import com.example.cohabiaproject.domain.repository.usecases.FinanzaUseCase.SaveFinanzaUseCase
 import com.example.cohabiaproject.domain.repository.usecases.FinanzaUseCase.UpdateFinanzaUseCase
+import com.example.cohabiaproject.domain.repository.usecases.MensajesUseCases.DeleteMensajeUseCase
+import com.example.cohabiaproject.domain.repository.usecases.MensajesUseCases.GetMensajeByIdUseCase
+import com.example.cohabiaproject.domain.repository.usecases.MensajesUseCases.GetMensajeUseCase
+import com.example.cohabiaproject.domain.repository.usecases.MensajesUseCases.SaveMensajeUseCase
+import com.example.cohabiaproject.domain.repository.usecases.MensajesUseCases.UpdateMensajeUseCase
 import com.example.cohabiaproject.domain.repository.usecases.NotaUseCases.DeleteNotaUseCase
 import com.example.cohabiaproject.domain.repository.usecases.NotaUseCases.GetNotaUseCase
 import com.example.cohabiaproject.domain.repository.usecases.NotaUseCases.SaveNotaUseCase
@@ -66,6 +73,7 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoView
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.LoginViewModel
+import com.example.cohabiaproject.presentation.ui.viewmodel.MensajeViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.ProductoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.TareaViewModel
@@ -92,6 +100,8 @@ val appModule = module {
     single<ProductoRepository> { ProductoFirestoreRepository(get()) }
     single< CategoriaRepository> { CategoriaFirestoreRepository(get()) }
     single <TareaRepository>{TareaFirestoreRepository(get())}
+    single <MensajeRepository>{MensajeFirestoreRepository(get())}
+
 
     factory { GetUsuarioUseCase(get()) }
     factory { SaveUsuarioUseCase(get()) }
@@ -141,17 +151,25 @@ val appModule = module {
     factory { UpdateTareaUseCase(get()) }
     factory { GetTareaEsteMesUseCase(get()) }
 
+    factory { GetMensajeUseCase(get())}
+    factory { SaveMensajeUseCase(get())}
+    factory { UpdateMensajeUseCase(get())}
+    factory { DeleteMensajeUseCase(get())}
+    factory { GetMensajeByIdUseCase(get())}
+
 
     viewModel { CasaViewModel(get(), get()) }
-    viewModel { ElectrodomesticoViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { ElectrodomesticoViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { NotaViewModel(get(), get(), get(), get()) }
     viewModel { FinanzasViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { LoginViewModel(get()) }
-    viewModel {UsuarioViewModel(get(), get(), get(), get(), get())}
-    viewModel {EventoViewModel(get(), get(), get(), get())}
-    viewModel {ProductoViewModel(get(), get(), get(), get())}
+    viewModel { UsuarioViewModel(get(), get(), get(), get(), get())}
+    viewModel { EventoViewModel(get(), get(), get(), get())}
+    viewModel { ProductoViewModel(get(), get(), get(), get())}
     viewModel { CategoriaViewModel(get(), get(), get()) }
-    viewModel {TareaViewModel(get(), get(), get(), get(), get()) }
+    viewModel { TareaViewModel(get(), get(), get(), get(), get()) }
+    viewModel { MensajeViewModel(get(), get(), get(), get()) }
+
 
 
 }

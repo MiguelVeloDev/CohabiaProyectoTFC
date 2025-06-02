@@ -85,7 +85,6 @@ fun NuevoGastoScreen(
                 )
             )
 
-            //Texto para corregir errores
             Text(
                 text = "Usuario paga: $usuarioPaga",
                 style = MaterialTheme.typography.bodyMedium,

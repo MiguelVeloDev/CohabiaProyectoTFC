@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.cohabiaproject.R
+import com.example.cohabiaproject.domain.model.Finanza
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
@@ -108,40 +109,7 @@ fun TodosGastos(
         }
 
         items(gastosEsteMes) { gasto ->
-            Column {
-                Column(
-                    modifier = Modifier
-                        .padding(horizontal = 10.dp)
-                        .padding(top = 20.dp)
-                        .clickable { navController.navigate("detalleGasto/${gasto.id}") }
-                ) {
-                    Text(
-                        text = "${gasto.cantidad / gasto.usuarioPaga.size}€",
-                        fontSize = 19.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 10.dp)
-                            .padding(bottom = 20.dp)
-                    ) {
-                        Text(
-                            text = gasto.concepto,
-                            fontStyle = FontStyle.Italic,
-                            color = Color.Gray
-                        )
-                        Text(
-                            text = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                .format(gasto.fecha.toDate()),
-                            fontStyle = FontStyle.Italic,
-                            color = Color.Gray
-                        )
-                    }
-                }
-                HorizontalDivider(thickness = 1.dp, color = Color.Gray)
-            }
+            GastoItem(gasto = gasto, navController = navController)
         }
 
         item {
@@ -163,73 +131,3 @@ fun TodosGastos(
     }
 }
 
-
-
-@Composable
-fun TOdosGastosItem(
-    modifier: Modifier = Modifier,
-    navController: NavController,
-    id: String
-) {
-    Log.d("id", id)
-
-    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
-    val finanzasViewmodel: FinanzasViewModel = koinViewModel()
-    val gastos by finanzasViewmodel.finanzas.collectAsState(emptyList())
-    var gasto = remember(gastos) { gastos.find { it.id == id } }
-
-    if (gasto == null) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Companion.Center) {
-            CircularProgressIndicator()
-        }
-        return
-    }
-
-    var concepto by remember { mutableStateOf(gasto?.concepto ?: "") }
-    var cantidad by remember { mutableStateOf(gasto?.cantidad.toString() ?: "") }
-    var fecha by remember { mutableStateOf(gasto?.fecha ?: Date()) }
-
-    Scaffold(
-        topBar = {
-            NuevoElementoTopAppBar(
-
-                titulo = "Gastos",
-                textoBoton = "Añadir gasto",
-                navController = navController,
-                accion = {
-                    gasto?.concepto = concepto
-                    gasto?.cantidad = cantidad.toDoubleOrNull() ?: 0.0
-
-                    finanzasViewmodel.update(gasto)
-                    navController.popBackStack()
-                },
-                enabled = true
-
-            )
-        },
-        bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) })
-    { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-            Box(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    if (gasto != null) {
-                        TextField(
-                            value = concepto,
-                            onValueChange = { concepto = it }
-                        )
-                        TextField(
-                            value = cantidad,
-                            onValueChange = { cantidad = it }
-
-                        )
-                    }
-                }
-            }
-        }
-    }
-}

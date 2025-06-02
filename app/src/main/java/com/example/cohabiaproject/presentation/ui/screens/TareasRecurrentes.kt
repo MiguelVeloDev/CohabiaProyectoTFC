@@ -1,7 +1,6 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,9 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircleOutline
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.RadioButtonUnchecked
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.filled.AddTask
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,21 +27,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.domain.model.Evento
 import com.example.cohabiaproject.domain.model.Tarea
 import com.example.cohabiaproject.presentation.ui.components.DialogConfirmacion
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.TareaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
-import com.example.cohabiaproject.ui.theme.RojoTareas
 import org.koin.androidx.compose.koinViewModel
-import java.time.LocalDate
-import java.time.LocalDateTime@RequiresApi(Build.VERSION_CODES.O)
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun TareasRecurrentes(
     navController: NavController,
@@ -54,6 +49,13 @@ fun TareasRecurrentes(
     val tareas by tareasViewModel.tareasEsteMes.collectAsState()
     val tareasRecurrentes by tareasViewModel.tareasRecurrentes.collectAsState()
 
+
+    if(tareasRecurrentes.isEmpty()){
+        ListaVaciaPlaceholder(
+            icono = Icons.Default.AddTask,
+            texto = "tareas recurrentes"
+        )
+    }
 
     LazyColumn(
         modifier = Modifier

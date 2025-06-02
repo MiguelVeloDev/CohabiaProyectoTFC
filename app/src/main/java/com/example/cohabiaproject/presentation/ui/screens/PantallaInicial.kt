@@ -25,52 +25,29 @@ fun PantallaInicial(navController: NavController) {
     LaunchedEffect(Unit) {
         Sesion.cargarSesion()
         cargando = false
-        Log.d("SesionPantallaInicial", Sesion.userId ?: "user null"+ Sesion.casaId?: "casa null")
+        Log.d("SesionPantallaInicial", (Sesion.userId ?: "user null") + (Sesion.casaId ?: " casa null"))
     }
 
     if (cargando) {
-        // Puedes mostrar un indicador de carga si quieres
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
-            }
+        }
     } else {
         val user = Sesion.userId
         val casaId = Sesion.casaId
         val emailVerificado = Firebase.auth.currentUser?.isEmailVerified ?: false
 
-        when {
-            !emailVerificado -> {
-                LaunchedEffect(Unit) {
-                    navController.navigate("verificacionCorreo") {
-                        popUpTo("launcher") { inclusive = true }
-                    }
-                }
-            }
-
-            user != null && casaId.isNullOrEmpty() -> {
-                LaunchedEffect(Unit) {
-                    navController.navigate("eleccionCasa") {
-                        popUpTo("launcher") { inclusive = true }
-                    }
-                }
-            }
-
-            user != null -> {
-                LaunchedEffect(Unit) {
-                    navController.navigate("main") {
-                        popUpTo("launcher") { inclusive = true }
-                    }
-                }
-            }
-
-            else -> {
-                LaunchedEffect(Unit) {
-                    navController.navigate("login") {
-                        popUpTo("launcher") { inclusive = true }
-                    }
-                }
-            }
+        val destino = when {
+            user.isNullOrEmpty() -> "login"
+            !emailVerificado -> "verificacionCorreo"
+            !user.isNullOrEmpty() && casaId.isNullOrEmpty() -> "eleccionCasa"
+            else -> "main"
         }
 
+        LaunchedEffect(destino) {
+            navController.navigate(destino) {
+                popUpTo("launcher") { inclusive = true }
+            }
+        }
     }
 }

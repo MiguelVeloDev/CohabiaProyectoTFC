@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.CheckBox
 import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -28,6 +29,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -50,6 +52,7 @@ import com.example.cohabiaproject.presentation.ui.screens.Compras.ProductoItem
 import com.example.cohabiaproject.presentation.ui.viewmodel.CategoriaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.ProductoViewModel
 import com.example.cohabiaproject.ui.theme.RojoCompras
+import com.example.cohabiaproject.ui.theme.coloresTextField
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -72,22 +75,18 @@ fun CategoriasScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding).padding(16.dp),
         ) {
             TextField(
                 value = nombre,
-                onValueChange = { nombre = it },
+                onValueChange = { if (it.length <= 20) nombre = it},
                 label = { Text("Nombre") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                colors = coloresTextField()
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Text(
-                text = "Categorías",
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            Spacer(modifier = Modifier.height(34.dp))
 
             Button(
                 onClick = {
@@ -95,7 +94,24 @@ fun CategoriasScreen(
                     categoriaViewModel.save(nuevaCategoria)
                     nombre = ""
                 },
-            ) { }
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.medium,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFEE7A16),
+                    contentColor = Color.White
+            ),
+                enabled = nombre.isNotBlank()
+            ) {
+                Text(text = "Guardar categoría")
+                    }
+            Spacer(modifier = Modifier.height(36.dp))
+            Text(
+                text = "Categorías",
+                modifier = Modifier.padding(bottom = 8.dp),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             LazyColumn {
                 items(categorias) { categoria ->
                     CategoriaItem(categoria = categoria, categoriaViewModel = categoriaViewModel)

@@ -3,6 +3,10 @@ package com.example.cohabiaproject.presentation.ui.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.twotone.Home
+import androidx.compose.material.icons.twotone.LocalLaundryService
+import androidx.compose.material.icons.twotone.MonetizationOn
+import androidx.compose.material.icons.twotone.NoteAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -41,7 +45,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 onClick = { navController.navigate(Screen.Main.route) },
                 icon = {
                     Icon(
-                        imageVector = Icons.Filled.House,
+                        imageVector = Icons.TwoTone.Home,
                         contentDescription = "Inicio"
                     )
                 },
@@ -59,7 +63,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 onClick = { navController.navigate("listaElectrodomesticos") },
                 icon = {
                     Icon(
-                        imageVector = Icons.Filled.LocalLaundryService,
+                        imageVector = Icons.TwoTone.LocalLaundryService,
                         contentDescription = "Electrodomésticos"
                     )
                 },
@@ -90,7 +94,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 onClick = { navController.navigate("notas") },
                 icon = {
                     Icon(
-                        imageVector = Icons.Default.NoteAlt,
+                        imageVector = Icons.TwoTone.NoteAlt,
                         contentDescription = "Notas"
                     )
                 },
@@ -107,7 +111,7 @@ fun BottomNavBar(navController: NavController, selectedRoute: String) {
                 onClick = { navController.navigate("finanzas") },
                 icon = {
                     Icon(
-                        imageVector = Icons.Default.MonetizationOn,
+                        imageVector = Icons.TwoTone.MonetizationOn,
                         contentDescription = "Finanzas"
                     )
                 },

@@ -181,7 +181,7 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
                 style = TextStyle(fontSize = 14.sp, textDecoration = TextDecoration.Underline)
                 ,
                 modifier = Modifier.clickable(
-                    onClick = {Log.d("Registro", Sesion.userId) }
+                    onClick = {Log.d("Registro", Sesion.userId + " "+Sesion.casaId) }
                 )
 
             )

@@ -67,6 +67,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:25.1.1")
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation ("androidx.work:work-runtime-ktx:2.8.1")
+
 
 
 

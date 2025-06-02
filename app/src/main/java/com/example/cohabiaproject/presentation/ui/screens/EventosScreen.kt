@@ -1,72 +1,41 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.LibraryBooks
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.FormatListNumbered
 import androidx.compose.material.icons.filled.Kitchen
-import androidx.compose.material.icons.filled.LibraryBooks
 import androidx.compose.material.icons.filled.MonetizationOn
 import androidx.compose.material.icons.filled.MoreHoriz
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.NoteAlt
 import androidx.compose.material.icons.filled.NotificationsNone
-import androidx.compose.material.icons.filled.PushPin
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.TaskAlt
 import androidx.compose.material3.*
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.example.cohabiaproject.domain.model.Evento
-import com.example.cohabiaproject.domain.model.Nota
+import com.example.cohabiaproject.domain.model.Icono
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
-import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
-import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
-import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import com.example.cohabiaproject.ui.theme.RojoCompras
-import com.example.cohabiaproject.ui.theme.RojoTareas
+import com.example.cohabiaproject.ui.theme.AzulTareas
 import com.example.cohabiaproject.ui.theme.VerdeNotas
-import kotlinx.coroutines.flow.map
 import org.koin.androidx.compose.koinViewModel
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @Composable
 fun EventosScreen(
@@ -113,8 +82,8 @@ fun EventoItem(
     navController: NavController,
     eventoViewModel: EventoViewModel,
 ) {
-    val textColorSecondary = Color.Black.copy(alpha = 0.6f)
-    val textColorDisabled = Color.Black.copy(alpha = 0.38f)
+    val icono = Icono.obtenerPorTipo(evento.tipo)
+
 
     Card(
         modifier = Modifier
@@ -133,23 +102,9 @@ fun EventoItem(
                 modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp, horizontal = 15.dp)
             ) {
                 Icon(
-                    imageVector = when (evento.tipo) {
-                        "NOTA" -> Icons.Default.NoteAlt
-                        "GASTO" -> Icons.Default.MonetizationOn
-                        "ELECTRODOMESTICO" -> Icons.Default.Kitchen
-                        "COMPRA" -> Icons.Default.ShoppingCart
-                        "TAREA" -> Icons.Default.FormatListNumbered
-                        else -> Icons.Default.MoreHoriz
-                    },
+                    imageVector = icono.icono,
                     contentDescription = "Icono",
-                    tint = when (evento.tipo) {
-                        "NOTA" -> VerdeNotas
-                        "GASTO" -> AzulGastos
-                        "ELECTRODOMESTICO" -> MoradoElectrodomesticos
-                        "COMPRA" -> RojoCompras
-                        "TAREA" -> RojoTareas
-                        else -> Color.Black
-                    },
+                    tint = icono.color,
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))

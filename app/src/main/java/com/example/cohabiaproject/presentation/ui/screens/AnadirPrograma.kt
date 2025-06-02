@@ -58,8 +58,9 @@ fun AnadirPrograma(
                         minutos = minutosTotales
                     )
                     val nuevoElectrodomestico = electrodomestico!!.copy(
-                        programas = electrodomestico.programas + nuevoPrograma
+                        programas = (electrodomestico.programas + nuevoPrograma).toMutableList()
                     )
+
 
                     electrodomesticosViewModel.update(nuevoElectrodomestico)
                     navController.navigate(Screen.ListaElectrodomesticos.route)

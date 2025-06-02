@@ -90,7 +90,7 @@ class TareaViewModel(
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun generarTextoFecha(tarea: Tarea): Pair<String, Boolean> {
-            val tareaFecha = LocalDate.of(tarea.año, tarea.mes, tarea.dia.toInt())
+            val tareaFecha = LocalDate.of(tarea.año!!, tarea.mes!!, tarea.dia!!.toInt())
             val hoy = LocalDate.now()
             val ayer = hoy.minusDays(1)
 

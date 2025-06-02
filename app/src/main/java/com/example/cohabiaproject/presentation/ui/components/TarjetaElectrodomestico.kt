@@ -5,6 +5,7 @@ import android.R.attr.textColorSecondary
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,6 +15,7 @@ import androidx.compose.material.icons.filled.AddCircleOutline
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.PowerSettingsNew
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.*
@@ -30,6 +32,7 @@ import androidx.navigation.NavController
 import com.example.cohabiaproject.R
 import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.domain.model.Evento
+import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.domain.model.UsoPrograma
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
@@ -48,17 +51,10 @@ fun TarjetaElectrodomestico(
     var expanded by remember { mutableStateOf(false) }
 
     var showDialog by remember { mutableStateOf(false) }
+    var showDialogSinPrograma by remember { mutableStateOf(false) }
     val running = electrodomestico.usoProgramaActual?.pausado == false
-    val img = remember(electrodomestico.tipo) {
-        when (electrodomestico.tipo) {
-            "Lavadora"     -> R.drawable.lavadora
-            "Lavavajillas" -> R.drawable.lavavajillas
-            "Horno"        -> R.drawable.horno
-            "Secadora"     -> R.drawable.secadora
-            "Aspirador"    -> R.drawable.robot_aspirador
-            else           -> R.drawable.electrodomestico_generico
-        }
-    }
+    val imagen = remember{Electrodomestico.obtenerImagen(electrodomestico.tipo)}
+
 
 
     if (showDialog) {
@@ -83,13 +79,44 @@ fun TarjetaElectrodomestico(
             }
         )
     }
-    if (electrodomestico.usoProgramaActual != null) electrodomesticoViewModel.iniciarContador(electrodomestico)
+    if (showDialogSinPrograma) {
+        DialogSelectorTiempo(
+            onDismiss = { showDialogSinPrograma = false },
+            onTimeSelected = { tiempo ->
+                showDialogSinPrograma = false
+                val programaTemporal = ProgramaElectrodomestico(
+                    nombre = "temporal",
+                    minutos = tiempo
+                )
+                electrodomestico.programas.add(programaTemporal)
+                electrodomestico.usoProgramaActual = UsoPrograma(
+                    estado = "en_ejecucion",
+                    electrodomesticoId = electrodomestico.id,
+                    programaId = "temporal",
+                    inicio = System.currentTimeMillis(),
+                    tiempoPausado = 0L,
+                    pausado = false
+                )
+                electrodomestico.isRunning = true
+                electrodomesticoViewModel.update(electrodomestico)
+                electrodomesticoViewModel.saveUsoPrograma(electrodomestico.usoProgramaActual!!)
+                electrodomesticoViewModel.iniciarContador(electrodomestico)
+                eventoViewModel.save(Evento(tipo = "ELECTRODOMESTICO", contenido = eventoViewModel.generarMensaje("ELECTRODOMESTICO", electrodomestico.nombre)))
+            }
+        )
+    }
+        if (electrodomestico.usoProgramaActual != null) electrodomesticoViewModel.iniciarContador(electrodomestico)
 
     Card(
         modifier = Modifier
             .padding(vertical = 2.dp)
             .fillMaxWidth()
-            .clickable { expanded = !expanded },
+            .clickable { expanded = !expanded }
+            .border(
+                width = 1.dp,
+                color = if (electrodomestico.esperandoFinalizar) Color.Red else Color.Transparent,
+                shape = RoundedCornerShape(12.dp)
+            ),
         colors = CardDefaults.cardColors(Color.White),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
@@ -103,11 +130,10 @@ fun TarjetaElectrodomestico(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(img),
+                painter = painterResource(imagen),
                 contentDescription = null,
                 modifier = Modifier
                     .size(50.dp)
-                    .clip(RoundedCornerShape(10.dp))
             )
 
             Spacer(Modifier.width(12.dp))
@@ -117,56 +143,72 @@ fun TarjetaElectrodomestico(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    electrodomestico.nombre, style = MaterialTheme.typography.titleMedium,
+                    electrodomestico.nombre,
                     maxLines = 1,
                     overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                 )
+                if (
+                    !electrodomestico.electrodomesticoSinProgramas
+                ){
                 electrodomestico.usoProgramaActual?.programaId?.let {
-                    Text(it, style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
+                    Text(it, color = Color.Gray)
                 }
+                    }
             }
 
             Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(end = 12.dp)) {
-                Text(
-                    text = "${h}h ${m}m ${s}s",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = Color.Gray
-                )
+                if (electrodomestico.usoProgramaActual!=null) {
+                    Text(
+                        text = "${h}h ${m}m ${s}s",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Color.Gray
+                    )
+                }
 
                 Spacer(Modifier.height(4.dp))
 
                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Icon(
-                        imageVector = if (running) Icons.Default.Pause else Icons.Default.PlayArrow,
-                        contentDescription = if (running) "Pausar" else "Reanudar",
-                        tint = MoradoElectrodomesticos,
-                        modifier = Modifier
-                            .size(28.dp)
-                            .clickable {
-                                /*if (electrodomestico.tipo=="Horno"){
-                                    val usoPrograma(
-
-                                    )
-                                }*/
-                                if (electrodomestico.usoProgramaActual == null) {
-                                    showDialog = true
-                                    return@clickable
+                    if (!electrodomestico.electrodomesticoSinProgramas) {
+                        Icon(
+                            imageVector = if (running) Icons.Default.Pause else Icons.Default.PlayArrow,
+                            contentDescription = if (running) "Pausar" else "Reanudar",
+                            tint = MoradoElectrodomesticos,
+                            modifier = Modifier
+                                .size(28.dp)
+                                .clickable {
+                                    if (electrodomestico.usoProgramaActual == null) {
+                                        showDialog = true
+                                        return@clickable
+                                    }
+                                    val uso = electrodomestico.usoProgramaActual ?: return@clickable
+                                    if (!uso.pausado) {
+                                        uso.pausado = true
+                                        uso.timestampUltimaPausa = System.currentTimeMillis()
+                                    } else {
+                                        val pausa = uso.timestampUltimaPausa?.let {
+                                            System.currentTimeMillis() - it
+                                        } ?: 0L
+                                        uso.tiempoPausado += pausa
+                                        uso.timestampUltimaPausa = null
+                                        uso.pausado = false
+                                    }
+                                    electrodomesticoViewModel.update(electrodomestico)
                                 }
-                                val uso = electrodomestico.usoProgramaActual ?: return@clickable
-                                if (!uso.pausado) {
-                                    uso.pausado = true
-                                    uso.timestampUltimaPausa = System.currentTimeMillis()
-                                } else {
-                                    val pausa = uso.timestampUltimaPausa?.let {
-                                        System.currentTimeMillis() - it
-                                    } ?: 0L
-                                    uso.tiempoPausado += pausa
-                                    uso.timestampUltimaPausa = null
-                                    uso.pausado = false
-                                }
-                                electrodomesticoViewModel.update(electrodomestico)
-                            }
-                    )
+                        )
+                    } else {
+                        if (!running) {
+                            Icon(
+                                imageVector = Icons.Default.PlayArrow,
+                                contentDescription = "Iniciar",
+                                tint = MoradoElectrodomesticos,
+                                modifier = Modifier
+                                    .size(28.dp)
+                                    .clickable {
+                                        showDialogSinPrograma = true
+                                    }
+                            )
+                        }
+                    }
                     Icon(
                         imageVector = Icons.Default.Stop,
                         contentDescription = "Parar",
@@ -174,10 +216,14 @@ fun TarjetaElectrodomestico(
                         modifier = Modifier
                             .size(28.dp)
                             .clickable {
+                                electrodomesticoViewModel.acabarUsoPrograma(electrodomestico)
                                 electrodomestico.isRunning = false
                                 electrodomestico.usoProgramaActual = null
                                 electrodomesticoViewModel.update(electrodomestico)
                                 electrodomesticoViewModel.resetContador(electrodomestico)
+                                if (electrodomestico.electrodomesticoSinProgramas){
+                                    electrodomesticoViewModel.deleteProgramaTemporal(electrodomestico.id)
+                                }
                             }
                     )
                 }
@@ -197,6 +243,19 @@ fun TarjetaElectrodomestico(
                         horizontalArrangement = Arrangement.End,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
+                        if (electrodomestico.esperandoFinalizar){
+                            IconButton(
+                                onClick = {electrodomesticoViewModel.acabarUsoPrograma(electrodomestico.copy(esperandoFinalizar = false))
+                                    ; expanded = false },
+                                modifier = Modifier.size(36.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.PowerSettingsNew,
+                                    tint = Color.Red,
+                                    contentDescription = "Parar"
+                                )
+                            }
+                        }
                         IconButton(
                             onClick = { expanded = false; navController.navigate("anadirPrograma/${electrodomestico.id}") },
                             modifier = Modifier.size(36.dp)

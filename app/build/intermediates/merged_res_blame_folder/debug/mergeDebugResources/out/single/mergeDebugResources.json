@@ -1,174 +1,158 @@
 [
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_correo.jpg.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\correo.jpg"
+        "merged": "com.example.cohabiaproject.app-debug-78:/raw_loading.json.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/raw/loading.json"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-mdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-mdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-mdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-mdpi\\ic_launcher_adaptive_fore.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_robot_aspirador.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/robot_aspirador.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xhdpi\\ic_launcher_adaptive_back.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_ic_google_logo.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/ic_google_logo.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_profile.jpg.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/profile.jpg"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_grafico.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\grafico.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-hdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_horno.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\horno.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\raw_animacion_login.json.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\raw\\animacion_login.json"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xxxhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_lavavajillas.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/lavavajillas.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.cohabiaproject.app-debug-78:/raw_animacion_boton_central.json.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/raw/animacion_boton_central.json"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_boton_central.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\boton_central.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/raw_animacion_casa.json.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/raw/animacion_casa.json"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\xml\\data_extraction_rules.xml"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_boton_central.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/boton_central.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxhdpi\\ic_launcher_adaptive_back.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_ic_google_logo.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\ic_google_logo.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\xml\\backup_rules.xml"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_compartir_casa.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/compartir_casa.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_electrodomestico_generico.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\electrodomestico_generico.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_secadora.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\secadora.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/raw_animacion_login.json.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/raw/animacion_login.json"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-hdpi\\ic_launcher_adaptive_back.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/xml_backup_rules.xml.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/xml/backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-mdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-mdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_carrito_compra.webp.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/carrito_compra.webp"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_electrodomestico_generico.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/electrodomestico_generico.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_profile.jpg.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\profile.jpg"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-hdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-hdpi\\ic_launcher_adaptive_fore.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xxxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_robot_aspirador.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\robot_aspirador.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_compras.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/compras.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_horno.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/horno.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-mdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-mdpi\\ic_launcher_adaptive_back.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_logo.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/logo.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\raw_animacion_boton_central.json.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\raw\\animacion_boton_central.json"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_secadora.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/secadora.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_logo.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\logo.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_lavadora.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/lavadora.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxhdpi\\ic_launcher_adaptive_fore.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-hdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-hdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_lavadora.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\lavadora.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xxhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxxhdpi\\ic_launcher_adaptive_fore.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_correo.jpg.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/correo.jpg"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-xxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\raw_animacion_casa.json.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\raw\\animacion_casa.json"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_grafico.png.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/grafico.png"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\raw_loading.json.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\raw\\loading.json"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xhdpi\\ic_launcher_adaptive_fore.png"
-    },
-    {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\mipmap-xxxhdpi_ic_launcher_adaptive_back.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\mipmap-xxxhdpi\\ic_launcher_adaptive_back.png"
-    },
-    {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_lavavajillas.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\lavavajillas.png"
-    },
-    {
-        "merged": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-debug-72:\\drawable_compartir_casa.png.flat",
-        "source": "C:\\Users\\migue\\.gradle\\daemon\\8.11.1\\com.example.cohabiaproject.app-main-74:\\drawable\\compartir_casa.png"
+        "merged": "com.example.cohabiaproject.app-debug-78:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.cohabiaproject.app-main-80:/drawable/ic_launcher_foreground.xml"
     }
 ]

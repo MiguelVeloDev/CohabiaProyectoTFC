@@ -3,8 +3,11 @@ package com.example.cohabiaproject.presentation.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cohabiaproject.domain.model.Electrodomestico
+import com.example.cohabiaproject.domain.model.Evento
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
+import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.domain.model.UsoPrograma
+import com.example.cohabiaproject.domain.repository.EventoUseCases.SaveEventoUseCase
 import com.example.cohabiaproject.domain.repository.UsoProgramaRepository
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.DeleteElectrodomesticoUseCase
 import com.example.cohabiaproject.domain.repository.usecases.ElectrodomesticoUseCases.GetElectrodomesticoByIdUseCase
@@ -27,7 +30,8 @@ class ElectrodomesticoViewModel(
     private val updateElectrodomesticoUseCase: UpdateElectrodomesticoUseCase,
     private val deleteElectrodomesticoUseCase: DeleteElectrodomesticoUseCase,
     private val usoProgramaRepository: UsoProgramaRepository,
-    private val getElectrodomesticoByIdUseCase: GetElectrodomesticoByIdUseCase
+    private val getElectrodomesticoByIdUseCase: GetElectrodomesticoByIdUseCase,
+    private val saveEventoUseCase: SaveEventoUseCase
 ) : ViewModel() {
 
     private var _electrodomesticos = getElectrodomesticoUseCase()
@@ -109,10 +113,29 @@ class ElectrodomesticoViewModel(
 
 
 
-    fun finalizarPrograma(electrodomestico: Electrodomestico) {
-        electrodomestico.usoProgramaActual = null
-        update(electrodomestico)
-        _tiemposRestantes.remove(electrodomestico.id)
+    fun finalizarPrograma(electrodomestico : Electrodomestico) {
+        viewModelScope.launch {
+            val electrodomesticoUpdate = _electrodomesticos.value.find { it.id == electrodomestico.id }
+            electrodomesticoUpdate?.let {
+                it.usoProgramaActual = null
+                if (it.electrodomesticoSinProgramas) {
+                    deleteProgramaTemporal(it.id)
+                }
+                electrodomestico.esperandoFinalizar = true
+                _tiemposRestantes.remove(it.id)
+                updateElectrodomesticoUseCase(it)
+            }
+        }
+    }
+
+    fun acabarUsoPrograma(electrodomestico: Electrodomestico) {
+        viewModelScope.launch {
+            electrodomestico.isRunning = false
+            electrodomestico.esperandoFinalizar = false
+            updateElectrodomesticoUseCase(electrodomestico)
+
+            saveEventoUseCase(Evento(tipo = "ELECTRODOMESTICO", contenido = "Electrodoméstico apagado por: ${Sesion.nombreUsuario}"))
+        }
     }
 
 
@@ -120,5 +143,12 @@ class ElectrodomesticoViewModel(
         _tiemposRestantes.remove(electrodomestico.id)
     }
 
+    fun deleteProgramaTemporal(electrodomesticoId: String) {
+        viewModelScope.launch {
+            val electrodomestico = getElectrodomesticoByIdUseCase(electrodomesticoId)
+            electrodomestico?.programas?.removeIf { it.nombre == "temporal" }
+            electrodomestico?.let { updateElectrodomesticoUseCase(it) }
+        }
+    }
 
 }

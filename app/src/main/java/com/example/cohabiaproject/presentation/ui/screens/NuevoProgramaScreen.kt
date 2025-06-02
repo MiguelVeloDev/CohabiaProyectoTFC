@@ -3,6 +3,7 @@ package com.example.cohabiaproject.presentation.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import com.example.cohabiaproject.R
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
@@ -23,6 +25,7 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoView
 import com.example.cohabiaproject.domain.model.ProgramaElectrodomestico
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.SeleccionTiempo
+import com.example.cohabiaproject.ui.theme.coloresTextField
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,19 +39,13 @@ fun NuevoPrograma(
     var seleccionMinutos by remember { mutableStateOf(0) }
     val electrodomesticosViewModel: ElectrodomesticoViewModel =
         koinViewModel()
-    val enlaceImagen =
-        when (tipo) {
-            "Lavadora" -> R.drawable.lavadora
-            "Secadora" -> R.drawable.secadora
-            "Lavavajillas" -> R.drawable.lavavajillas
-            "Horno" -> R.drawable.horno
-            "Aspirador" -> R.drawable.robot_aspirador
-            "Otros" -> R.drawable.electrodomestico_generico
-            else -> R.drawable.electrodomestico_generico
-        }
+    val enlaceImagen = Electrodomestico.obtenerImagen(tipo)
+    val electrodomesticosSinProgramas : Boolean = (tipo == "Horno" || tipo == "Aspirador")
+
 
 
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             NuevoElementoTopAppBar(
                 titulo = "Nuevo programa",
@@ -60,20 +57,21 @@ fun NuevoPrograma(
                     val nuevoElectrodomestico = Electrodomestico(
                         nombre = nombre,
                         tipo = tipo,
-                        programas = listOf(
+                        programas = mutableListOf(
                             ProgramaElectrodomestico(
                                 nombre = nombrePrograma,
                                 minutos = minutosTotales
                             )
                         ),
-                        isRunning = false
+                        isRunning = false,
+                        electrodomesticoSinProgramas = if (nombrePrograma.isEmpty()) true else false
                     )
 
                     electrodomesticosViewModel.save(nuevoElectrodomestico)
                     navController.navigate(Screen.ListaElectrodomesticos.route)
 
                 },
-                enabled =  nombrePrograma.isNotEmpty()
+                enabled =  nombrePrograma.isNotEmpty()|| electrodomesticosSinProgramas
             )
         },
 
@@ -118,31 +116,52 @@ fun NuevoPrograma(
                     .fillMaxWidth()
                     .padding(bottom = 24.dp)
             )
+            if (tipo != "Horno" && tipo != "Aspirador") {
 
-            TextField(
-                value = nombrePrograma,
-                onValueChange = { nombrePrograma = it },
-                placeholder = { Text("Nombre Programa") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
+                TextField(
+                    value = nombrePrograma,
+                    onValueChange = { nombrePrograma = it },
+                    placeholder = { Text("Nombre Programa") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    colors = coloresTextField()
                 )
-            )
 
-            SeleccionTiempo(
-                horas = seleccionHoras,
-                minutos = seleccionMinutos,
-                onHorasChange = { seleccionHoras = it },
-                onMinutosChange = { seleccionMinutos = it }
-            )
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    TextField(
+                        value = if (seleccionHoras == 0) "" else seleccionHoras.toString(),
+                        onValueChange = { nuevoValor ->
+                            val numero = nuevoValor.filter { it.isDigit() }
+                            seleccionHoras = if (numero.isEmpty()) 0 else numero.toInt()
+                        },
+                        label = { Text("Horas") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(end = 8.dp),
+                        singleLine = true,
+                        colors = coloresTextField()
+                    )
+                    TextField(
+                        value = if (seleccionMinutos == 0) "" else seleccionMinutos.toString(),
+                        onValueChange = { nuevoValor ->
+                            val numero = nuevoValor.filter { it.isDigit() }
+                            seleccionMinutos = if (numero.isEmpty()) 0 else numero.toInt()
+                        },
+                        label = { Text("Minutos") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 8.dp),
+                        singleLine = true,
+                        colors = coloresTextField()
+                    )
+                }
 
-            Spacer(modifier = Modifier.padding(40.dp))
+                Spacer(modifier = Modifier.padding(40.dp))
 
-           }
+            }
+        }
     }
 }

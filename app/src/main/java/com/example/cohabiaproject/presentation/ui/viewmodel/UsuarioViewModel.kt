@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -36,9 +37,7 @@ class UsuarioViewModel(
     private val _usuarioRegistrado = MutableStateFlow<Usuario?>(null)
     val usuarioRegistrado = _usuarioRegistrado.asStateFlow()
 
-    init{
 
-    }
     fun obtenerUsuarioRegistrado() {
         viewModelScope.launch {
             val usuario = getUsuarioByIdUseCase(Sesion.userId)
@@ -47,9 +46,14 @@ class UsuarioViewModel(
     }
 
 
+
     private var _usuarios = getUsuarioUseCase()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val usuarios: StateFlow<List<Usuario>> = _usuarios
+
+    val numUsuarios: StateFlow<Int> = usuarios
+        .map { it.size }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
 
 
     fun save(usuario: Usuario) {
@@ -80,7 +84,15 @@ class UsuarioViewModel(
         }
     }
 
+    fun eliminarUsuarioDeCasa(usuarioId: String) {
+        viewModelScope.launch {
+            val usuario = getUsuarioByIdUseCase(usuarioId)
+            if (usuario != null) {
+                saveUsuarioUseCase(usuario.copy(casa = ""))
 
+            }
+        }
+    }
 
 
     fun compartir(usuario: Usuario){

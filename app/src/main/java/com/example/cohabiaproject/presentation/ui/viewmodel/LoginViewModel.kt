@@ -10,11 +10,7 @@ class LoginViewModel(
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 ) : ViewModel() {
 
-    var email by mutableStateOf("")
-    var password by mutableStateOf("")
-    var isLoading by mutableStateOf(false)
-    var loginSuccess by mutableStateOf(false)
-    var errorMessage by mutableStateOf<String?>(null)
+
 
 
 
@@ -23,7 +19,6 @@ class LoginViewModel(
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Enviar correo de verificación
                     auth.currentUser?.sendEmailVerification()
                         ?.addOnCompleteListener { verifyTask ->
                             if (verifyTask.isSuccessful) {

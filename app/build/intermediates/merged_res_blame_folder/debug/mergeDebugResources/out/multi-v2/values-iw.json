@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.cohabiaproject.app-mergeDebugResources-70:/values-iw/values-iw.xml",
+            "outputFile": "com.example.cohabiaproject.app-mergeDebugResources-76:/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "C:\\Users\\migue\\.gradle\\caches\\8.11.1\\transforms\\5b243703e9480a46239241cbb2e30322\\transformed\\credentials-1.2.0-rc01\\res\\values-iw\\values-iw.xml",

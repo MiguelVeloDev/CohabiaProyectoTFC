@@ -1,6 +1,7 @@
 package com.example.cohabiaproject.presentation.ui.viewmodel
 
 import android.util.Log
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cohabiaproject.domain.model.Evento
@@ -9,8 +10,14 @@ import com.example.cohabiaproject.domain.repository.EventoUseCases.DeleteEventoU
 import com.example.cohabiaproject.domain.repository.EventoUseCases.GetEventoUseCase
 import com.example.cohabiaproject.domain.repository.EventoUseCases.SaveEventoUseCase
 import com.example.cohabiaproject.domain.repository.EventoUseCases.UpdateEventoUseCase
+import com.example.cohabiaproject.ui.theme.AzulGastos
+import com.example.cohabiaproject.ui.theme.AzulTareas
+import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
+import com.example.cohabiaproject.ui.theme.RojoCompras
+import com.example.cohabiaproject.ui.theme.VerdeNotas
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -26,6 +33,14 @@ class EventoViewModel(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val eventos: StateFlow<List<Evento>> = _eventos
 
+
+    val ultimosTresEventos: StateFlow<List<Evento>> = _eventos
+        .map { it.take(4) }
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            emptyList()
+        )
 
     fun save(evento: Evento) {
         viewModelScope.launch {
@@ -59,6 +74,8 @@ class EventoViewModel(
             else -> "Evento desconocido"
         }
     }
+
+
 
 
     fun compartir(evento: Evento){

@@ -12,7 +12,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.screens.Compras.AnadirProducto
 import com.example.cohabiaproject.presentation.ui.screens.AnadirPrograma
+import com.example.cohabiaproject.presentation.ui.screens.CasaScreen
 import com.example.cohabiaproject.presentation.ui.screens.CategoriasScreen
+import com.example.cohabiaproject.presentation.ui.screens.ChatScreen
 import com.example.cohabiaproject.presentation.ui.screens.CodigoCasa
 import com.example.cohabiaproject.presentation.ui.screens.Compras.Compras
 import com.example.cohabiaproject.presentation.ui.screens.CrearCasa
@@ -22,6 +24,7 @@ import com.example.cohabiaproject.presentation.ui.screens.EleccionCasa
 import com.example.cohabiaproject.presentation.ui.screens.EventosScreen
 import com.example.cohabiaproject.presentation.ui.screens.FinanzasScreen
 import com.example.cohabiaproject.presentation.ui.screens.ListaElectrodomesticosScreen
+import com.example.cohabiaproject.presentation.ui.screens.ListaFinanzas
 import com.example.cohabiaproject.presentation.ui.screens.Login
 import com.example.cohabiaproject.presentation.ui.screens.MainScreen
 import com.example.cohabiaproject.presentation.ui.screens.MiPerfil
@@ -103,7 +106,7 @@ fun NavGraph(startDestination: String = Screen.PantallaInicial.route) {
         }
 
         composable(Screen.MiPerfil.route) {
-            MiPerfil(modifier = Modifier, navController)
+            MiPerfil(navController)
         }
 
         composable(Screen.CodigoCasa.route) {
@@ -148,7 +151,17 @@ fun NavGraph(startDestination: String = Screen.PantallaInicial.route) {
         }
         composable(Screen.TareasScreen.route) {
             TareasScreen(navController)
-
         }
+        composable(Screen.ChatScreen.route) {
+            ChatScreen(navController)
+        }
+        composable(Screen.CasaScreen.route) {
+            CasaScreen(navController)
+        }
+        composable(Screen.ListaFinanzas.route) {
+            ListaFinanzas(navController)
+        }
+
+
     }
 }

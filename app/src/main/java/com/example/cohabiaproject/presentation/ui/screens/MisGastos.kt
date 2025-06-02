@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.R
+import com.example.cohabiaproject.domain.model.Finanza
 import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
-import com.example.cohabiaproject.presentation.ui.components.MiBarChart
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
 import java.text.SimpleDateFormat
@@ -55,15 +55,7 @@ LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
             contentAlignment = Alignment.Center,
 
         ) {
-            MiBarChart(
-                datos = mapOf(
-                    "Enero" to 100f,
-                    "Febrero" to 200f,
-                    "Marzo" to 150f,
-                    "Abril" to 300f,
-                    "Mayo" to 250f,
-                )
-            )
+
         }
     Text(
         text = "Este mes",
@@ -108,7 +100,33 @@ item {
     }
 }
     items(gastosEsteMes) { gasto ->
-        Column {
+       GastoItem(gasto = gasto, navController = navController)
+        }
+
+
+}
+Box(
+modifier = Modifier
+.fillMaxWidth()
+.padding(top = 16.dp),
+contentAlignment = Alignment.Center
+
+) {
+    Text(
+        text = "Ver todo",
+        fontWeight = FontWeight.Bold,
+        color = AzulGastos,
+        modifier = Modifier.clickable { navController.navigate("listaFinanzas") },
+        fontSize = 15.sp,
+    )
+}
+
+
+}
+
+@Composable
+fun GastoItem(gasto: Finanza, navController: NavController) {
+    Column {
         Column(modifier = Modifier
             .padding( horizontal = 10.dp).padding(top = 20.dp)
             .clickable(onClick = { navController.navigate("detalleGasto/${gasto.id}") })) {
@@ -139,28 +157,7 @@ item {
                 )
             }
         }
-            HorizontalDivider(thickness = 1.dp, color = Color.Gray)
+        HorizontalDivider(thickness = 1.dp, color = Color.Gray)
 
-        }
-        }
-
-
-}
-Box(
-modifier = Modifier
-.fillMaxWidth()
-.padding(top = 16.dp),
-contentAlignment = Alignment.Center
-
-) {
-    Text(
-        text = "Ver todo",
-        fontWeight = FontWeight.Bold,
-        color = AzulGastos,
-        modifier = Modifier.clickable { navController.navigate("listaFinanzas") },
-        fontSize = 15.sp,
-    )
-}
-
-
+    }
 }

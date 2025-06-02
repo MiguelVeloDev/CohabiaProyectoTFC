@@ -1,7 +1,6 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,7 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Checklist
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -22,13 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.cohabiaproject.domain.model.Evento
-import com.example.cohabiaproject.presentation.ui.components.DialogConfirmacion
+import com.example.cohabiaproject.presentation.ui.components.ListaVaciaPlaceholder
 import com.example.cohabiaproject.presentation.ui.viewmodel.TareaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
-import com.example.cohabiaproject.ui.theme.RojoTareas
+import com.example.cohabiaproject.ui.theme.AzulTareas
 import java.time.LocalDate
-import java.time.LocalDateTime@RequiresApi(Build.VERSION_CODES.O)
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MisTareas(
     navController: NavController,
@@ -41,7 +41,7 @@ fun MisTareas(
 
 
     val tareasCaducadas = tareas.filter { tarea ->
-        val fechaTarea = LocalDate.of(tarea.año, tarea.mes, tarea.dia.toInt())
+        val fechaTarea = LocalDate.of(tarea.año!!, tarea.mes!!, tarea.dia!!.toInt())
         fechaTarea.isBefore(hoy)
     }
 
@@ -57,6 +57,13 @@ fun MisTareas(
     }
 
 
+    if(tareasHoy.isEmpty() && tareasCaducadas.isEmpty() && tareasMesSinHoy.isEmpty()){
+        ListaVaciaPlaceholder(
+            icono = Icons.Default.Checklist,
+            texto = "tareas"
+        )
+        return
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -65,10 +72,11 @@ fun MisTareas(
         contentPadding = PaddingValues(vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
+
         if (tareasCaducadas.isNotEmpty()) {
             item {
                 Text(text = "Atrasadas", fontSize = 22.sp,
-                    color = RojoTareas,
+                    color = AzulTareas,
                     fontWeight = FontWeight.Bold
                 )
             }
@@ -80,7 +88,7 @@ fun MisTareas(
         if (tareasHoy.isNotEmpty()) {
             item {
                 Text(text = "Hoy", fontSize = 22.sp,
-                    color = RojoTareas,
+                    color = AzulTareas,
                     fontWeight = FontWeight.Bold
                 )
             }
@@ -92,7 +100,7 @@ fun MisTareas(
         if (tareasMesSinHoy.isNotEmpty()) {
             item {
                 Text(text = "Este mes", modifier = Modifier.padding(top = 16.dp), fontSize = 22.sp, fontWeight = FontWeight.Bold,
-                    color = RojoTareas)
+                    color = AzulTareas)
             }
             items(tareasMesSinHoy) { tarea ->
                 TareaItem(tarea = tarea, navController = navController, usuarioViewModel = usuarioViewModel)

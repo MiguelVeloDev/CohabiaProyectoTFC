@@ -1,14 +1,18 @@
 package com.example.cohabiaproject.domain.model
 
 import android.util.Log
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
 object Sesion {
-    var userId: String = FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
-    var casaId: String = ""
-    var nombreUsuario: String = ""
+    var userId by mutableStateOf(FirebaseAuth.getInstance().currentUser?.uid.orEmpty())
+    var casaId by mutableStateOf("")
+    var nombreUsuario by mutableStateOf("")
+
     suspend fun cargarSesion() {
         val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -44,11 +48,10 @@ object Sesion {
         Log.d("CasaSesion", "$userId $casaId $nombreUsuario")
     }
 
-
     suspend fun cerrarSesion() {
-        val auth = FirebaseAuth.getInstance().signOut()
+        FirebaseAuth.getInstance().signOut()
         userId = ""
         casaId = ""
+        nombreUsuario = ""
     }
 }
-

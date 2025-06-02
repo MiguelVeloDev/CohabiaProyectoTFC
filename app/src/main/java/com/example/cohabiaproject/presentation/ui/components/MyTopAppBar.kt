@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PersonOutline
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -42,11 +44,11 @@ fun MyTopAppBar(navController: NavController, titulo : String) {
                 modifier = Modifier.padding(end = 8.dp)
             ) {
                 IconButton(
-                    onClick = {navController.navigate("eventos")},
+                    onClick = {navController.navigate("chat")},
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Notifications,
-                        contentDescription = "Notificaciones"
+                        imageVector = Icons.Default.ChatBubbleOutline,
+                        contentDescription = "Mensajes"
                     )
                 }
 
@@ -61,11 +63,11 @@ fun MyTopAppBar(navController: NavController, titulo : String) {
                   onClick = {
                       navController.navigate("miPerfil")},
                   colors = IconButtonDefaults.iconButtonColors(
-                      containerColor = Color(0xFFF6DAD2)
+                      containerColor = Color(0xFFF3EAE8)
                   )
               ) {
                   Icon(
-                      imageVector = Icons.Default.Person,
+                      imageVector = Icons.Default.PersonOutline,
                       contentDescription = "Mi perfil",
                       tint = NaranjaPrincipal
                   )

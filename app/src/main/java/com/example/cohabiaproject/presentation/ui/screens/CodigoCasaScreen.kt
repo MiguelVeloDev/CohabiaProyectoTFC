@@ -70,9 +70,9 @@ fun CodigoCasa(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Este código identifica tu casa dentro de la aplicación. "
-                            + "Puedes copiarlo para compartirlo con tus compañeros de vivienda "
-                            + "o enviarlo para que puedan unirse a tu grupo.",
+                    text = "Este código identifica tu casa dentro de Cohabia. "
+                            + "Compártelo con los demas habitantes de la casa" +
+                            " para que se unan",
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.DarkGray,
                     modifier = Modifier.padding(horizontal = 8.dp),
@@ -90,7 +90,7 @@ fun CodigoCasa(
                     colors = TextFieldDefaults.colors(
                         unfocusedTextColor = Color.Black,
                         unfocusedContainerColor = FondoTextField,
-                        focusedIndicatorColor = AzulGastos,
+                        focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.White,
                         cursorColor = AzulGastos
                     )
@@ -103,19 +103,6 @@ fun CodigoCasa(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                    IconButton(
-                        onClick = {
-                        },
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.CopyAll,
-                            contentDescription = "Copiar código",
-                            tint = AzulGastos,
-                            modifier = Modifier.size(32.dp)
-                        )
-                    }
-
                     IconButton(
                         onClick = {
                         },

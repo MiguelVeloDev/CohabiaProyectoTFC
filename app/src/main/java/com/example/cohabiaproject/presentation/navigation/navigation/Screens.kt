@@ -38,6 +38,7 @@ sealed class Screen(val route: String) {
     data object AnadirPrograma : Screen("anadirPrograma/{id}") {
         fun createRoute(id: String): String = "anadirPrograma/$id"
     }
+    data object ListaFinanzas : Screen("listaFinanzas")
 
     data object Compras : Screen("compras")
     data object AnadirProducto : Screen("anadirProducto")
@@ -47,6 +48,8 @@ sealed class Screen(val route: String) {
 
     data object AnadirTarea : Screen("anadirTarea")
     data object TareasScreen : Screen("tareas")
+    data object ChatScreen : Screen("chat")
+    data object CasaScreen : Screen("casa")
 
 
     data object Prueba : Screen("prueba")

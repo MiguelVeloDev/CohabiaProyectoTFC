@@ -14,7 +14,7 @@ val VerdeNotas = Color(0xFF017A00)
 val MoradoElectrodomesticos = Color(0xFF5E00FC)
 val AzulGastos =  Color(0xFF0061D9)
 val FondoTextField = Color(0xFFF8F8F8)
-val RojoCompras = Color(0xFF804646)
-val RojoTareas = Color(0xFF15A291)
+val RojoCompras = Color(0xFFD53744)
+val AzulTareas = Color(0xFF4B9FD9)
 
 

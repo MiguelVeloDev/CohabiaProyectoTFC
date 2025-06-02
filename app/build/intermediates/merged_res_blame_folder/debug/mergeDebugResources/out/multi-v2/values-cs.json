@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.cohabiaproject.app-mergeDebugResources-70:/values-cs/values-cs.xml",
+            "outputFile": "com.example.cohabiaproject.app-mergeDebugResources-76:/values-cs/values-cs.xml",
             "map": [
                 {
                     "source": "C:\\Users\\migue\\.gradle\\caches\\8.11.1\\transforms\\3d84a78915189b4a451a62fa22ac76ac\\transformed\\play-services-basement-18.5.0\\res\\values-cs\\values.xml",

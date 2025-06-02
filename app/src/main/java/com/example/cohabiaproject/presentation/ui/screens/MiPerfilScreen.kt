@@ -33,6 +33,7 @@ import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
@@ -44,15 +45,12 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MiPerfil(
-    modifier: Modifier = Modifier,
     navController: NavController,
 ) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val usuarioViewModel: UsuarioViewModel = koinViewModel()
     val usuario by usuarioViewModel.usuarioRegistrado.collectAsState()
-    var nombre = usuario?.nombre ?: ""
     var correo = usuario?.correo ?: ""
-    var fotoPerfil by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
         usuarioViewModel.obtenerUsuarioRegistrado()
@@ -62,7 +60,10 @@ fun MiPerfil(
 
     Scaffold(
         containerColor = Color.White,
-        topBar = { MyTopAppBar(navController,"Mi perfil") },
+        topBar = { TopAppBarConFlecha(
+            titulo = "Mi Perfil",
+            navController = navController
+        ) },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) }
     ) { innerPadding ->
         Box(
@@ -78,7 +79,7 @@ fun MiPerfil(
             ) {
                 IconButton(
                     onClick = {
-                        // Compartir código (si quieres, te puedo mostrar cómo hacerlo)
+
                     },
                 ) {
                     Icon(

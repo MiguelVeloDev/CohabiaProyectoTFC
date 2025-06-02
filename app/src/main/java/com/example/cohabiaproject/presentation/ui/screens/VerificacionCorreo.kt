@@ -26,7 +26,7 @@ fun VerificacionCorreo(navController: NavController) {
 
     LaunchedEffect(Unit) {
         while (true) {
-            delay(3000)
+            delay(2000)
             user?.reload()
             if (user?.isEmailVerified == true) {
                 navController.navigate("eleccionCasa") {
@@ -77,6 +77,7 @@ fun VerificacionCorreo(navController: NavController) {
                     scope.launch {
                         try {
                             user?.sendEmailVerification()
+
                             mensaje = "Correo de verificación enviado"
                         } catch (e: Exception) {
                             mensaje = "Error al enviar el correo: ${e.message}"

@@ -62,7 +62,8 @@ fun FinanzasScreen(
             ) {
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
 
                 ) {
                     Text(
@@ -70,7 +71,7 @@ fun FinanzasScreen(
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable(onClick = { textoSeleccionado = misGastos })
                             .padding(10.dp),
-                        color = if (textoSeleccionado == misGastos) AzulGastos else Color.Gray
+                        color = if (textoSeleccionado == misGastos) Color.Black else Color.Gray
                     )
                     Text(
                         text = todosLosGastos,
@@ -78,14 +79,14 @@ fun FinanzasScreen(
                         modifier = Modifier.clickable(onClick = {
                             textoSeleccionado = todosLosGastos
                         }).padding(10.dp),
-                        color = if (textoSeleccionado == todosLosGastos)AzulGastos else Color.Gray
+                        color = if (textoSeleccionado == todosLosGastos)Color.Black else Color.Gray
                     )
                     Text(
                         text = deuda,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable(onClick = { textoSeleccionado = deuda })
                             .padding(10.dp),
-                        color = if (textoSeleccionado == deuda) AzulGastos else Color.Gray
+                        color = if (textoSeleccionado == deuda) Color.Black else Color.Gray
                     )
 
                 }

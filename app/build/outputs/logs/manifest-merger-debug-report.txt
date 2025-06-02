@@ -12,6 +12,7 @@ MERGED from [androidx.navigation:navigation-common-ktx:2.8.7] C:\Users\migue\.gr
 MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.7] C:\Users\migue\.gradle\caches\8.11.1\transforms\9dea745f7c081f3454e8d802ba1805d6\transformed\navigation-runtime-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-compose:2.8.7] C:\Users\migue\.gradle\caches\8.11.1\transforms\8c1befa1da0553f0b1ffa9b022bfc7fe\transformed\navigation-compose-2.8.7\AndroidManifest.xml:2:1-7:12
 MERGED from [com.airbnb.android:lottie-compose:6.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f2e6bf2e16feda5cc6f436e4d11f9dd8\transformed\lottie-compose-6.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.work:work-runtime-ktx:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\022cdb768481f24e8d3706cdfe9ec011\transformed\work-runtime-ktx-2.8.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-firestore:25.1.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\4ab625365d226486c8eb85c5acf07cb2\transformed\firebase-firestore-25.1.3\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\cf2cb9afac5c6f61031382918c64fe91\transformed\firebase-auth-23.2.0\AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.firebase:firebase-analytics:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\af18f9520f9cc0e621625c200500ebce\transformed\firebase-analytics-22.4.0\AndroidManifest.xml:2:1-9:12
@@ -25,6 +26,7 @@ MERGED from [com.airbnb.android:lottie:6.4.0] C:\Users\migue\.gradle\caches\8.11
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\a7327c40900e12565b9a81d654a54850\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\0a72f0ea08c22fdfc8060d9610c5068a\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment-ktx:1.5.7] C:\Users\migue\.gradle\caches\8.11.1\transforms\8b60a41e11eb2950d795682e462736d7\transformed\fragment-ktx-1.5.7\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:17:1-145:12
 MERGED from [androidx.compose.material3:material3-android:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\2eaf1dde65347727683b6f6bf5db215c\transformed\material3-release\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.foundation:foundation-android:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\3671df9fcf14d8f43977363e2ce3a28f\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\949cf5ed90e4638f73f92f3c3d872235\transformed\foundation-layout-release\AndroidManifest.xml:2:1-7:12
@@ -82,6 +84,7 @@ MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.3] C:\Users\mi
 MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\7b5669afd3206f5d3a14fc7e699ffc2e\transformed\lifecycle-runtime-release\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\28f15b7431f465f60c78b59f202a7813\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\50c55af54f2450b346d1e4fa59fb3ad9\transformed\lifecycle-viewmodel-savedstate-2.8.3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\7d0638256b0f65a8dd62cfc9088d4d73\transformed\lifecycle-service-2.8.3\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\b3c41aada9e691c70439f722c28d4eab\transformed\lifecycle-livedata-core-ktx-2.8.3\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\4d652cf06d350849d8e7ad0d3aecc2ab\transformed\lifecycle-livedata-core-2.8.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\52aa1bea012745807c732fdac30a27ae\transformed\lifecycle-livedata-2.8.3\AndroidManifest.xml:17:1-22:12
@@ -104,7 +107,10 @@ MERGED from [androidx.compose.material:material-icons-core-android:1.7.0] C:\Use
 MERGED from [androidx.compose.ui:ui-android:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\221ca9a7477ddbaf11dd5dce298ce8a0\transformed\ui-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\bf66848729ef7368c06d1f6443b92916\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\15001cb67e300a9c25a5439c914d831e\transformed\googleid-1.1.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\2232aa80d13f5de34705a2c4213f2043\transformed\sqlite-framework-2.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\cb8c89d14c554deedf16ec42d25fb1a4\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.sqlite:sqlite:2.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\ab257f55176355819eeb570d4ddaec33\transformed\sqlite-2.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\6ea83a14404beabec2c91200b80e8091\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\354de9c04a5f54c0ebacec20b2933b1f\transformed\firebase-components-18.0.0\AndroidManifest.xml:15:1-20:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\4dc4f39b5770dd7dc4e937f5d3d7d3e9\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -154,6 +160,8 @@ MERGED from [io.insert-koin:koin-android:3.4.1] C:\Users\migue\.gradle\caches\8.
 MERGED from [io.insert-koin:koin-android:3.4.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\d52452877b459d7c34553b2dcd108369\transformed\koin-android-3.4.1\AndroidManifest.xml:9:5-20
 MERGED from [com.airbnb.android:lottie:6.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\d94ccd9d1e3c2d6311d3fb3f3df7db2a\transformed\lottie-6.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.airbnb.android:lottie:6.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\d94ccd9d1e3c2d6311d3fb3f3df7db2a\transformed\lottie-6.4.0\AndroidManifest.xml:7:5-20
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:28:5-143:19
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:28:5-143:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\94e60214391e60e4082934e7a63f17e3\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\94e60214391e60e4082934e7a63f17e3\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\081351265710dd1b093ef47f4c4f9641\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
@@ -196,6 +204,8 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\3af6f12b8893bb126f1d55c45c4974ee\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.android.gms:play-services-basement:18.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\3d84a78915189b4a451a62fa22ac76ac\transformed\play-services-basement-18.5.0\AndroidManifest.xml:20:5-24:19
 MERGED from [com.google.android.gms:play-services-basement:18.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\3d84a78915189b4a451a62fa22ac76ac\transformed\play-services-basement-18.5.0\AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\6ea83a14404beabec2c91200b80e8091\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\6ea83a14404beabec2c91200b80e8091\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\f880387c766ff786c367f2deb766b933\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
@@ -256,6 +266,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:22.4.0] C:\Use
 MERGED from [com.google.android.gms:play-services-measurement-api:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\28c781a487a3cecb80deb8f29a691f02\transformed\play-services-measurement-api-22.4.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\7a4c9761e62d83a10597c89cb1f2f132\transformed\firebase-installations-18.0.0\AndroidManifest.xml:7:5-79
 MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\7a4c9761e62d83a10597c89cb1f2f132\transformed\firebase-installations-18.0.0\AndroidManifest.xml:7:5-79
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:24:5-79
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f635b874b437626a6265bf333408894c\transformed\play-services-measurement-22.4.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f635b874b437626a6265bf333408894c\transformed\play-services-measurement-22.4.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.recaptcha:recaptcha:18.6.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\392833e9cf5582593695d0f1c8561835\transformed\recaptcha-18.6.1\AndroidManifest.xml:8:5-79
@@ -308,6 +320,8 @@ MERGED from [androidx.navigation:navigation-compose:2.8.7] C:\Users\migue\.gradl
 MERGED from [androidx.navigation:navigation-compose:2.8.7] C:\Users\migue\.gradle\caches\8.11.1\transforms\8c1befa1da0553f0b1ffa9b022bfc7fe\transformed\navigation-compose-2.8.7\AndroidManifest.xml:5:5-44
 MERGED from [com.airbnb.android:lottie-compose:6.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f2e6bf2e16feda5cc6f436e4d11f9dd8\transformed\lottie-compose-6.4.0\AndroidManifest.xml:5:5-44
 MERGED from [com.airbnb.android:lottie-compose:6.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f2e6bf2e16feda5cc6f436e4d11f9dd8\transformed\lottie-compose-6.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.work:work-runtime-ktx:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\022cdb768481f24e8d3706cdfe9ec011\transformed\work-runtime-ktx-2.8.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime-ktx:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\022cdb768481f24e8d3706cdfe9ec011\transformed\work-runtime-ktx-2.8.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-firestore:25.1.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\4ab625365d226486c8eb85c5acf07cb2\transformed\firebase-firestore-25.1.3\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-firestore:25.1.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\4ab625365d226486c8eb85c5acf07cb2\transformed\firebase-firestore-25.1.3\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\cf2cb9afac5c6f61031382918c64fe91\transformed\firebase-auth-23.2.0\AndroidManifest.xml:21:5-23:151
@@ -334,6 +348,8 @@ MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\migue\.gradle\caches\8
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\0a72f0ea08c22fdfc8060d9610c5068a\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment-ktx:1.5.7] C:\Users\migue\.gradle\caches\8.11.1\transforms\8b60a41e11eb2950d795682e462736d7\transformed\fragment-ktx-1.5.7\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment-ktx:1.5.7] C:\Users\migue\.gradle\caches\8.11.1\transforms\8b60a41e11eb2950d795682e462736d7\transformed\fragment-ktx-1.5.7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:21:5-44
 MERGED from [androidx.compose.material3:material3-android:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\2eaf1dde65347727683b6f6bf5db215c\transformed\material3-release\AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.material3:material3-android:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\2eaf1dde65347727683b6f6bf5db215c\transformed\material3-release\AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.foundation:foundation-android:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\3671df9fcf14d8f43977363e2ce3a28f\transformed\foundation-release\AndroidManifest.xml:5:5-44
@@ -448,6 +464,8 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\28f15b7431f465f60c78b59f202a7813\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:21:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\50c55af54f2450b346d1e4fa59fb3ad9\transformed\lifecycle-viewmodel-savedstate-2.8.3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\50c55af54f2450b346d1e4fa59fb3ad9\transformed\lifecycle-viewmodel-savedstate-2.8.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\7d0638256b0f65a8dd62cfc9088d4d73\transformed\lifecycle-service-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\7d0638256b0f65a8dd62cfc9088d4d73\transformed\lifecycle-service-2.8.3\AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\b3c41aada9e691c70439f722c28d4eab\transformed\lifecycle-livedata-core-ktx-2.8.3\AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\b3c41aada9e691c70439f722c28d4eab\transformed\lifecycle-livedata-core-ktx-2.8.3\AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\4d652cf06d350849d8e7ad0d3aecc2ab\transformed\lifecycle-livedata-core-2.8.3\AndroidManifest.xml:20:5-44
@@ -492,8 +510,14 @@ MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\migue\.gradle\ca
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\bf66848729ef7368c06d1f6443b92916\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\15001cb67e300a9c25a5439c914d831e\transformed\googleid-1.1.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\15001cb67e300a9c25a5439c914d831e\transformed\googleid-1.1.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\2232aa80d13f5de34705a2c4213f2043\transformed\sqlite-framework-2.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\2232aa80d13f5de34705a2c4213f2043\transformed\sqlite-framework-2.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\cb8c89d14c554deedf16ec42d25fb1a4\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\cb8c89d14c554deedf16ec42d25fb1a4\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.sqlite:sqlite:2.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\ab257f55176355819eeb570d4ddaec33\transformed\sqlite-2.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\ab257f55176355819eeb570d4ddaec33\transformed\sqlite-2.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\6ea83a14404beabec2c91200b80e8091\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\6ea83a14404beabec2c91200b80e8091\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\354de9c04a5f54c0ebacec20b2933b1f\transformed\firebase-components-18.0.0\AndroidManifest.xml:18:5-44
@@ -624,6 +648,8 @@ ADDED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\migue\.gradle\cac
 		ADDED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\cf2cb9afac5c6f61031382918c64fe91\transformed\firebase-auth-23.2.0\AndroidManifest.xml:70:17-109
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.android.gms:play-services-measurement-api:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\28c781a487a3cecb80deb8f29a691f02\transformed\play-services-measurement-api-22.4.0\AndroidManifest.xml:24:5-68
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:23:5-68
+MERGED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:23:5-68
 MERGED from [com.google.android.gms:play-services-measurement:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f635b874b437626a6265bf333408894c\transformed\play-services-measurement-22.4.0\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f635b874b437626a6265bf333408894c\transformed\play-services-measurement-22.4.0\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement-impl:22.4.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\d2ec203f91f607855cd262c8649a1f8b\transformed\play-services-measurement-impl-22.4.0\AndroidManifest.xml:25:5-68
@@ -696,6 +722,240 @@ ADDED from [com.google.firebase:firebase-common:21.0.0] C:\Users\migue\.gradle\c
 		ADDED from [com.google.firebase:firebase-common:21.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\e1331615a187f2d474866d1d3936b227\transformed\firebase-common-21.0.0\AndroidManifest.xml:37:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-common:21.0.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\e1331615a187f2d474866d1d3936b227\transformed\firebase-common-21.0.0\AndroidManifest.xml:36:17-109
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:25:5-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:25:22-78
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:26:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:26:22-74
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:29:9-37:20
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\28f15b7431f465f60c78b59f202a7813\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\28f15b7431f465f60c78b59f202a7813\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\f880387c766ff786c367f2deb766b933\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\f880387c766ff786c367f2deb766b933\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\64a1151d7aae831f471cc5e8d7360e05\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\64a1151d7aae831f471cc5e8d7360e05\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:33:13-31
+	android:authorities
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:31:13-68
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:30:13-67
+meta-data#androidx.work.WorkManagerInitializer
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:34:13-36:52
+	android:value
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:36:17-49
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:35:17-68
+service#androidx.work.impl.background.systemalarm.SystemAlarmService
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:39:9-45:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:42:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:43:13-37
+	tools:ignore
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:44:13-60
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:45:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:41:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:40:13-88
+service#androidx.work.impl.background.systemjob.SystemJobService
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:46:9-52:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:49:13-70
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:50:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:51:13-69
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:52:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:48:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:47:13-84
+service#androidx.work.impl.foreground.SystemForegroundService
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:53:9-59:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:56:13-77
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:57:13-37
+	tools:ignore
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:58:13-60
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:59:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:55:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:54:13-81
+receiver#androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:61:9-66:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:65:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:66:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:63:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:62:13-88
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:67:9-77:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:70:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:71:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:72:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:69:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:68:13-106
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:73:13-76:29
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:74:17-87
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:74:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:75:17-90
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:75:25-87
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:78:9-88:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:81:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:82:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:83:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:80:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:79:13-104
+intent-filter#action:name:android.intent.action.BATTERY_LOW+action:name:android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:84:13-87:29
+action#android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:85:25-74
+action#android.intent.action.BATTERY_LOW
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:86:17-76
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:86:25-73
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:89:9-99:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:92:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:93:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:94:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:91:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:90:13-104
+intent-filter#action:name:android.intent.action.DEVICE_STORAGE_LOW+action:name:android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:95:13-98:29
+action#android.intent.action.DEVICE_STORAGE_LOW
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:96:17-83
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:96:25-80
+action#android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:97:17-82
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:97:25-79
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:100:9-109:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:103:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:104:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:105:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:102:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:101:13-103
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:106:13-108:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:107:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:107:25-76
+receiver#androidx.work.impl.background.systemalarm.RescheduleReceiver
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:110:9-121:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:113:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:114:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:115:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:112:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:111:13-88
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:116:13-120:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:117:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:117:25-76
+action#android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:118:17-73
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:118:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:119:17-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:119:25-78
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:122:9-131:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:125:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:126:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:127:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:124:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:123:13-99
+intent-filter#action:name:androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:128:13-130:29
+action#androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:129:17-98
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:129:25-95
+receiver#androidx.work.impl.diagnostics.DiagnosticsReceiver
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:132:9-142:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:135:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:136:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:137:13-57
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:138:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:134:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:133:13-78
+intent-filter#action:name:androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:139:13-141:29
+action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:140:17-88
+	android:name
+		ADDED from [androidx.work:work-runtime:2.8.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\8ae513b444367ad817708f9de93af4ce\transformed\work-runtime-2.8.1\AndroidManifest.xml:140:25-85
 activity#androidx.activity.ComponentActivity
 ADDED from [androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\migue\.gradle\caches\8.11.1\transforms\94e60214391e60e4082934e7a63f17e3\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:23:9-25:39
 	android:exported
@@ -794,22 +1054,6 @@ uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
 ADDED from [com.google.android.recaptcha:recaptcha:18.6.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\392833e9cf5582593695d0f1c8561835\transformed\recaptcha-18.6.1\AndroidManifest.xml:9:5-98
 	android:name
 		ADDED from [com.google.android.recaptcha:recaptcha:18.6.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\392833e9cf5582593695d0f1c8561835\transformed\recaptcha-18.6.1\AndroidManifest.xml:9:22-95
-provider#androidx.startup.InitializationProvider
-ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\28f15b7431f465f60c78b59f202a7813\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] C:\Users\migue\.gradle\caches\8.11.1\transforms\28f15b7431f465f60c78b59f202a7813\transformed\lifecycle-process-2.8.3\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\f880387c766ff786c367f2deb766b933\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\f880387c766ff786c367f2deb766b933\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\64a1151d7aae831f471cc5e8d7360e05\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
-MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\64a1151d7aae831f471cc5e8d7360e05\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
-	tools:node
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:28:13-31
-	android:authorities
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-	android:exported
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-	android:name
-		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
 meta-data#androidx.emoji2.text.EmojiCompatInitializer
 ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\365e024c5340185689ae17905f911707\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
 	android:value
@@ -862,6 +1106,16 @@ ADDED from [com.google.android.gms:play-services-basement:18.5.0] C:\Users\migue
 		ADDED from [com.google.android.gms:play-services-basement:18.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\3d84a78915189b4a451a62fa22ac76ac\transformed\play-services-basement-18.5.0\AndroidManifest.xml:23:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:18.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\3d84a78915189b4a451a62fa22ac76ac\transformed\play-services-basement-18.5.0\AndroidManifest.xml:22:13-58
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.5.0] C:\Users\migue\.gradle\caches\8.11.1\transforms\f0511fd2b0a9eebaa8fda80e46aa1cee\transformed\room-runtime-2.5.0\AndroidManifest.xml:25:13-74
 meta-data#androidx.profileinstaller.ProfileInstallerInitializer
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\migue\.gradle\caches\8.11.1\transforms\f880387c766ff786c367f2deb766b933\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
 	android:value

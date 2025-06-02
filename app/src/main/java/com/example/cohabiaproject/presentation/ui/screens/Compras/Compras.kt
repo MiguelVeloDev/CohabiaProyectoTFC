@@ -55,7 +55,7 @@ import com.example.cohabiaproject.ui.theme.RojoCompras
 fun Compras(
     modifier: Modifier = Modifier,
     navController: NavController,
-    productoViewModel: ProductoViewModel = koinViewModel() // Asegúrate de tenerlo en tu DI
+    productoViewModel: ProductoViewModel = koinViewModel()
 ) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val listaProductos by productoViewModel.productos.collectAsState(initial = emptyList())
@@ -103,7 +103,7 @@ fun Compras(
                 onDismiss = { showDialogGastos = false },
                 onConfirm = {
                     showDialog = false
-                    navController.navigate(Screen.NuevoGastoScreen.route)
+                    navController.navigate(Screen.SeleccionUsuarioGasto.route)
                 })}
         Column(
             modifier = Modifier
@@ -112,28 +112,19 @@ fun Compras(
         ) {
 
 
-            Button(
-                modifier = Modifier
-                    .padding(16.dp),
-                onClick = { showDialog = true },
-                colors = ButtonDefaults.buttonColors(containerColor = RojoCompras),
-                enabled = listaProductos.any { it.comprado }
-            ) {
-                Text(text = "Borrar productos comprados")
-            }
             LazyColumn(
                 modifier = Modifier
-                    .padding(horizontal = 16.dp).fillMaxSize(),
+                    .padding(horizontal = 16.dp).weight(1f),
 
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(vertical = 16.dp)
             ) {
                 productosPorCategoria.forEach { (categoria, productos) ->
-                    if (productos.any { it.categoria == categoria && it.enLista }){
+                    if (productos.any { it.categoria == categoria && it.enLista }) {
                         item {
                             Text(
                                 text = categoria,
-                                fontSize = 20.sp,
+                                fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(vertical = 4.dp),
                                 color = RojoCompras
@@ -147,6 +138,21 @@ fun Compras(
                     }
                 }
 
+            }
+            Box(
+                modifier = Modifier.fillMaxWidth().padding(4.dp),
+                contentAlignment = Alignment.Center
+
+
+            ) {
+                Button(
+                    onClick = { showDialog = true },
+                    colors = ButtonDefaults.buttonColors(containerColor = RojoCompras),
+                    enabled = listaProductos.any { it.comprado },
+                    shape = RoundedCornerShape(8.dp),
+                ) {
+                    Text(text = "Finalizar compra")
+                }
             }
         }
     }
@@ -167,15 +173,13 @@ fun ProductoItem(producto: Producto, productoViewModel: ProductoViewModel) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp),
+                .padding(horizontal = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column {
                 Text(
                     text = producto.nombre,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
                     style = if (producto.comprado) {
                         TextStyle(textDecoration = TextDecoration.LineThrough)
                     } else {
