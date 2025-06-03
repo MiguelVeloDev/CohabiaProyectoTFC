@@ -1,7 +1,7 @@
 package com.example.cohabiaproject.domain.model
 
 data class Tarea(
-    val id: String = "",            // id del documento (puede estar vacío inicialmente)
+    val id: String = "",
     val contenido: String = "",
     val usuario: String = "",
     val dia: String? = "",

@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.PersonOutline
 import androidx.compose.material.icons.filled.PersonPin
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.twotone.PersonPin
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -83,7 +84,7 @@ fun MiPerfil(
                     },
                 ) {
                     Icon(
-                        imageVector = Icons.Default.PersonPin,
+                        imageVector = Icons.TwoTone.PersonPin,
                         contentDescription = "Compartir código",
                         tint = NaranjaPrincipal,
                         modifier = Modifier.size(32.dp)

@@ -173,7 +173,7 @@ fun AnadirPrograma(
                                     color = Color.Gray
                                 )
                             }
-                            IconButton(onClick = { /* TODO: acción eliminar programa */ }) {
+                            IconButton(onClick = {  }) {
                                 Icon(
                                     imageVector = Icons.Default.Delete,
                                     contentDescription = "Eliminar programa",

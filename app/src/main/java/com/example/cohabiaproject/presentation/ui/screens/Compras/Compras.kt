@@ -1,5 +1,4 @@
 package com.example.cohabiaproject.presentation.ui.screens.Compras
-// Compose UI
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,18 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Navigation
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
-// Koin ViewModel
 import org.koin.androidx.compose.koinViewModel
 
-// Tu ViewModel y modelo de datos
-           // Reemplaza con tu ruta real
 
-// Otros
-import androidx.compose.material3.CardDefaults // Si usas Material 3 para Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import com.example.cohabiaproject.domain.model.Evento

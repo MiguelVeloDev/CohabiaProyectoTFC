@@ -57,7 +57,7 @@ fun VerificacionCorreo(navController: NavController) {
             )
 
             Text(
-                text = "📧 Verifica tu correo electrónico",
+                text = "Verifica tu correo electrónico",
                 color = NaranjaPrincipal
             )
 

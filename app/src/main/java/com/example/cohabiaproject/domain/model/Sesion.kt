@@ -22,7 +22,6 @@ object Sesion {
         if (user != null) {
             val db = FirebaseFirestore.getInstance()
             try {
-                // Obtener casaId
                 val casa = db.collection("casas")
                     .whereArrayContains("miembros", userId)
                     .get()
@@ -30,7 +29,6 @@ object Sesion {
 
                 casaId = if (!casa.isEmpty) casa.documents.first().id else ""
 
-                // Obtener nombre de usuario
                 val userDoc = db.collection("usuarios")
                     .document(userId)
                     .get()

@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.domain.model.Usuario
+import com.example.cohabiaproject.presentation.ui.components.DialogConfirmacion
 import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
 import com.example.cohabiaproject.presentation.ui.viewmodel.CasaViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
@@ -35,6 +36,8 @@ fun CasaScreen(navController: NavController) {
     val usuarios by usuarioViewModel.usuarios.collectAsState()
     val casaViewModel: CasaViewModel = koinViewModel()
     val casa by casaViewModel.casa.collectAsState()
+
+
 
     Scaffold(
         containerColor = Color.White,
@@ -92,6 +95,19 @@ fun CasaScreen(navController: NavController) {
 }
 @Composable
 fun UsuarioCard(usuario: Usuario, onBorrar: () -> Unit) {
+    var confirmarEliminar by remember { mutableStateOf(false) }
+
+    if (confirmarEliminar) {
+        DialogConfirmacion(
+            texto = "Eliminar ${usuario.nombre} de la casa",
+            onDismiss = { confirmarEliminar = false },
+            onConfirm = {
+                onBorrar
+                confirmarEliminar = false
+            },
+        )
+    }
+
     Card(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -119,7 +135,7 @@ fun UsuarioCard(usuario: Usuario, onBorrar: () -> Unit) {
                 modifier = Modifier.weight(1f)
             )
 
-            IconButton(onClick = onBorrar) {
+            IconButton(onClick = {confirmarEliminar = true}) {
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = "Eliminar",

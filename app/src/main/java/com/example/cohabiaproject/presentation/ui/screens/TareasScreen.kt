@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddTask
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.RadioButtonUnchecked
 import androidx.compose.material3.HorizontalDivider
@@ -120,13 +121,11 @@ fun TareaItem(
     ,eventoViewModel: EventoViewModel = koinViewModel()
 ) {
     var showDialogConfirmacion by remember { mutableStateOf(false) }
-    var marcado by remember { mutableStateOf(false) }
     if (showDialogConfirmacion) {
         DialogConfirmacion(
             texto = "¿Marcar tarea como completada?",
             onDismiss = { showDialogConfirmacion = false },
             onConfirm ={
-                marcado = true
                 showDialogConfirmacion = false
                 tareasViewModel.borrar(tarea.id)
                 eventoViewModel.save(Evento(
@@ -156,7 +155,7 @@ fun TareaItem(
                 showDialogConfirmacion = true
             }) {
                 Icon(
-                    imageVector = if (marcado) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked,
+                    imageVector = Icons.Default.AddTask,
                     contentDescription = "Marcar producto",
                     tint = NaranjaPrincipal
                 )

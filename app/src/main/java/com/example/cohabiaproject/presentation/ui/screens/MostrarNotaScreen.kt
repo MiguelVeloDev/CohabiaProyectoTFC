@@ -107,6 +107,7 @@ fun MostrarNotaScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
                 .padding(10.dp)
+                .imePadding()
         ) {
             Box(
                 modifier = Modifier

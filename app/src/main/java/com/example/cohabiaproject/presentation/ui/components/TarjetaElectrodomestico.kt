@@ -54,7 +54,7 @@ fun TarjetaElectrodomestico(
     var showDialogSinPrograma by remember { mutableStateOf(false) }
     val running = electrodomestico.usoProgramaActual?.pausado == false
     val imagen = remember{Electrodomestico.obtenerImagen(electrodomestico.tipo)}
-
+    var confirmarEliminar by remember { mutableStateOf(false) }
 
 
     if (showDialog) {
@@ -105,6 +105,18 @@ fun TarjetaElectrodomestico(
             }
         )
     }
+    if (confirmarEliminar){
+        DialogConfirmacion(
+            onDismiss = { confirmarEliminar = false },
+            onConfirm = {
+                confirmarEliminar = false
+                electrodomesticoViewModel.delete(electrodomestico.id)
+            }
+            , texto = "¿Quieres eliminar este electrodoméstico?"
+        )
+    }
+
+
         if (electrodomestico.usoProgramaActual != null) electrodomesticoViewModel.iniciarContador(electrodomestico)
 
     Card(
@@ -114,7 +126,7 @@ fun TarjetaElectrodomestico(
             .clickable { expanded = !expanded }
             .border(
                 width = 1.dp,
-                color = if (electrodomestico.esperandoFinalizar) Color.Red else Color.Transparent,
+                color = if (electrodomestico.esperandoFinalizar) MoradoElectrodomesticos else Color.Transparent,
                 shape = RoundedCornerShape(12.dp)
             ),
         colors = CardDefaults.cardColors(Color.White),
@@ -243,10 +255,16 @@ fun TarjetaElectrodomestico(
                         horizontalArrangement = Arrangement.End,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        if (electrodomestico.esperandoFinalizar){
+                        if (electrodomestico.esperandoFinalizar) {
                             IconButton(
-                                onClick = {electrodomesticoViewModel.acabarUsoPrograma(electrodomestico.copy(esperandoFinalizar = false))
-                                    ; expanded = false },
+                                onClick = {
+                                    electrodomesticoViewModel.acabarUsoPrograma(
+                                        electrodomestico.copy(
+                                            esperandoFinalizar = false
+                                        )
+                                    )
+                                    ; expanded = false
+                                },
                                 modifier = Modifier.size(36.dp)
                             ) {
                                 Icon(
@@ -256,18 +274,23 @@ fun TarjetaElectrodomestico(
                                 )
                             }
                         }
-                        IconButton(
-                            onClick = { expanded = false; navController.navigate("anadirPrograma/${electrodomestico.id}") },
-                            modifier = Modifier.size(36.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.AddCircleOutline,
-                                tint = Color.Gray,
-                                contentDescription = "Compartir nota"
-                            )
+                        if(!electrodomestico.electrodomesticoSinProgramas) {
+                            IconButton(
+                                onClick = {
+                                    expanded =
+                                        false; navController.navigate("anadirPrograma/${electrodomestico.id}")
+                                },
+                                modifier = Modifier.size(36.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.AddCircleOutline,
+                                    tint = Color.Gray,
+                                    contentDescription = "Compartir nota"
+                                )
+                            }
                         }
                         IconButton(
-                            onClick = { electrodomesticoViewModel.delete(electrodomestico.id); expanded = false },
+                            onClick = {confirmarEliminar = true; expanded = false },
                             modifier = Modifier.size(36.dp)
                         ) {
                             Icon(

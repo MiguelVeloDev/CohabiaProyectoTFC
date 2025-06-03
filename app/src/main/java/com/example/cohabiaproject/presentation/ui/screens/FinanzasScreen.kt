@@ -1,6 +1,7 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
 import android.util.Log
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -18,6 +19,7 @@ import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopApp
 import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
+import com.example.cohabiaproject.ui.theme.coloresTextField
 import org.koin.androidx.compose.koinViewModel
 import java.util.Date
 
@@ -58,7 +60,9 @@ fun FinanzasScreen(
 
         Column(modifier = Modifier.padding(innerPadding)) {
             Box(
-                modifier = Modifier.fillMaxWidth().padding(10.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
             ) {
                 Row(
                     modifier = Modifier
@@ -69,22 +73,26 @@ fun FinanzasScreen(
                     Text(
                         text = misGastos,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.clickable(onClick = { textoSeleccionado = misGastos })
+                        modifier = Modifier
+                            .clickable(onClick = { textoSeleccionado = misGastos })
                             .padding(10.dp),
                         color = if (textoSeleccionado == misGastos) Color.Black else Color.Gray
                     )
                     Text(
                         text = todosLosGastos,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.clickable(onClick = {
-                            textoSeleccionado = todosLosGastos
-                        }).padding(10.dp),
+                        modifier = Modifier
+                            .clickable(onClick = {
+                                textoSeleccionado = todosLosGastos
+                            })
+                            .padding(10.dp),
                         color = if (textoSeleccionado == todosLosGastos)Color.Black else Color.Gray
                     )
                     Text(
                         text = deuda,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.clickable(onClick = { textoSeleccionado = deuda })
+                        modifier = Modifier
+                            .clickable(onClick = { textoSeleccionado = deuda })
                             .padding(10.dp),
                         color = if (textoSeleccionado == deuda) Color.Black else Color.Gray
                     )
@@ -130,16 +138,15 @@ fun EditarGasto(
     }
 
     var concepto by remember { mutableStateOf(gasto?.concepto ?: "") }
-    var cantidad by remember { mutableStateOf(gasto?.cantidad.toString() ?: "") }
-    var fecha by remember { mutableStateOf(gasto?.fecha ?: Date()) }
+    var cantidad by remember { mutableStateOf(gasto?.cantidad?.toString() ?: "") }
 
     Scaffold(
-
+        containerColor = Color.White,
         topBar = {
             NuevoElementoTopAppBar(
 
-                titulo = "Gastos",
-                textoBoton = "Añadir gasto",
+                titulo = "Editar",
+                textoBoton = "Guardar",
                 navController = navController,
                 accion = {
                     gasto?.concepto = concepto
@@ -154,25 +161,49 @@ fun EditarGasto(
         },
         bottomBar = { BottomNavBar(navController, selectedRoute = currentRoute) })
     { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        Column(modifier = Modifier.padding(innerPadding), horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
             Box(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp).fillMaxWidth(),
+                contentAlignment = Alignment.Center
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    if (gasto != null) {
-                        TextField(
-                            value = concepto,
-                            onValueChange = { concepto = it }
-                        )
-                        TextField(
-                            value = cantidad,
-                            onValueChange = { cantidad = it }
 
-                        )
-                    }
+                    if (gasto != null) {
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(2.dp),
+                            colors = CardDefaults.cardColors(
+                                containerColor = Color(0xFFF1F1F1)
+                        ),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                           border = BorderStroke(1.dp, AzulGastos) ) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(26.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                TextField(
+                                    value = concepto,
+                                    onValueChange = { concepto = it },
+                                    colors = coloresTextField(),
+                                    singleLine = true
+                                )
+                                Spacer(modifier = Modifier.height(16.dp))
+                                TextField(
+                                    value = cantidad,
+                                    onValueChange = { nuevoValor ->
+                                        if (nuevoValor.toDoubleOrNull() != null || nuevoValor.isBlank()) {
+                                            cantidad = nuevoValor
+                                        }
+                                    },
+                                    singleLine = true,
+                                    colors = coloresTextField()
+                                )
+                            }
+                        }
+
                 }
             }
         }

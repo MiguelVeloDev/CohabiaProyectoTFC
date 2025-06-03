@@ -1,7 +1,9 @@
 package com.example.cohabiaproject.presentation.ui.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -70,23 +72,31 @@ fun ChatScreen(navController: NavController) {
                 .fillMaxSize()
                 .imePadding()
         ) {
-            if (mensajes.value.isEmpty()) {
-                ListaVaciaPlaceholder(
-                    icono = Icons.TwoTone.Message,
-                    texto = "mensajes"
-                )
-            } else {
-                LazyColumn(
-                    reverseLayout = true,
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                ) {
-                    items(mensajes.value) { mensaje ->
-                        MensajeItem(mensaje = mensaje, usuarios.value)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(bottom = 16.dp)
+            ) {
+                if (mensajes.value.isEmpty()) {
+                    ListaVaciaPlaceholder(
+                        icono = Icons.TwoTone.Message,
+                        texto = "mensajes"
+                    )
+                } else {
+                    LazyColumn(
+                        reverseLayout = true,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(8.dp)
+                    ) {
+                        items(mensajes.value) { mensaje ->
+                            MensajeItem(mensaje = mensaje, usuarios.value)
+                        }
                     }
                 }
+            }
+
                 Row(
                     verticalAlignment = CenterVertically
                 ) {
@@ -106,11 +116,8 @@ fun ChatScreen(navController: NavController) {
                             focusedContainerColor = FondoTextField
                         )
                     )
-                    Spacer(
-                        modifier = Modifier.padding(
-                            end = 16.dp
-                        )
-                    )
+
+
                     IconButton(
                         onClick = {
                             mensajeViewModel.save(
@@ -131,7 +138,7 @@ fun ChatScreen(navController: NavController) {
         }
     }
 
-}
+
 @Composable
 fun MensajeItem(mensaje: Mensaje, usuarios: List<Usuario>) {
     if (mensaje.usuario == Sesion.userId) {

@@ -23,6 +23,8 @@ import com.example.cohabiaproject.presentation.ui.viewmodel.FinanzasViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
 import com.example.cohabiaproject.ui.theme.AzulGastos
 import com.example.cohabiaproject.ui.theme.FondoTextField
+import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
+import com.example.cohabiaproject.ui.theme.coloresTextField
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -77,33 +79,21 @@ fun NuevoGastoScreen(
                 label = { Text("Concepto") },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                colors = TextFieldDefaults.colors(
-                    unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = FondoTextField,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
+                colors = coloresTextField()
             )
 
-            Text(
-                text = "Usuario paga: $usuarioPaga",
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
             Spacer(modifier = Modifier.height(10.dp))
 
             TextField(
                 value = cantidad.toString(),
-                onValueChange = { cantidad = it },
+                onValueChange = { nuevoValor ->
+                    if (nuevoValor.toDoubleOrNull() != null || nuevoValor.isBlank()) {
+                        cantidad = nuevoValor
+                    }                } ,
                 label = { Text("Cantidad") },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                colors = TextFieldDefaults.colors(
-                    unfocusedTextColor = Color.Black,
-                    unfocusedContainerColor = FondoTextField,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
+                colors = coloresTextField()
             )
 
 
@@ -156,7 +146,7 @@ fun NuevoGastoScreen(
                                         Icons.Default.CheckBox
                                     },
                                     contentDescription = "Opciones",
-                                    tint = Color.Blue
+                                    tint = AzulGastos
                                 )
                             }
                         }
@@ -171,7 +161,8 @@ fun NuevoGastoScreen(
             ) {
                 Checkbox(
                     checked = deuda,
-                    onCheckedChange = { deuda = it }
+                    onCheckedChange = { deuda = it },
+                    colors = CheckboxDefaults.colors(checkedColor = NaranjaPrincipal)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text("¿Añadir deuda?")
@@ -224,7 +215,7 @@ fun NuevoGastoScreen(
                                             Icons.Default.CheckBox
                                         },
                                         contentDescription = "Seleccionar deuda",
-                                        tint = Color.Red
+                                        tint = NaranjaPrincipal
                                     )
                                 }
                             }

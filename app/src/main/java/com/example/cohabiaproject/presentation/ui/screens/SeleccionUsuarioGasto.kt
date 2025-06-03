@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
 import com.example.cohabiaproject.presentation.ui.viewmodel.UsuarioViewModel
+import com.example.cohabiaproject.ui.theme.AzulGastos
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -92,7 +93,7 @@ fun SeleccionUsuarioGasto(
                                         Icons.Default.CheckBox
                                     },
                                     contentDescription = "Opciones",
-                                    tint = Color.Blue
+                                    tint = AzulGastos
                                 )
                             }
                         }

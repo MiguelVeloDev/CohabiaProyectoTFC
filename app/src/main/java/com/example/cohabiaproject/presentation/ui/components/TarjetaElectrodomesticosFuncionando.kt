@@ -29,6 +29,7 @@ import androidx.navigation.NavController
 import com.example.cohabiaproject.R
 import com.example.cohabiaproject.domain.model.Electrodomestico
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
+import com.example.cohabiaproject.ui.theme.MoradoElectrodomesticos
 import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 import org.koin.androidx.compose.koinViewModel
 
@@ -97,7 +98,7 @@ fun ElectrodomesticoEnFuncionamientoCard(
             .height(90.dp)
             .border(
                 width = 1.dp,
-                color = if (electrodomestico.esperandoFinalizar) Color.Red else Color(0xFFB7B7B7),
+                color = if (electrodomestico.esperandoFinalizar) MoradoElectrodomesticos else Color(0xFFB7B7B7),
                 shape = RoundedCornerShape(8.dp)
             ),
         shape = RoundedCornerShape(8.dp),
