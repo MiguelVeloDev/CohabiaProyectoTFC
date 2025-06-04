@@ -60,10 +60,10 @@ fun NuevoGastoScreen(
                 titulo = "Nuevo gasto",
                 textoBoton = "Guardar",
                 navController = navController,
-                accion = {finanzasViewmodel.save (finanzasViewmodel.crearFinanza(concepto = concepto, cantidad = cantidad.toDoubleOrNull()?.let { String.format("%.2f", it).toDouble() } ?: 0.0
+                accion = {finanzasViewmodel.save (finanzasViewmodel.crearFinanza(concepto = concepto, cantidad = cantidad.toDoubleOrNull() ?: 0.0
                     , usuarioPaga = finanzasViewmodel.convertirNombreAId((usuarioPaga),listaUsuarios.value), usuariosParticipan = finanzasViewmodel.convertirNombreAId(usuariosParticipan, listaUsuarios.value),usuariosDeuda = finanzasViewmodel.convertirNombreAId(usuariosDeuda, listaUsuarios.value))); navController.navigate(
                     Screen.FinanzasScreen.route);eventoViewModel.save(Evento(tipo = "GASTO", contenido = eventoViewModel.generarMensaje("GASTO", cantidad))) },
-                enabled = usuariosParticipan.isNotEmpty(),
+                enabled = usuariosParticipan.isNotEmpty() && botonActivo,
             )
         },
 
@@ -87,10 +87,11 @@ fun NuevoGastoScreen(
 
             TextField(
                 value = cantidad.toString(),
-                onValueChange = { nuevoValor ->
-                    if (nuevoValor.toDoubleOrNull() != null || nuevoValor.isBlank()) {
-                        cantidad = nuevoValor
-                    }                } ,
+                onValueChange = {
+                    val regex = Regex("^\\d*(\\.\\d{0,2})?$")
+                    if (it.isEmpty() || it.matches(regex)) {
+                        cantidad = it
+                    }             } ,
                 label = { Text("Cantidad") },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
