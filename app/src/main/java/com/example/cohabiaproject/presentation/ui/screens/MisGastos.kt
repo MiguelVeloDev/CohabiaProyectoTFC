@@ -44,8 +44,11 @@ finanzasViewmodel: FinanzasViewModel,
 ) {
 
     val gastosEsteMes by finanzasViewmodel.gastosEsteMes.collectAsState(emptyList())
+    val total = gastosEsteMes.sumOf { it.cantidad }
+    val totalRedondeado = String.format(Locale.US, "%.2f", total)
 
-LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
+
+    LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
     item{
         Box(
             modifier = Modifier
@@ -72,7 +75,7 @@ LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
 
 
         Text(
-            text = "${gastosEsteMes.sumOf { it.cantidad }}€",
+            text = "$totalRedondeado€",
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
@@ -131,7 +134,7 @@ fun GastoItem(gasto: Finanza, navController: NavController) {
             .padding( horizontal = 10.dp).padding(top = 20.dp)
             .clickable(onClick = { navController.navigate("detalleGasto/${gasto.id}") })) {
             Text(
-                text = "${gasto.cantidad/gasto.usuarioPaga.size}€",
+                text = "%.2f€".format(gasto.cantidad / gasto.usuarioPaga.size),
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF000000)

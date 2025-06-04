@@ -127,8 +127,6 @@ fun MainScreen(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 TarjetaCompras(
-                                    hayTareasHoy = hayTareasHoy,
-                                    numeroTareas = tareasHoy.size,
                                     navController = navController,
                                     modifier = Modifier
                                         .weight(1f)

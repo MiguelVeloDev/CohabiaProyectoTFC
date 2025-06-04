@@ -49,54 +49,51 @@ import com.example.cohabiaproject.ui.theme.NaranjaPrincipal
 @Composable
 fun TarjetaCompras(
     modifier: Modifier = Modifier,
-    hayTareasHoy: Boolean,
-    numeroTareas: Int,
     navController: NavController
 ) {
     Card(
         modifier = modifier
-            .padding(2.dp).clickable { navController.navigate("compras") },
+            .padding(2.dp)
+            .clickable { navController.navigate("compras") },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(16.dp),
+
     ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(vertical = 12.dp)
+        ) {
+            Icon(
+                imageVector = Icons.TwoTone.ShoppingCart,
+                contentDescription = "Icono compras",
+                tint = Color(0xFF6E6E6E),
+                modifier = Modifier.size(40.dp)
+            )
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth()
+            Spacer(modifier = Modifier.height(5.dp))
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
-                Icon(
-                    imageVector = Icons.TwoTone.ShoppingCart,
-                    contentDescription = "Icono tareas",
-                    tint =  Color(0xFF5E5E5E),
-                    modifier = Modifier.size(48.dp).weight(2f)
+                Text(
+                    text = "Compras",
+                    fontSize = 14.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center,
-                    modifier = Modifier.weight(1f)
-
-
-                    ) {
-
-
-                    Text(
-                        text = "Compras",
-                        fontSize = 14.sp,
-                        color =Color.Black,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Icon(
-                        imageVector = Icons.Default.ArrowForwardIos,
-                        contentDescription = "Icono tareas",
-                        tint = Color.Black,
-                        modifier = Modifier.size(12.dp)
-                    )
-                }
+                Spacer(modifier = Modifier.width(4.dp))
+                Icon(
+                    imageVector = Icons.Default.ArrowForwardIos,
+                    contentDescription = "Ir a compras",
+                    tint = Color(0xFF343434),
+                    modifier = Modifier.size(12.dp)
+                )
             }
-
+        }
     }
 }

@@ -57,7 +57,6 @@ fun Compras(
     val eventoViewModel : EventoViewModel = koinViewModel()
     val productosPorCategoria = listaProductos.groupBy { it.categoria }
     var  showDialog by remember { mutableStateOf(false) }
-    var  showDialogGastos by remember { mutableStateOf(false) }
 
     Scaffold(
         containerColor = Color.White,
@@ -88,17 +87,8 @@ fun Compras(
                     showDialog = false
                     eventoViewModel.save(Evento(
                         tipo = "COMPRA", contenido = eventoViewModel.generarMensaje("COMPRA", listaProductos.filter { it.comprado }.size.toString())))
-                    showDialogGastos = true
                 })}
 
-        if (showDialogGastos) {
-            DialogConfirmacion(
-                texto = "¿Registrar el gasto de esta compra?",
-                onDismiss = { showDialogGastos = false },
-                onConfirm = {
-                    showDialog = false
-                    navController.navigate(Screen.SeleccionUsuarioGasto.route)
-                })}
         Column(
             modifier = Modifier
                 .padding(innerPadding)

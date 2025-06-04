@@ -122,39 +122,23 @@ fun CategoriasScreen(
 }
 @Composable
 fun CategoriaItem(categoria: Categoria, categoriaViewModel: CategoriaViewModel) {
-    var marcado = remember { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 2.dp)
+            .padding(vertical = 4.dp)
             .clickable { expanded = !expanded },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column {
-                Text(text = categoria.nombre, fontSize = 16.sp, fontWeight = FontWeight.Medium,style = if(marcado.value){TextStyle(textDecoration = TextDecoration.LineThrough)}else{TextStyle()})
 
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                IconButton(onClick = { marcado.value = !marcado.value }) {
-                    Icon(
-                        imageVector = if (marcado.value) Icons.Default.CheckBox else Icons.Default.CheckBoxOutlineBlank,
-                        contentDescription = "Borrar producto",
-                        tint = RojoCompras
-                    )
-                }
-
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            ) {
+                Text(text = categoria.nombre, fontSize = 16.sp)
                 AnimatedVisibility(visible = expanded) {
                     Box(
                         modifier = Modifier
@@ -164,7 +148,7 @@ fun CategoriaItem(categoria: Categoria, categoriaViewModel: CategoriaViewModel) 
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(8.dp),
+                                .padding(4.dp),
                             horizontalArrangement = Arrangement.End,
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
@@ -179,9 +163,13 @@ fun CategoriaItem(categoria: Categoria, categoriaViewModel: CategoriaViewModel) 
                         }
                     }
                 }
+            }
+
+
+
 
 
             }
         }
-    }
-}
+
+

@@ -131,7 +131,7 @@ class FinanzasViewModel(
                 saldo += if (esDeudaDelUsuario) -deuda.cantidad else deuda.cantidad
             }
 
-            mapDeudasTotal[usuario.id] = saldo
+            mapDeudasTotal[usuario.id] = String.format("%.2f", saldo).toDouble()
         }
 
         return mapDeudasTotal

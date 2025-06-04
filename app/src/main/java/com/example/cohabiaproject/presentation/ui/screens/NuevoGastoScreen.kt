@@ -60,9 +60,10 @@ fun NuevoGastoScreen(
                 titulo = "Nuevo gasto",
                 textoBoton = "Guardar",
                 navController = navController,
-                accion = {finanzasViewmodel.save (finanzasViewmodel.crearFinanza(concepto = concepto, cantidad = cantidad.toDouble(), usuarioPaga = finanzasViewmodel.convertirNombreAId((usuarioPaga),listaUsuarios.value), usuariosParticipan = finanzasViewmodel.convertirNombreAId(usuariosParticipan, listaUsuarios.value),usuariosDeuda = finanzasViewmodel.convertirNombreAId(usuariosDeuda, listaUsuarios.value))); navController.navigate(
+                accion = {finanzasViewmodel.save (finanzasViewmodel.crearFinanza(concepto = concepto, cantidad = cantidad.toDoubleOrNull()?.let { String.format("%.2f", it).toDouble() } ?: 0.0
+                    , usuarioPaga = finanzasViewmodel.convertirNombreAId((usuarioPaga),listaUsuarios.value), usuariosParticipan = finanzasViewmodel.convertirNombreAId(usuariosParticipan, listaUsuarios.value),usuariosDeuda = finanzasViewmodel.convertirNombreAId(usuariosDeuda, listaUsuarios.value))); navController.navigate(
                     Screen.FinanzasScreen.route);eventoViewModel.save(Evento(tipo = "GASTO", contenido = eventoViewModel.generarMensaje("GASTO", cantidad))) },
-                enabled = botonActivo
+                enabled = usuariosParticipan.isNotEmpty(),
             )
         },
 

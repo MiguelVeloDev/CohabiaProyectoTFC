@@ -53,6 +53,8 @@ fun TodosGastos(
             gastosEsteMesSinFiltrar.filter { it.concepto != finanzasViewModel.deudaTexto }
         )
     }
+    val total = gastosEsteMes.sumOf { it.cantidad }
+    val totalRedondeado = String.format(Locale.US, "%.2f", total)
 
     LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
 
@@ -81,7 +83,7 @@ fun TodosGastos(
 
 
                     Text(
-                        text = "${gastosEsteMes.sumOf { it.cantidad }}€",
+                        text = "$totalRedondeado€",
                         fontStyle = FontStyle.Italic,
                         fontWeight = FontWeight.Bold,
                         fontSize = 30.sp,

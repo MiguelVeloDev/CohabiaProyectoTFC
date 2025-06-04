@@ -133,7 +133,7 @@ if(showDialog){
 
 
                     val texto = if (cantidad > 0) {
-                        "$nombreUsuario te debe ${kotlin.math.abs(cantidad)}€"
+                        "$nombreUsuario te debe ${"%.2f".format(kotlin.math.abs(cantidad))}€"
                     } else if (cantidad < 0) {
                         "Debes ${"%.2f".format(kotlin.math.abs(cantidad))}€ a $nombreUsuario"
                     } else {
