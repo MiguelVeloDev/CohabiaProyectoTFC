@@ -33,8 +33,6 @@ fun DialogSelectorTiempo(
 ) {
     var seleccionHoras by remember { mutableStateOf(0) }
     var seleccionMinutos by remember { mutableStateOf(0) }
-    val electrodomesticosViewModel: ElectrodomesticoViewModel =
-        koinViewModel()
     val tiempoSeleccionado = seleccionHoras * 60 + seleccionMinutos
 
     AlertDialog(
@@ -78,7 +76,7 @@ fun DialogSelectorTiempo(
                     value = if (seleccionHoras == 0) "" else seleccionHoras.toString(),
                     onValueChange = { nuevoValor ->
                         val numero = nuevoValor.filter { it.isDigit() }
-                        seleccionHoras = if (numero.isEmpty()) 0 else numero.toInt()
+                        seleccionHoras = if (numero.isEmpty()) 0 else numero.toInt().coerceIn(0, 23)
                     },
                     label = { Text("Horas") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -92,7 +90,7 @@ fun DialogSelectorTiempo(
                     value = if (seleccionMinutos == 0) "" else seleccionMinutos.toString(),
                     onValueChange = { nuevoValor ->
                         val numero = nuevoValor.filter { it.isDigit() }
-                        seleccionMinutos = if (numero.isEmpty()) 0 else numero.toInt()
+                        seleccionMinutos = if (numero.isEmpty()) 0 else numero.toInt().coerceIn(0, 59)
                     },
                     label = { Text("Minutos") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -103,6 +101,7 @@ fun DialogSelectorTiempo(
                     colors = coloresTextField()
                 )
             }
+
         },
         shape = RoundedCornerShape(28.dp),
         containerColor = MaterialTheme.colorScheme.surface,

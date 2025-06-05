@@ -9,6 +9,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.twotone.AddTask
+import androidx.compose.material.icons.twotone.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -28,7 +33,9 @@ import com.example.cohabiaproject.domain.model.Sesion
 import com.example.cohabiaproject.ui.theme.CohabiaProjectTheme
 import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.viewmodel.LoginViewModel
+import com.example.cohabiaproject.ui.theme.AzulTareas
 import com.example.cohabiaproject.ui.theme.FondoTextField
+import com.example.cohabiaproject.ui.theme.RojoCompras
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -194,7 +201,10 @@ fun Login(modifier: Modifier = Modifier, navController: NavController) {
 @Composable
 fun LoginPreview() {
     CohabiaProjectTheme {
-
-        Login(modifier = Modifier, navController = rememberNavController())
-    }
+    Icon(
+        imageVector = Icons.TwoTone.AddTask,
+        contentDescription = "Logo",
+        modifier = Modifier.size(100.dp),
+        tint = AzulTareas
+    )}
 }

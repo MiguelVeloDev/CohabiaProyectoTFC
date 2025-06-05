@@ -76,8 +76,11 @@ fun NuevoGastoScreen(
         ) {
             TextField(
                 value = concepto,
-                onValueChange = { concepto = it},
-                label = { Text("Concepto") },
+                onValueChange = { nuevoConcepto ->
+                    if (nuevoConcepto.length <= 25) {
+                        concepto = nuevoConcepto
+                    }
+                },                label = { Text("Concepto") },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
                 colors = coloresTextField()
@@ -88,8 +91,8 @@ fun NuevoGastoScreen(
             TextField(
                 value = cantidad.toString(),
                 onValueChange = {
-                    val regex = Regex("^\\d*(\\.\\d{0,2})?$")
-                    if (it.isEmpty() || it.matches(regex)) {
+                    val patron = Regex("^\\d*(\\.\\d{0,2})?$")
+                    if (it.isEmpty() || it.matches(patron)) {
                         cantidad = it
                     }             } ,
                 label = { Text("Cantidad") },
@@ -182,7 +185,7 @@ fun NuevoGastoScreen(
                         .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(listaNombresUsuarios.filter { it != usuarioPrimerPago }) { usuario ->
+                    items(listaNombresUsuarios.filter { it != usuarioPrimerPago && it in usuariosParticipan }) { usuario ->
                         Card(
                             modifier = Modifier.fillMaxWidth().padding(2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),

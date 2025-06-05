@@ -94,7 +94,8 @@ fun AnadirTarea(navController: NavController) {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedContainerColor = FondoTextField
-                )
+                ),
+                singleLine = true
                 )
 
             Spacer(modifier = Modifier.height(18.dp))

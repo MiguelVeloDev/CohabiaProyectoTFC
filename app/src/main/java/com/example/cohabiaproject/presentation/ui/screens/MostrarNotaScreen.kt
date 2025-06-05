@@ -20,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,6 +39,7 @@ import com.example.cohabiaproject.presentation.navigation.navigation.Screen
 import com.example.cohabiaproject.presentation.ui.components.BottomNavBar
 import com.example.cohabiaproject.presentation.ui.components.MyTopAppBar
 import com.example.cohabiaproject.presentation.ui.components.NuevoElementoTopAppBar
+import com.example.cohabiaproject.presentation.ui.components.TopAppBarConFlecha
 import com.example.cohabiaproject.presentation.ui.viewmodel.ElectrodomesticoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.EventoViewModel
 import com.example.cohabiaproject.presentation.ui.viewmodel.NotaViewModel
@@ -59,48 +61,58 @@ fun MostrarNotaScreen(
     ) {
     val notaViewModel: NotaViewModel = koinViewModel()
     val listaNotas by notaViewModel.notas.collectAsState(emptyList())
-    val nota = remember(listaNotas) { listaNotas.find { it.id == notaID } }
-    val contenidoNota = remember(nota) {
-        MutableStateFlow(TextFieldValue(nota?.contenido ?: ""))
-    }
-    val contenidoNotaState = contenidoNota.collectAsState()
+    val nota = listaNotas.find { it.id == notaID }
+    val contenidoNota = remember(nota) { mutableStateOf(TextFieldValue(nota?.contenido ?: "")) }
+
     val tituloNota = remember(nota) { mutableStateOf(nota?.titulo ?: "Titulo")}
     val eventoViewModel: EventoViewModel = koinViewModel()
-
-
-    LaunchedEffect(nota?.id) {
-        if (nota != null) {
-            contenidoNota
-                .debounce(1000)
-                .collectLatest { valor ->
-                    notaViewModel.update(
-                        nota.copy(contenido = valor.text, titulo = tituloNota.value)
-                    )
-                }
-        }
-    }
-
 
 
 
     Scaffold(
         containerColor = Color.White,
         topBar = {
-            NuevoElementoTopAppBar(
-                titulo = if(notaID=="nuevaNota") "Nueva nota" else "Editar nota",
-                textoBoton = "Guardar",
-                navController = navController,
-                accion ={
-                    if(notaID=="nuevaNota"){
-                        notaViewModel.save(Nota(titulo = tituloNota.value, contenido = contenidoNotaState.value.text))
-                    }
-                    navController.navigate("notas");
-                    eventoViewModel.save(Evento(tipo = "NOTA", contenido = eventoViewModel.generarMensaje("NOTA", tituloNota.value)))
 
-                },
-                enabled = tituloNota.value!="Titulo" && contenidoNotaState.value.text!="",
-            )
-        },
+                NuevoElementoTopAppBar(
+                    titulo = if (notaID == "nuevaNota") "Nueva nota" else "Editar nota",
+                    textoBoton = "Guardar",
+                    navController = navController,
+                    accion = {
+                        if (notaID == "nuevaNota") {
+                            notaViewModel.save(
+                                Nota(
+                                    titulo = tituloNota.value,
+                                    contenido = contenidoNota.value.text
+                                )
+                            )
+                            eventoViewModel.save(
+                                Evento(
+                                    tipo = "NOTA",
+                                    contenido = eventoViewModel.generarMensaje(
+                                        "NOTA",
+                                        tituloNota.value
+                                    )
+                                )
+                            )
+
+                            navController.navigate("notas");
+
+
+                        }
+                        else{
+                            notaViewModel.update(
+                                Nota(
+                                    id = notaID,
+                                    titulo = tituloNota.value,
+                                    contenido = contenidoNota.value.text))
+                            navController.navigate("notas");
+
+                        }
+
+                    },
+                    enabled = tituloNota.value != "Titulo" && contenidoNota.value.text != "",
+                )
+            },
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -122,7 +134,11 @@ fun MostrarNotaScreen(
 
                     BasicTextField(
                         value = tituloNota.value,
-                        onValueChange = { tituloNota.value = it },
+                        onValueChange = { nuevoTitulo ->
+                            if (nuevoTitulo.length <= 30) {
+                                tituloNota.value = nuevoTitulo
+                            }
+                        },
                         modifier = Modifier
                             .fillMaxWidth(),
                         textStyle = LocalTextStyle.current.copy(
@@ -131,26 +147,28 @@ fun MostrarNotaScreen(
                         ),
                         decorationBox = { innerTextField ->
                             innerTextField()
-                        }
+                        },
+                        singleLine = true,
 
 
 
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     BasicTextField(
-                        value = contenidoNotaState.value,
+                        value = contenidoNota.value,
                         onValueChange = { contenidoNota.value = it },
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f),
                         decorationBox = { innerTextField ->
-                            if (contenidoNotaState.value.text.isEmpty()) {
+                            if (contenidoNota.value.text.isEmpty()) {
                                 Text("Escribe tu nota aquí...", color = Color.White)
                             }
                             innerTextField()
 
 
-                        }
+                        },
+                        singleLine = false,
 
                     )
                 }

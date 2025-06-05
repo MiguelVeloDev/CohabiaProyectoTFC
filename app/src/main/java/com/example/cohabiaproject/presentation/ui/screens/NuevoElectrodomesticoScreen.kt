@@ -128,8 +128,11 @@ fun NuevoElectrodomestico(
 
                     TextField(
                         value = nombreElectrodomestico,
-                        onValueChange = { nombreElectrodomestico = it },
-                        placeholder = { Text("Nombre electrodoméstico") },
+                        onValueChange = { nuevoNombreElectrodomestico ->
+                            if (nuevoNombreElectrodomestico.length <= 35) {
+                                nombreElectrodomestico = nuevoNombreElectrodomestico
+                            }
+                        },                          placeholder = { Text("Nombre electrodoméstico") },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 8.dp),

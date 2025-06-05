@@ -120,8 +120,11 @@ fun NuevoPrograma(
 
                 TextField(
                     value = nombrePrograma,
-                    onValueChange = { nombrePrograma = it },
-                    placeholder = { Text("Nombre Programa") },
+                    onValueChange = { nuevoPrograma ->
+                        if (nuevoPrograma.length <= 25) {
+                            nombrePrograma = nuevoPrograma
+                        }
+                    },                    placeholder = { Text("Nombre Programa") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp),
@@ -133,7 +136,7 @@ fun NuevoPrograma(
                         value = if (seleccionHoras == 0) "" else seleccionHoras.toString(),
                         onValueChange = { nuevoValor ->
                             val numero = nuevoValor.filter { it.isDigit() }
-                            seleccionHoras = if (numero.isEmpty()) 0 else numero.toInt()
+                            seleccionHoras = if (numero.isEmpty()) 0 else numero.toInt().coerceIn(0, 23)
                         },
                         label = { Text("Horas") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -147,7 +150,7 @@ fun NuevoPrograma(
                         value = if (seleccionMinutos == 0) "" else seleccionMinutos.toString(),
                         onValueChange = { nuevoValor ->
                             val numero = nuevoValor.filter { it.isDigit() }
-                            seleccionMinutos = if (numero.isEmpty()) 0 else numero.toInt()
+                            seleccionMinutos = if (numero.isEmpty()) 0 else numero.toInt().coerceIn(0, 59)
                         },
                         label = { Text("Minutos") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -158,6 +161,7 @@ fun NuevoPrograma(
                         colors = coloresTextField()
                     )
                 }
+
 
                 Spacer(modifier = Modifier.padding(40.dp))
 
