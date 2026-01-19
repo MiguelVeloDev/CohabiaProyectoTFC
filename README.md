@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/CohabiaLogo.png" width="200" alt="Cohabia Logo">
+  <img src="docs/Cohabia.png" width="200" alt="Cohabia Logo">
 </p>
 
 # Cohabia 🏠⚡
