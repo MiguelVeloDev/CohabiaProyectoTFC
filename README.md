@@ -2,38 +2,43 @@
   <img src="docs/Cohabia.png" width="200" alt="Cohabia Logo">
 </p>
 
-# Cohabia 🏠⚡
+# Cohabia
 
-**Cohabia** es una solución inteligente diseñada para simplificar la **gestión de electrodomésticos** en el hogar. La aplicación permite a los usuarios llevar un control exhaustivo de sus dispositivos, optimizando su mantenimiento, prolongando su vida útil y mejorando la convivencia en espacios compartidos.
+[cite_start]**Cohabia** es una aplicación móvil nativa diseñada para centralizar la gestión de una vivienda compartida en un solo lugar[cite: 369]. [cite_start]El proyecto surge de la necesidad de facilitar la convivencia, permitiendo a los habitantes organizar tareas, gastos y el uso de electrodomésticos de forma colaborativa[cite: 379, 381].
 
-### ✨ Funciones Principales
-* **Inventario Digital Detallado:** Registra todos tus electrodomésticos con marca, modelo, número de serie, fecha de compra y estado actual.
-* **Control de Uso y Asignación:** Gestiona quién utiliza cada dispositivo y monitoriza la frecuencia de uso.
-* **Mantenimiento Preventivo Inteligente:** Recibe alertas y recordatorios personalizados para limpiezas, revisiones técnicas o cambios de filtros.
-* **Historial de Incidencias:** Registra averías o reparaciones para un seguimiento completo.
-* **Comunicación Colaborativa:** (Opcional si es para co-habitantes) Facilita la comunicación entre los habitantes sobre el estado y uso de los electrodomésticos.
+### Funcionalidades principales
+
+* [cite_start]**Gestión de casas:** Los usuarios pueden crear un grupo de convivencia o unirse a uno mediante un código de invitación para compartir información en tiempo real[cite: 481, 492].
+* [cite_start]**Control de electrodomésticos:** Permite registrar dispositivos, seleccionar programas y monitorizar su estado (inicio, pausa y reinicio) directamente desde la aplicación[cite: 484, 503].
+* [cite_start]**Finanzas compartidas:** Registro y división automática de gastos entre los miembros de la casa, con un seguimiento claro de deudas pendientes[cite: 483, 501].
+* [cite_start]**Lista de la compra colaborativa:** Gestión de productos por categorías, permitiendo marcar artículos recurrentes y realizar borrados masivos tras la compra[cite: 482, 499].
+* [cite_start]**Notas y organización:** Sistema de notas compartidas con guardado automático para mantener cualquier información relevante al alcance de todos[cite: 485, 506].
 
 ---
 
-### 🚀 Presentación del Proyecto
-¡Explora Cohabia en detalle con nuestra presentación interactiva!
+### Presentación del proyecto
+Puedes ver un recorrido visual por el diseño y concepto de la aplicación a través de la presentación interactiva:
 
 <p align="center">
-  [![Ver Presentación de Cohabia](docs/miniatura_prezi.png)](https://prezi.com/p/vztv5zmufo19/?present=1)
+  [![Presentación interactiva de Cohabia](docs/miniatura_prezi.png)](https://prezi.com/p/vztv5zmufo19/?present=1)
   <br>
-  <i>Haz clic en la imagen para acceder a la presentación completa en Prezi.</i>
+  <i>Haz clic en la imagen para ver el Prezi del proyecto.</i>
 </p>
 
 ---
 
-### 📄 Memoria Técnica
-* [Descargar Memoria Técnica (PDF)](docs/Memoria_Tecnica.pdf)
+### Memoria técnica
+Para un análisis detallado sobre el desarrollo, la metodología y los requisitos del sistema, puedes consultar la documentación completa:
+* [Descargar Memoria Técnica (PDF)](docs/EntregaFinal_Miguel_Velo_Arrllaga.pdf)
 
 ---
 
-### 🛠️ Especificaciones Técnicas
-* **Plataforma:** Android Nativo
-* **Lenguaje:** Kotlin / Java
-* **Arquitectura:** MVVM (Model-View-ViewModel)
-* **Persistencia:** Room Database / Firebase (Ajusta según lo que uses)
-* **UI:** Jetpack Compose / XML (Ajusta según lo que uses)
+### Stack tecnológico
+
+[cite_start]La aplicación ha sido desarrollada siguiendo una arquitectura **MVVM** para garantizar la escalabilidad y el mantenimiento del código[cite: 515, 522]:
+
+* [cite_start]**Lenguaje:** Kotlin[cite: 513].
+* [cite_start]**Interfaz de usuario:** Jetpack Compose[cite: 513, 524].
+* [cite_start]**Backend:** Firebase (Authentication, Firestore, Storage y Cloud Messaging)[cite: 527].
+* [cite_start]**Inyección de dependencias:** Koin[cite: 526].
+* [cite_start]**Animaciones:** Lottie[cite: 531].
